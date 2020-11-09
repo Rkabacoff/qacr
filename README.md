@@ -49,5 +49,8 @@ barcharts(cars74)
 
 # plot a correlation matrix among quantitative variables
 corplot(cars74)
+
+# visualize a data frame
+dfPlot(coffee)
 ```
 
