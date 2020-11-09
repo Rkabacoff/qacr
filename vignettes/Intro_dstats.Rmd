@@ -1,0 +1,101 @@
+---
+title: "Introduction to the dstats function"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Intro_dstats}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, echo=TRUE, eval=TRUE, error=FALSE, warning=FALSE, message=FALSE}
+library(qacr)
+```
+
+
+This function provides descriptive statistics for a quantitative variable (unquoted). If no keyword arguments for statistics are provided, default values are used. Default stats: c("n", "mean", "sd")
+```{r include=TRUE}
+dstats(oil,operator)
+```
+
+You supply statistics argument with the "stats" parameter. You can pass single statistic or multiple statistics as a list object.
+Singe statistic:
+```{r include=TRUE}
+dstats(oil,operator, stats = c("median"))
+```
+
+Multiple statistics:
+```{r include=TRUE}
+dstats(soils, pH, stats = c("median", "mean", "sd"))
+```
+
+
+You can supply as many grouping variables as needed. 
+```{r include=TRUE}
+dstats(soils, pH, Group, Contour, Depth)
+```
+
+
+
+You can pass multiple statistics and multiple grouping variable at the same time.
+```{r include=TRUE}
+dstats(soils, pH, Group, Contour, stats=c("mean", "median", "sd"))
+```
+
+
+User-defined functions can also be used as the 'statistic'. It's passed using the statistic parameter:
+```{r include=TRUE}
+#custom statistic
+my_n <- function(xs) length(xs)
+
+#calling the custom statistic
+dstats(soils, pH, stats = c("my_n"))
+```
+
+
+User-defined functioned can also be passed alongside other statistics:
+```{r include=TRUE}
+dstats(soils, pH, Group, Contour, Depth, stats=c("my_n","mean"))
+```
+
+
+Other optionalinputs into the function include the 'na.rm' parameter. When TRUE, NAs are removed. Default is TRUE
+```{r include=TRUE}
+dstats(soils, pH, Depth, stats=c("mean","median","sd"),  na.rm=FALSE)
+```
+
+
+Another optional input is digit, which is the number of decimal points to print. Default = 2. 
+```{r include=TRUE}
+dstats(soils, pH, Depth, stats=c("mean","median","sd"), na.rm=FALSE, digits=3)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,81 @@
+title: qacr
+url: http://rkabacoff.github.io/qacr
+template:
+  params:
+    bootswatch: cerulean
+reference:
+  - title: Main Functions
+    desc: ~
+    contents:
+      - '`crosstab`'
+      - '`df_summary`'
+      - '`dstats`'
+      - '`Recoder`'
+      - '`tab`'
+  - title: Graphing
+    desc: ~
+    contents:
+      - '`corplot`'
+      - '`barcharts`'
+      - '`densities`'
+      - '`dfPlot`'
+      - '`histograms`'
+      - '`scatter`'
+      - '`univariatePlot`'
+  - title: Utilities
+    desc: ~
+    contents:
+      - '`import`'
+      - '`phelp`'
+      - '`print.crosstab`'
+      - '`print.tab`'
+      - '`plot.crosstab`'
+      - '`plot.tab`'
+  - title: Datasets
+    desc: ~
+    contents:
+      - '`amazon`'
+      - '`batting`'
+      - '`border`'
+      - '`cardata`'
+      - '`cars74`'
+      - '`coffee`'
+      - '`crashes`'
+      - '`farmers_markets`'
+      - '`googleplay`'
+      - '`hostels`'
+      - '`hate_crimes`'
+      - '`housing`'
+      - '`movies`'
+      - '`oil`'
+      - '`pbp2018`'
+      - '`soils`'
+      - '`tv`'
+      - '`venues`'
+      - '`wine`'
+navbar:
+  type: inverse
+  left:
+    - icon: fa-home
+      href: index.html
+  right:
+    - text: "Articles"
+      icon: fas fa-book
+      menu:
+      -  text: Introduction to the crosstab function
+         href: articles/Intro_Crosstab.html
+      -  text: Introduction to the df_summary function
+         href: articles/df_summary.html
+      -  text: Introduction to the tab function
+         href: articles/tab_vingette.html
+      -  text: Introduction to the dstats function
+         href: articles/Intro_dstats.html
+    - icon: fa-newspaper-o
+      text: "news"
+      href: news/index.html
+    - icon: fa-file-code-o
+      text: "functions"
+      href: reference/index.html
+    - icon: fa-github fa-lg
+      text: "github"
+      href: https://github.com/rkabacoff/qacr/
