@@ -9,7 +9,7 @@
 #'  variables, Default: TRUE
 #' @param digits number of decimal digits to print, Default: 2
 #' @param ... list of grouping variables
-#' @import purrr
+#' @importFrom purrr map_dfc
 #' @import dplyr
 #' @import haven
 #' @return a data frame, where columns are grouping variables (optional) and
@@ -62,7 +62,7 @@ dstats <- function(data, x, ...){
 
   my_sums <- function(data, col, cus_sums) {
     col <- enquo(col)
-    map_dfc(cus_sums, my_sum, data = data, col = !!col)
+    purrr::map_dfc(cus_sums, my_sum, data = data, col = !!col)
   }
 
 

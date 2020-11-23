@@ -2,7 +2,7 @@
 title: "Introduction to the dstats function"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Intro_dstats}
+  %\VignetteIndexEntry{Introduction to the dstats function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

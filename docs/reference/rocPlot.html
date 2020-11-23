@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Barcharts — barcharts • qacr</title>
+<title>ROC Plot — rocPlot • qacr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Barcharts — barcharts" />
-<meta property="og:description" content="Create barcharts for all categorical variables in a data frame." />
+<meta property="og:title" content="ROC Plot — rocPlot" />
+<meta property="og:description" content="Plot a receiver operating curve for a binary predictive model" />
 
 
 
@@ -143,66 +143,61 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Barcharts</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/barcharts.R'><code>R/barcharts.R</code></a></small>
-    <div class="hidden name"><code>barcharts.Rd</code></div>
+    <h1>ROC Plot</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/rocPlot.R'><code>R/rocPlot.R</code></a></small>
+    <div class="hidden name"><code>rocPlot.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create barcharts for all categorical variables in a data frame.</p>
+    <p>Plot a receiver operating curve for a binary predictive model</p>
     </div>
 
-    <pre class="usage"><span class='fu'>barcharts</span><span class='op'>(</span>
-  <span class='va'>data</span>,
-  fill <span class='op'>=</span> <span class='st'>"deepskyblue2"</span>,
-  color <span class='op'>=</span> <span class='st'>"grey30"</span>,
-  labels <span class='op'>=</span> <span class='cn'>TRUE</span>,
-  maxcat <span class='op'>=</span> <span class='fl'>20</span>,
-  abbrev <span class='op'>=</span> <span class='fl'>20</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>rocPlot</span><span class='op'>(</span><span class='va'>model</span>, <span class='va'>positive</span>, n.cuts <span class='op'>=</span> <span class='fl'>20</span>, labelsize <span class='op'>=</span> <span class='fl'>3</span>, labelround <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data frame</p></td>
+      <th>model</th>
+      <td><p>predictive model from the caret train function.</p></td>
     </tr>
     <tr>
-      <th>fill</th>
-      <td><p>fill color for bars</p></td>
+      <th>positive</th>
+      <td><p>label for the class to predict.</p></td>
     </tr>
     <tr>
-      <th>color</th>
-      <td><p>color for bar labels</p></td>
+      <th>n.cuts</th>
+      <td><p>number of probability cutpoints to plot.</p></td>
     </tr>
     <tr>
-      <th>labels</th>
-      <td><p>if <code>TRUE</code>, bars are labeled with percents</p></td>
+      <th>labelsize</th>
+      <td><p>size of cutpoint labels.</p></td>
     </tr>
     <tr>
-      <th>maxcat</th>
-      <td><p>numeric. barcharts with more than this number of bars will not be plotted.</p></td>
-    </tr>
-    <tr>
-      <th>abbrev</th>
-      <td><p>numeric. abbreviate bar labels to at most, this character length.</p></td>
+      <th>labelround</th>
+      <td><p>number of decimal digits in the cutpoint labels.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a ggplot graph</p>
+    <p>a ggplot2 graph</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Takes a model produced by the train function in the caret package and
+the binary level to predict, and generates a ROC plot.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>barcharts</span><span class='op'>(</span><span class='va'>cars74</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; The following variable had more than 20 levels and were not graphed:
-#&gt;  auto </div><div class='output co'>#&gt; <span class='message'>Loading required package: dplyr</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'dplyr'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: scales</span></div><div class='img'><img src='barcharts-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'>
+<span class='co'># logistic regression example</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/topepo/caret/'>caret</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Loading required package: lattice</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>GermanCredit</span><span class='op'>)</span>
+<span class='va'>model.lr</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/caret/man/train.html'>train</a></span><span class='op'>(</span><span class='va'>Class</span> <span class='op'>~</span> <span class='va'>Age</span> <span class='op'>+</span> <span class='va'>Amount</span> <span class='op'>+</span> <span class='va'>Duration</span>,
+                  data<span class='op'>=</span><span class='va'>GermanCredit</span>,
+                  method<span class='op'>=</span><span class='st'>"glm"</span>, family<span class='op'>=</span><span class='st'>"binomial"</span><span class='op'>)</span>
+<span class='fu'>rocPlot</span><span class='op'>(</span>model<span class='op'>=</span><span class='va'>model.lr</span>, positive<span class='op'>=</span><span class='st'>"Bad"</span><span class='op'>)</span>
+</div><div class='img'><img src='rocPlot-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

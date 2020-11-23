@@ -2,7 +2,7 @@
 title: "Introduction to the df_summary function"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{df_summary}
+  %\VignetteIndexEntry{Introduction to the df_summary function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

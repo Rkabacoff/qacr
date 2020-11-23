@@ -14,11 +14,13 @@
 #' @import ggplot2
 #' @import dplyr
 #' @export
-barcharts <- function(data, fill="deepskyblue2", color="grey30", labels=TRUE,
-                 maxcat=20, abbrev=20){
+barcharts <- function(data, fill="deepskyblue2",
+                      color="grey30", labels=TRUE,
+                      maxcat=20, abbrev=20){
 
 
-  index <- sapply(data, function(x) is.factor(x) | is.character(x)|is.logical(x))
+  index <- sapply(data, function(x) is.factor(x) |
+                    is.character(x)|is.logical(x))
   cdata <- data[index]
 
   # delete categories with more than n levels and print warning
@@ -41,24 +43,30 @@ barcharts <- function(data, fill="deepskyblue2", color="grey30", labels=TRUE,
   if (length(cdata2) < length(cdata)){
     cat("The following variable had more than", maxcat,
         "levels and were not graphed:\n",
-        names(cdata[index2 > maxcat]))
+        names(cdata[index2 > maxcat]),
+        "\n")
   }
 
   # abbreviate level labels
   for(i in seq_along(cdata2)){
-    levels(cdata2[[i]]) <- abbreviate(levels(cdata2[[i]]), minlength=abbrev)
+    levels(cdata2[[i]]) <- abbreviate(levels(cdata2[[i]]),
+                                      minlength=abbrev)
   }
 
 
   cdata_long <- suppressWarnings(tidyr::gather(cdata2))
 
   require(dplyr)
-  cdatl_a <- cdata_long %>% group_by(key, value) %>% summarize(n=n())
-  cdatl_b <- cdatl_a %>% group_by(key) %>% summarize(tot = sum(n))
+  cdatl_a <- cdata_long %>%
+    group_by(key, value) %>%
+    summarize(n=n(), .groups="drop")
+  cdatl_b <- cdatl_a %>%
+    group_by(key) %>%
+    summarize(tot = sum(n), .groups="drop")
 
   cdata_long <- inner_join(cdatl_a, cdatl_b, by="key") %>%
-    mutate(pct = n/ tot,
-           pctlabel = paste0(round(pct*100), "%"))
+    mutate(pct = (n/ tot)*100,
+           pctlabel = paste0(round(pct), "%"))
 
   require(ggplot2)
   require(scales)

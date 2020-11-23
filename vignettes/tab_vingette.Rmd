@@ -2,7 +2,7 @@
 title: "Introduction to the tab function"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{tab_vingette}
+  %\VignetteIndexEntry{Introduction to the tab function}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
