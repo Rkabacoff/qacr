@@ -3,50 +3,61 @@
 #' @param data data frame
 #' @param rowvar row factor (unquoted)
 #' @param colvar column factor (unquoted)
-#' @param type statistics to print. Options are \code{"freq"}, \code{"cellpercent"},
-#' \code{"rowpercent"}, or \code{"colpercent"} for frequencies, cell percents,
-#' row percents, or column percents).
-#' Default: \code{"freq"}.
-#' @param total if TRUE, includes total percents, Default: TRUE
-#' @param na.rm if TRUE, deletes cases with missing values, Default: TRUE
-#' @param digits number of decimal digits to report for percents, Default: 2
-#' @param plot logical. If \code{TRUE} generate stacked bar chart. Default: FALSE.
-#' @return a list with 9 components:
+#' @param type statistics to print. Options are \code{"freq"},
+#' \code{"percent"}, \code{"rowpercent"}, or \code{"colpercent"}
+#' for frequencies, cell percents, row percents, or column percents).
+#' @param total logical. if TRUE, includes total percents.
+#' @param na.rm logical. if TRUE, deletes cases with missing values.
+#' @param digits number of decimal digits to report for percents.
+#' @param chisquare logical. If \code{TRUE} perform a chi-square test
+#' of independence
+#' @param plot logical. If \code{TRUE} generate stacked bar chart.
+#' @return If \code{plot=TRUE}, return a ggplot2 graph.
+#' Otherwise the function return a list with 6 components:
 #' \itemize{
-#' \item{\code{tbl}}{ (table). Table of frequencies}
-#' \item{\code{cellPcts}}{ (table). Table of cell percents}
-#' \item{\code{rowPcts}}{ (table). Table of row percents}
-#' \item{\code{colPcts}}{ (table). Table of column percents}
+#' \item{\code{table}}{ (table). Table of frequencies or percents}
 #' \item{\code{type}}{ (character). Type of table to print}
 #' \item{\code{total}}{ (logical). If \code{TRUE}, print row and or column totals}
 #' \item{\code{digits}}{ (numeric). number of digits to print}
 #' \item{\code{rowname}}{ (character). Row variable name}
 #' \item{\code{colname}}{ (character). Column variable name}
+#' \item{\code{chisquare}}{ (character). If \code{chisquare=TRUE}, contains
+#' the results of the Chi-square test. \code{NULL} otherwise.}
 #' }
 #'
-#' @details This function calculates and prints a two way frequency table.
-#' Given a data frame, a row factor, a column factor, and a type (frequencies, cell percents,
-#' row percents, or column percents) the function prints a table with labeled rows
-#' and columns, frequencies or percents with the percentage sign depending on
-#' type, a level labeled <NA> if na.rm = FALSE, and a level labeled Total if
-#' total = TRUE.
+#' @details Given a data frame, a row factor, a column factor, and a
+#' type (frequencies, cell percents, row percents, or column percents)
+#' the function provides the requested cross-tabulation.
+#'
+#' If \code{na.rm = FALSE}, a level labeled \code{<NA>} added. If
+#' \code{total = TRUE}, a level labeled \code{Total} is added. If
+#' \code{chisquare = TRUE}, a chi-square test of independence is
+#' performed.
+#'
+#' @seealso \link{print.crosstab}, \link{plot.crosstab}
 #' @examples
+#' # print frequencies
 #' crosstab(mtcars, cyl, gear)
 #'
-#' crosstab(mtcars, cyl, gear, type="cellpercent")
+#' # print cell percents
+#' crosstab(mtcars, cyl, gear, type="percent")
 #'
-#' crosstab(mtcars, cyl, gear, type="colpercent")
+#' # print column percents with chi-square test
+#' crosstab(mtcars, cyl, gear, type="colpercent", chisquare=TRUE)
 #'
-#' crosstab(mtcars, cyl, gear, type="rowpercent")
+#' # plot row percents with chi-square test
+#' crosstab(mtcars, cyl, gear, type="rowpercent", plot=TRUE,
+#' chisquare=TRUE)
 #' @rdname crosstab
 #' @export
 
 crosstab <- function(data, rowvar, colvar,
-                     type=c("freq", "cellpercent",
+                     type=c("freq", "percent",
                             "rowpercent", "colpercent"),
                      total=TRUE,
                      na.rm=TRUE,
                      digits=2,
+                     chisquare=FALSE,
                      plot=FALSE){
 
   rowvar <- deparse(substitute(rowvar))
@@ -57,30 +68,41 @@ crosstab <- function(data, rowvar, colvar,
   } else {
     useNA <- "always"
   }
-  tbl <- table(data[[rowvar]], data[[colvar]], useNA=useNA)
-  names(dimnames(tbl)) <- c(rowvar, colvar)
+  tb <- table(data[[rowvar]], data[[colvar]], useNA=useNA)
+  names(dimnames(tb)) <- c(rowvar, colvar)
 
-  # percents
-  tbl_cellpct <- prop.table(tbl)
-  tbl_rowpct <- prop.table(tbl, 1)
-  tbl_colpct <- prop.table(tbl, 2)
+  # chisquare test
+  x2 <- NULL
+  if (chisquare){
+    x2 <- suppressWarnings(chisq.test(tb))
+    x2 <- paste0("Chi-square = ", round(x2$statistic,2),
+                ", df = ", x2$parameter,
+                ", p = ", format.pval(x2$p.value, digits=2))
+  }
+
+  # results
+  tb <- switch(type,
+                "freq" = tb,
+                "percent"= prop.table(tb),
+                "rowpercent" = prop.table(tb, 1),
+                "colpercent" = prop.table(tb, 2)
+                )
 
   # package results
-  results <- list(counts = tbl,
-                  cellPcts = tbl_cellpct,
-                  rowPcts = tbl_rowpct,
-                  colPcts = tbl_colpct,
+  results <- list(table = tb,
                   type=type,
                   total=total,
                   digits=digits,
                   rowname = rowvar,
-                  colname = colvar)
+                  colname = colvar,
+                  chisquare = x2)
 
 
   class(results) <- c("crosstab", "list")
-  if (plot) {
-    x <- plot(results)
-    print(x)
+  if (plot){
+    return(plot(results))
+  } else{
+    return(results)
   }
   return(results)
 }

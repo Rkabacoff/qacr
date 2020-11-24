@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Introduction to the crosstab function • qacr</title>
+<title>Creating two-way frequency tables • qacr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to the crosstab function">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Creating two-way frequency tables">
 <meta property="og:description" content="qacr">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -55,7 +55,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/Intro_Crosstab.html">Introduction to the crosstab function</a>
+      <a href="../articles/Intro_Crosstab.html">Creating two-way frequency tables</a>
     </li>
     <li>
       <a href="../articles/df_summary.html">Introduction to the df_summary function</a>
@@ -102,7 +102,7 @@
       </header><script src="Intro_Crosstab_files/header-attrs-2.4/header-attrs.js"></script><script src="Intro_Crosstab_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Introduction to the crosstab function</h1>
+      <h1 data-toc-skip>Creating two-way frequency tables</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/rkabacoff/qacr/blob/master/vignettes/Intro_Crosstab.Rmd"><code>vignettes/Intro_Crosstab.Rmd</code></a></small>
@@ -112,8 +112,6 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rkabacoff/qacr">qacr</a></span><span class="op">)</span></pre></div>
 <p>The <strong>crosstab</strong> function calculates and prints a two-way frequency table.</p>
 <p>Given a data frame, a row variable, a column variable, and a type (frequencies, cell percents, row percents, or column percents) the function returns a table with</p>
 <ul>
@@ -121,73 +119,97 @@
 </li>
 <li>frequencies or percents<br>
 </li>
-<li>a level labeled &lt;NA&gt; for missing values (unless <code>na.rm = TRUE</code>)<br>
+<li>a level labeled &lt;NA&gt; for missing values (if <code>na.rm = FALSE</code>)<br>
 </li>
 <li>a level labeled Total (unless <code>total = FALSE</code>)</li>
 </ul>
-<p>Tables are printed with 2 decimal places for percents (modifiable using <code>digits=#</code>). Variables are coerced to factors if necessary.</p>
-<p>Here are some examples.</p>
+<p>Tables are printed with 2 decimal places for percents (modifiable using <code>digits=#</code>). Variables are coerced to factors if necessary. Adding <code>plot=TRUE</code> produces a <code>ggplot2</code> graph representing the table.</p>
+<p>In the examples, below, the number of car cylinders (<em>cyl</em>) is cross-tabulated with the number of gears (<em>gear</em>) for 32 automobiles in the <em>mtcars</em> data frame.</p>
 <div id="frequencies" class="section level3">
 <h3 class="hasAnchor">
 <a href="#frequencies" class="anchor"></a>Frequencies</h3>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">gear</span><span class="op">)</span>
-<span class="co">#&gt;        gear</span>
-<span class="co">#&gt; cyl      3  4  5 Total</span>
-<span class="co">#&gt;   4      1  8  2    11</span>
-<span class="co">#&gt;   6      2  4  1     7</span>
-<span class="co">#&gt;   8     12  0  2    14</span>
-<span class="co">#&gt;   Total 15 12  5    32</span></pre></div>
+<p>By default, the crosstab function reports frequency counts for each combination of the two categorical variables.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="../reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">cars74</span>, <span class="va">cyl</span>, <span class="va">gear</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<p><img src="Intro_Crosstab_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
+<pre><code>#&gt;        gear
+#&gt; cyl     gears3 gears4 gears5 Total
+#&gt;   cyl4       1      8      2    11
+#&gt;   cyl6       2      4      1     7
+#&gt;   cyl8      12      0      2    14
+#&gt;   Total     15     12      5    32</code></pre>
+</div>
+<div id="cell-percents" class="section level3">
+<h3 class="hasAnchor">
+<a href="#cell-percents" class="anchor"></a>Cell percents</h3>
+<p>Cell percents add up to 100% overall all the cells in the table.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="../reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">cars74</span>, <span class="va">cyl</span>, <span class="va">gear</span>, type<span class="op">=</span><span class="st">"percent"</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<p><img src="Intro_Crosstab_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
+<pre><code>#&gt;        gear
+#&gt; cyl      gears3  gears4  gears5   Total
+#&gt;   cyl4    3.12%  25.00%   6.25%  34.38%
+#&gt;   cyl6    6.25%  12.50%   3.12%  21.88%
+#&gt;   cyl8   37.50%   0.00%   6.25%  43.75%
+#&gt;   Total  46.88%  37.50%  15.62% 100.00%</code></pre>
 </div>
 <div id="row-percents" class="section level3">
 <h3 class="hasAnchor">
 <a href="#row-percents" class="anchor"></a>Row percents</h3>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="../reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">gear</span>, type <span class="op">=</span> <span class="st">"rowpercent"</span><span class="op">)</span>
-<span class="co">#&gt;    gear</span>
-<span class="co">#&gt; cyl       3       4       5   Total</span>
-<span class="co">#&gt;   4   9.09%  72.73%  18.18% 100.00%</span>
-<span class="co">#&gt;   6  28.57%  57.14%  14.29% 100.00%</span>
-<span class="co">#&gt;   8  85.71%   0.00%  14.29% 100.00%</span></pre></div>
+<p>Row percents sum to 100% for each row of the table.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="../reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">cars74</span>, <span class="va">cyl</span>, <span class="va">gear</span>, type <span class="op">=</span> <span class="st">"rowpercent"</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<p><img src="Intro_Crosstab_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+<pre><code>#&gt;       gear
+#&gt; cyl     gears3  gears4  gears5   Total
+#&gt;   cyl4   9.09%  72.73%  18.18% 100.00%
+#&gt;   cyl6  28.57%  57.14%  14.29% 100.00%
+#&gt;   cyl8  85.71%   0.00%  14.29% 100.00%</code></pre>
 </div>
 <div id="column-percents" class="section level3">
 <h3 class="hasAnchor">
 <a href="#column-percents" class="anchor"></a>Column percents</h3>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">gear</span>, type <span class="op">=</span> <span class="st">"colpercent"</span><span class="op">)</span>
-<span class="co">#&gt;        gear</span>
-<span class="co">#&gt; cyl           3       4       5</span>
-<span class="co">#&gt;   4       6.67%  66.67%  40.00%</span>
-<span class="co">#&gt;   6      13.33%  33.33%  20.00%</span>
-<span class="co">#&gt;   8      80.00%   0.00%  40.00%</span>
-<span class="co">#&gt;   Total 100.00% 100.00% 100.00%</span></pre></div>
+<p>Column percents sum to 100% for each column of the table.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="fu"><a href="../reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">cars74</span>, <span class="va">cyl</span>, <span class="va">gear</span>, type <span class="op">=</span> <span class="st">"colpercent"</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<p><img src="Intro_Crosstab_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+<pre><code>#&gt;        gear
+#&gt; cyl      gears3  gears4  gears5
+#&gt;   cyl4    6.67%  66.67%  40.00%
+#&gt;   cyl6   13.33%  33.33%  20.00%
+#&gt;   cyl8   80.00%   0.00%  40.00%
+#&gt;   Total 100.00% 100.00% 100.00%</code></pre>
 </div>
 <div id="saving-the-results" class="section level3">
 <h3 class="hasAnchor">
 <a href="#saving-the-results" class="anchor"></a>Saving the results</h3>
-<p>You can save the results as a table.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">cyl</span>, <span class="va">gear</span><span class="op">)</span>
-<span class="va">result</span><span class="op">$</span><span class="va">tbl</span>
-<span class="co">#&gt; NULL</span>
+<p>You can save the results as a list of tables.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">cars74</span>, <span class="va">cyl</span>, <span class="va">gear</span><span class="op">)</span>
+<span class="va">result</span><span class="op">$</span><span class="va">counts</span>
+<span class="co">#&gt;       gear</span>
+<span class="co">#&gt; cyl    gears3 gears4 gears5</span>
+<span class="co">#&gt;   cyl4      1      8      2</span>
+<span class="co">#&gt;   cyl6      2      4      1</span>
+<span class="co">#&gt;   cyl8     12      0      2</span>
 <span class="va">result</span><span class="op">$</span><span class="va">cellPcts</span>
-<span class="co">#&gt;    gear</span>
-<span class="co">#&gt; cyl       3       4       5</span>
-<span class="co">#&gt;   4 0.03125 0.25000 0.06250</span>
-<span class="co">#&gt;   6 0.06250 0.12500 0.03125</span>
-<span class="co">#&gt;   8 0.37500 0.00000 0.06250</span>
+<span class="co">#&gt;       gear</span>
+<span class="co">#&gt; cyl     gears3  gears4  gears5</span>
+<span class="co">#&gt;   cyl4 0.03125 0.25000 0.06250</span>
+<span class="co">#&gt;   cyl6 0.06250 0.12500 0.03125</span>
+<span class="co">#&gt;   cyl8 0.37500 0.00000 0.06250</span>
 <span class="va">result</span><span class="op">$</span><span class="va">rowPcts</span>
-<span class="co">#&gt;    gear</span>
-<span class="co">#&gt; cyl          3          4          5</span>
-<span class="co">#&gt;   4 0.09090909 0.72727273 0.18181818</span>
-<span class="co">#&gt;   6 0.28571429 0.57142857 0.14285714</span>
-<span class="co">#&gt;   8 0.85714286 0.00000000 0.14285714</span>
+<span class="co">#&gt;       gear</span>
+<span class="co">#&gt; cyl        gears3     gears4     gears5</span>
+<span class="co">#&gt;   cyl4 0.09090909 0.72727273 0.18181818</span>
+<span class="co">#&gt;   cyl6 0.28571429 0.57142857 0.14285714</span>
+<span class="co">#&gt;   cyl8 0.85714286 0.00000000 0.14285714</span>
 <span class="va">result</span><span class="op">$</span><span class="va">colPcts</span>
-<span class="co">#&gt;    gear</span>
-<span class="co">#&gt; cyl          3          4          5</span>
-<span class="co">#&gt;   4 0.06666667 0.66666667 0.40000000</span>
-<span class="co">#&gt;   6 0.13333333 0.33333333 0.20000000</span>
-<span class="co">#&gt;   8 0.80000000 0.00000000 0.40000000</span></pre></div>
+<span class="co">#&gt;       gear</span>
+<span class="co">#&gt; cyl        gears3     gears4     gears5</span>
+<span class="co">#&gt;   cyl4 0.06666667 0.66666667 0.40000000</span>
+<span class="co">#&gt;   cyl6 0.13333333 0.33333333 0.20000000</span>
+<span class="co">#&gt;   cyl8 0.80000000 0.00000000 0.40000000</span></pre></div>
 </div>
   </div>
 

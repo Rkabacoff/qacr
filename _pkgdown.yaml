@@ -63,8 +63,8 @@ navbar:
     - text: "Articles"
       icon: fas fa-book
       menu:
-      -  text: Introduction to the crosstab function
-         href: articles/Intro_Crosstab.html
+      -  text: Creating two-way frequency tables
+         href: articles/crosstab.html
       -  text: Introduction to the df_summary function
          href: articles/df_summary.html
       -  text: Introduction to the tab function

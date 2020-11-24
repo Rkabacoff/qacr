@@ -18,9 +18,10 @@ plot.crosstab <- function(x, size=3.5, ...) {
   if(!inherits(x, "crosstab")) stop("Object must be of type crosstab")
 
   title <- paste(x$rowname, " by ", x$colname)
+  plotdata <- as.data.frame(x$table)
 
   if (x$type == "freq"){
-    plotdata <- as.data.frame(x$count)
+
     plotdata$lbl <- as.character(plotdata$Freq)
     plotdata$lbl <- ifelse(plotdata$lbl == "0", "", plotdata$lbl)
     rowvar <- names(plotdata)[1]
@@ -31,11 +32,11 @@ plot.crosstab <- function(x, size=3.5, ...) {
       geom_text(aes(label=lbl), size=size,
                 position=position_stack(vjust=0.5)) +
       labs(y="Frequency", title=title, subtitle="cell counts")
-    return(p)
+
   }
 
-  if (x$type == "cellpercent"){
-    plotdata <- as.data.frame(x$cellPcts)
+  if (x$type == "percent"){
+
     plotdata$lbl <- paste(round(plotdata$Freq * 100), "%", sep="")
     plotdata$lbl <- ifelse(plotdata$lbl == "0%", "", plotdata$lbl)
     rowvar <- names(plotdata)[1]
@@ -46,11 +47,11 @@ plot.crosstab <- function(x, size=3.5, ...) {
       geom_text(aes(label=lbl), size=size,
                 position=position_stack(vjust=0.5)) +
       labs(y="Percent", title=title, subtitle="cell percents")
-    return(p)
+
   }
 
   if (x$type == "rowpercent"){
-    plotdata <- as.data.frame(x$rowPcts)
+
     plotdata$lbl <- paste(round(plotdata$Freq * 100), "%", sep="")
     plotdata$lbl <- ifelse(plotdata$lbl == "0%", "", plotdata$lbl)
     rowvar <- names(plotdata)[1]
@@ -63,11 +64,11 @@ plot.crosstab <- function(x, size=3.5, ...) {
       scale_y_continuous(labels=c("0%", "25%", "50%", "75%", "100%")) +
       labs(y="Percent", title=title, subtitle="row percents") +
       coord_flip()
-    return(p)
+
   }
 
   if (x$type == "colpercent") {
-    plotdata <- as.data.frame(x$colPcts)
+
     plotdata$lbl <- paste(round(plotdata$Freq * 100), "%", sep="")
     plotdata$lbl <- ifelse(plotdata$lbl == "0%", "", plotdata$lbl)
     rowvar <- names(plotdata)[2]
@@ -79,7 +80,10 @@ plot.crosstab <- function(x, size=3.5, ...) {
                 position=position_stack(vjust=0.5)) +
       scale_y_continuous(labels=c("0%", "25%", "50%", "75%", "100%")) +
       labs(y="Percent", title=title, subtitle="column percents")
-    return(p)
-  }
 
+  }
+  if (!is.null(x$chisquare)){
+    p <- p + labs(caption=x$chisquare)
+  }
+  return(p)
 }

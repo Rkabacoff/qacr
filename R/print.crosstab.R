@@ -13,40 +13,39 @@
 #' @export
 print.crosstab <- function(x, ...) {
   if(!inherits(x, "crosstab")) stop("Object must be of type crosstab")
+  tb <- x$table
   if (x$type == "freq"){
-    tb <- x$counts
     if (x$total){
       tb <- addmargins(tb, 1, FUN=list(Total=sum), quiet=TRUE)
       tb <- addmargins(tb, 2, FUN=list(Total=sum), quiet=TRUE)
     }
-    print.table(tb, right=TRUE, justify="right")
   }
 
-  if (x$type == "cellpercent"){
-    tb <- x$cellPcts
+  if (x$type == "percent"){
     if (x$total){
       tb <- addmargins(tb, 1, FUN=list(Total=sum), quiet=TRUE)
       tb <- addmargins(tb, 2, FUN=list(Total=sum), quiet=TRUE)
     }
     tb <- replace(tb, TRUE, sprintf(paste0("%.", x$digits,"f%%"), tb*100))
-    print.table(tb, right=TRUE, justify="right")
   }
 
   if (x$type == "rowpercent"){
-    tb <- x$rowPcts
     if (x$total){
       tb <- addmargins(tb, 2, FUN=list(Total=sum), quiet=TRUE)
     }
     tb <- replace(tb, TRUE, sprintf(paste0("%.", x$digits,"f%%"), tb*100))
-    print.table(tb, right=TRUE, justify="right")
   }
 
   if (x$type == "colpercent"){
-    tb <- x$colPcts
     if (x$total){
       tb <- addmargins(tb, 1, FUN=list(Total=sum), quiet=TRUE)
     }
     tb <- replace(tb, TRUE, sprintf(paste0("%.", x$digits,"f%%"), tb*100))
-    print.table(tb, right=TRUE, justify="right")
+    
+  }
+  print.table(tb, right=TRUE, justify="right")
+  
+  if (!is.null(x$chisquare)){
+    cat("\n", x$chisquare, "\n")
   }
 }
