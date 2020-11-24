@@ -97,13 +97,13 @@ for categorical variables" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/tab.html">Creating frequency tables</a>
+    </li>
+    <li>
       <a href="../articles/crosstab.html">Creating two-way frequency tables</a>
     </li>
     <li>
-      <a href="../articles/df_summary.html">Introduction to the df_summary function</a>
-    </li>
-    <li>
-      <a href="../articles/tab_vingette.html">Introduction to the tab function</a>
+      <a href="../articles/df_summary.html">Reviewing a data set</a>
     </li>
     <li>
       <a href="../articles/Intro_dstats.html">Introduction to the dstats function</a>
@@ -176,17 +176,16 @@ for categorical variables</p>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>A factor in the dataframe</p></td>
+      <td><p>A factor variable in the data frame.</p></td>
     </tr>
     <tr>
       <th>sort</th>
-      <td><p>Sort levels from high to low, Default: FALSE</p></td>
+      <td><p>logical. Sort levels from high to low.</p></td>
     </tr>
     <tr>
       <th>maxcat</th>
       <td><p>Maximum number of categories to be included.
-Smaller categories will be combined into an "Other" category.
-Default: NULL</p></td>
+Smaller categories will be combined into an "Other" category.</p></td>
     </tr>
     <tr>
       <th>minp</th>
@@ -194,19 +193,19 @@ Default: NULL</p></td>
 Categories
 representing smaller proportions willbe combined into an
 "Other" category.
-maxcat and minp cannot both be specified. Default: NULL</p></td>
+maxcat and minp cannot both be specified.</p></td>
     </tr>
     <tr>
       <th>na.rm</th>
-      <td><p>Removes missing values when TRUE, Default: FALSE</p></td>
+      <td><p>logical. Removes missing values when TRUE.</p></td>
     </tr>
     <tr>
       <th>total</th>
-      <td><p>Include a total category when true, Default: FALSE</p></td>
+      <td><p>logical. Include a total category when TRUE.</p></td>
     </tr>
     <tr>
       <th>digits</th>
-      <td><p>Number of digits the percents should be rounded to, Default: 2</p></td>
+      <td><p>Number of digits the percents should be rounded to.</p></td>
     </tr>
     <tr>
       <th>cum</th>
@@ -215,45 +214,37 @@ and percents. In this case <code>total</code> will be set to <code>FALSE</code>.
     </tr>
     <tr>
       <th>plot</th>
-      <td><p>logical. If <code>TRUE</code>, generate bar chart for frequency table.
-Default: FALSE</p></td>
+      <td><p>logical. If <code>TRUE</code>, generate bar chart rather than a frequency table.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame</p>
+    <p>If <code>plot = TRUE</code> return a ggplot2 bar chart. Otherwise
+return a data frame.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The function <code>tab</code> will calculate the frequency
-distribution
-for a categorical variable and output a data.frame with three
-columns:
-level, n, percent.</p>
+distribution for a categorical variable and output a data frame
+with three columns: level, n, percent.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>tab</span><span class='op'>(</span><span class='va'>venues</span>, <span class='va'>state</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span>,
     maxcat <span class='op'>=</span> <span class='fl'>10</span>, digits <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    level   n percent
-#&gt; 1     CA  70  8.495%
-#&gt; 2     TX  59   7.16%
-#&gt; 3     FL  43  5.218%
-#&gt; 4     NY  43  5.218%
-#&gt; 5     NC  34  4.126%
-#&gt; 6     OH  34  4.126%
-#&gt; 7     IL  28  3.398%
-#&gt; 8     PA  27  3.277%
-#&gt; 9     LA  24  2.913%
-#&gt; 10    VA  23  2.791%
-#&gt; 11 Other 439 53.277%</div><div class='input'>
+</div><div class='output co'>#&gt;  level   n percent
+#&gt;     CA  70  8.495%
+#&gt;     TX  59   7.16%
+#&gt;     FL  43  5.218%
+#&gt;     NY  43  5.218%
+#&gt;     NC  34  4.126%
+#&gt;     OH  34  4.126%
+#&gt;     IL  28  3.398%
+#&gt;     PA  27  3.277%
+#&gt;     LA  24  2.913%
+#&gt;     VA  23  2.791%
+#&gt;  Other 439 53.277%</div><div class='input'>
 <span class='fu'>tab</span><span class='op'>(</span><span class='va'>cars74</span>, <span class='va'>carb</span>, cum<span class='op'>=</span><span class='cn'>TRUE</span>, plot<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='img'><img src='tab-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt;   level  n percent cum_n cum_percent
-#&gt; 1 carb1  7  21.88%     7      21.88%
-#&gt; 2 carb2 10  31.25%    17      53.12%
-#&gt; 3 carb3  3   9.38%    20       62.5%
-#&gt; 4 carb4 10  31.25%    30      93.75%
-#&gt; 5 carb6  1   3.12%    31      96.88%
-#&gt; 6 carb8  1   3.12%    32        100%</div></pre>
+</div><div class='img'><img src='tab-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

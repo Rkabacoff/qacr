@@ -2,29 +2,26 @@
 #' @description Function to calculate frequency distributions
 #' for categorical variables
 #' @param data A dataframe
-#' @param x A factor in the dataframe
-#' @param sort Sort levels from high to low, Default: FALSE
+#' @param x A factor variable in the data frame.
+#' @param sort logical. Sort levels from high to low.
 #' @param maxcat Maximum number of categories to be included.
 #' Smaller categories will be combined into an "Other" category.
-#' Default: NULL
 #' @param minp Minimum proportion for a category to be included.
 #' Categories
 #' representing smaller proportions willbe combined into an
 #' "Other" category.
-#' maxcat and minp cannot both be specified. Default: NULL
-#' @param na.rm Removes missing values when TRUE, Default: FALSE
-#' @param total Include a total category when true, Default: FALSE
-#' @param digits Number of digits the percents should be rounded to, Default: 2
+#' maxcat and minp cannot both be specified.
+#' @param na.rm logical. Removes missing values when TRUE.
+#' @param total logical. Include a total category when TRUE.
+#' @param digits Number of digits the percents should be rounded to.
 #' @param cum logical. If \code{TRUE}, include cumulative counts
 #' and percents. In this case \code{total} will be set to \code{FALSE}.
-#' @param plot logical. If \code{TRUE}, generate bar chart for frequency table.
-#' Default: FALSE
-#' @return A data frame
+#' @param plot logical. If \code{TRUE}, generate bar chart rather than a frequency table.
+#' @return If \code{plot = TRUE} return a ggplot2 bar chart. Otherwise
+#' return a data frame.
 #' @details The function \code{tab} will calculate the frequency
-#' distribution
-#' for a categorical variable and output a data.frame with three
-#' columns:
-#' level, n, percent.
+#' distribution for a categorical variable and output a data frame
+#' with three columns: level, n, percent.
 #' @examples
 #' tab(venues, state, sort = TRUE, na.rm = TRUE,
 #'     maxcat = 10, digits = 3)
@@ -185,8 +182,10 @@ tab <- function(data, x, sort = FALSE, maxcat = NULL, minp = NULL,
     }
     x <- x + labs(title=vname, subtitle=subtitle)
     print(x)
+  } else {
+    return(df)
   }
-  return(df)
+
 }
 
 
