@@ -1,4 +1,4 @@
-#' @title df_summary
+#' @title review
 #' @description A comprehensive description of a data frame
 #' @param df a data frame
 #' @param digits number of decimal digits for statistics.
@@ -14,15 +14,15 @@
 #'                        names=c("Bill","Dean", "Sam", NA, "Jane"),
 #'                        race=c('b', 'w', 'w', 'o', 'b'))
 #'
-#' df_summary(testdata)
+#' review(testdata)
 #'
-#' @rdname df_summary
+#' @rdname review
 #' @import dplyr
 #' @import readr
-#' @import e1071
+#' @importFrom crayon blue
 #' @export
 
-df_summary <- function(df, digits = 2, maxcat=10, label_length=40){
+review <- function(df, digits = 2, maxcat=10, label_length=40){
   if(!(is.data.frame(df))){
     stop("You need to input a data frame")
   }
@@ -32,7 +32,7 @@ df_summary <- function(df, digits = 2, maxcat=10, label_length=40){
   class(df) <- "data.frame"  # converts tibbles to data frame
 
   cat("\nThe data frame", dfname, "has", format(nrow(df), big.mark=","),
-      "observations and", format(ncol(df), big.mark=","), "variables.\n\n")
+      "observations and", format(ncol(df), big.mark=","), "variables.\n")
 
   general_summary <- function(df, digits=digits){
     varnames <- colnames(df)
@@ -56,8 +56,7 @@ df_summary <- function(df, digits = 2, maxcat=10, label_length=40){
     }
 
 
-    cat("\nOverall\n",
-          "=======\n", sep="")
+    cat("\n", crayon::blue$underline$bold('Overall'), "\n")
     prmatrix(tbl, quote=FALSE, rowlab=rep("", nrow(tbl)), right=TRUE)
   }
   variable_summary<-function(data, digits=digits){
@@ -79,14 +78,15 @@ df_summary <- function(df, digits = 2, maxcat=10, label_length=40){
             summarise(name=numeric[i], n=sum(!is.na((x))),
                       mean=round(mean(x), digits=digits),
                       sd=round(sd(x), digits=digits),
-                      skew=round(e1071::skewness(x), digits=digits),
+                      skew=round(skewness(x), digits=digits),
                       min=round(min(x), digits=digits),
                       p25=round(quantile(x, 0.25), digits=digits),
                       median=round(median(x), digits=digits),
                       p75=round(quantile(x, 0.75), digits=digits),
-                      max=round(max(x), digits=digits))%>%
-            mutate(outliers=sum((x>p75+(1.5*(p75-p25)))|
-                                   x<p25-(1.5*(p75-p25))))
+                      max=round(max(x), digits=digits))
+          # %>%
+          #   mutate(outliers=sum((x>p75+(1.5*(p75-p25)))|
+          #                          x<p25-(1.5*(p75-p25))))
           ndf<-rbind(ndf, table_n)
         }
       }
@@ -127,13 +127,15 @@ df_summary <- function(df, digits = 2, maxcat=10, label_length=40){
       }
     }
     if (nrow(ndf)>0){
-      cat("\nQuantitative Variables\n",
-            "======================\n", sep="")
+      cat("\n", crayon::blue$underline$bold('Quantitative Variables'), "\n")
+      # cat("\nQuantitative Variables\n",
+      #       "======================\n", sep="")
       print (data.frame(ndf), row.names=FALSE)
     }
     if (nrow(cdf)>0){
-      cat("\nCategorical Variables\n",
-            "=====================\n", sep="")
+      cat("\n", crayon::blue$underline$bold('Categorical Variables'), "\n")
+      # cat("\nCategorical Variables\n",
+      #       "=====================\n", sep="")
       print (data.frame(cdf), row.names=FALSE, right=FALSE)
     }
   }

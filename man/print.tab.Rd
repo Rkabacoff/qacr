@@ -7,7 +7,7 @@
 \method{print}{tab}(df, ...)
 }
 \arguments{
-\item{...}{Parameters passed to a function}
+\item{...}{Parameters passed to the print function}
 
 \item{x}{An object of class \code{tab}}
 }

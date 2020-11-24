@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Soil composition data — soils • qacr</title>
+<title>Skewness — skewness • qacr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Soil composition data — soils" />
-<meta property="og:description" content="Soil Compositions of Physical and Chemical Characteristics" />
+<meta property="og:title" content="Skewness — skewness" />
+<meta property="og:description" content="Calculate the skewness of a numeric variable" />
 
 
 
@@ -143,46 +143,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Soil composition data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/soils.R'><code>R/soils.R</code></a></small>
-    <div class="hidden name"><code>soils.Rd</code></div>
+    <h1>Skewness</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/skewness.R'><code>R/skewness.R</code></a></small>
+    <div class="hidden name"><code>skewness.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Soil Compositions of Physical and Chemical Characteristics</p>
+    <p>Calculate the skewness of a numeric variable</p>
     </div>
 
-    <pre class="usage"><span class='va'>soils</span></pre>
+    <pre class="usage"><span class='fu'>skewness</span><span class='op'>(</span><span class='va'>x</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>numeric vector.</p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>if <code>TRUE</code>, delete missing values.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with 48 rows and 14 variables:</p><dl>
-  <dt><code>Group</code></dt><dd><p>grouping variable with 12 levels, corresponding to the combinations of Contour and Depth</p></dd>
-  <dt><code>Contour</code></dt><dd><p>character variable with 3 levels: Depression Slope Top</p></dd>
-  <dt><code>Depth</code></dt><dd><p>character variable with 4 levels: 0-10 10-30 30-60 60-90</p></dd>
-  <dt><code>Gp</code></dt><dd><p>character variable with 12 levels, giving abbreviations for the groups: D0 D1 D3 D6 S0 S1 S3 S6 T0 T1 T3 T6</p></dd>
-  <dt><code>Block</code></dt><dd><p>a factor with levels 1 2 3 4</p></dd>
-  <dt><code>pH</code></dt><dd><p>soil pH</p></dd>
-  <dt><code>N</code></dt><dd><p>total nitrogen in %</p></dd>
-  <dt><code>Dens</code></dt><dd><p>bulk density in gm/cm$^3$</p></dd>
-  <dt><code>P</code></dt><dd><p>total phosphorous in ppm</p></dd>
-  <dt><code>Ca</code></dt><dd><p>calcium in me/100 gm.</p></dd>
-  <dt><code>Mg</code></dt><dd><p>magnesium in me/100 gm.</p></dd>
-  <dt><code>K</code></dt><dd><p>phosphorous in me/100 gm.</p></dd>
-  <dt><code>Na</code></dt><dd><p>sodium in me/100 gm.</p></dd>
-  <dt><code>Conduc</code></dt><dd><p>conductivity</p></dd>
+    <p>a number</p>
 
-</dl>
-
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='https://vincentarelbundock.github.io/Rdatasets/datasets.html'>Rdatasets from vincentarelbundock github</a></p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Soil characteristics as measured on samples from three types of contours
-(Top, Slope, and Depression) and at four depths (0-10cm, 10-30cm, 30-60cm, and 60-90cm). The area was divided into 4 blocks, in a randomized block design. (Suggested by Michael Friendly.)</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>skewness</span><span class='op'>(</span><span class='va'>mtcars</span><span class='op'>$</span><span class='va'>mpg</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.610655</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

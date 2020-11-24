@@ -40,9 +40,6 @@
     <loc>http://rkabacoff.github.io/qacr/reference/dfPlot.html</loc>
   </url>
   <url>
-    <loc>http://rkabacoff.github.io/qacr/reference/df_summary.html</loc>
-  </url>
-  <url>
     <loc>http://rkabacoff.github.io/qacr/reference/dstats.html</loc>
   </url>
   <url>
@@ -97,10 +94,16 @@
     <loc>http://rkabacoff.github.io/qacr/reference/Recoder.html</loc>
   </url>
   <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/review.html</loc>
+  </url>
+  <url>
     <loc>http://rkabacoff.github.io/qacr/reference/rocPlot.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/reference/scatter.html</loc>
+  </url>
+  <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/skewness.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/reference/soils.html</loc>
@@ -124,10 +127,10 @@
     <loc>http://rkabacoff.github.io/qacr/articles/crosstab.html</loc>
   </url>
   <url>
-    <loc>http://rkabacoff.github.io/qacr/articles/df_summary.html</loc>
+    <loc>http://rkabacoff.github.io/qacr/articles/Intro_dstats.html</loc>
   </url>
   <url>
-    <loc>http://rkabacoff.github.io/qacr/articles/Intro_dstats.html</loc>
+    <loc>http://rkabacoff.github.io/qacr/articles/review.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/articles/tab.html</loc>

@@ -3,10 +3,10 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   crosstab: crosstab.html
-  df_summary: df_summary.html
   Intro_dstats: Intro_dstats.html
+  review: review.html
   tab: tab.html
-last_built: 2020-11-24T17:51Z
+last_built: 2020-11-24T23:09Z
 urls:
   reference: http://rkabacoff.github.io/qacr/reference
   article: http://rkabacoff.github.io/qacr/articles

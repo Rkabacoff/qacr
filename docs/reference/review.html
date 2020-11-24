@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Soil composition data — soils • qacr</title>
+<title>review — review • qacr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Soil composition data — soils" />
-<meta property="og:description" content="Soil Compositions of Physical and Chemical Characteristics" />
+<meta property="og:title" content="review — review" />
+<meta property="og:description" content="A comprehensive description of a data frame" />
 
 
 
@@ -143,46 +143,79 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Soil composition data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/soils.R'><code>R/soils.R</code></a></small>
-    <div class="hidden name"><code>soils.Rd</code></div>
+    <h1>review</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/review.R'><code>R/review.R</code></a></small>
+    <div class="hidden name"><code>review.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Soil Compositions of Physical and Chemical Characteristics</p>
+    <p>A comprehensive description of a data frame</p>
     </div>
 
-    <pre class="usage"><span class='va'>soils</span></pre>
+    <pre class="usage"><span class='fu'>review</span><span class='op'>(</span><span class='va'>df</span>, digits <span class='op'>=</span> <span class='fl'>2</span>, maxcat <span class='op'>=</span> <span class='fl'>10</span>, label_length <span class='op'>=</span> <span class='fl'>40</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>a data frame</p></td>
+    </tr>
+    <tr>
+      <th>digits</th>
+      <td><p>number of decimal digits for statistics.</p></td>
+    </tr>
+    <tr>
+      <th>maxcat</th>
+      <td><p>maximum number of levels of a character/factor variable to print.</p></td>
+    </tr>
+    <tr>
+      <th>label_length</th>
+      <td><p>maximum length of factor level label to print. Longer labels
+will be truncated.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with 48 rows and 14 variables:</p><dl>
-  <dt><code>Group</code></dt><dd><p>grouping variable with 12 levels, corresponding to the combinations of Contour and Depth</p></dd>
-  <dt><code>Contour</code></dt><dd><p>character variable with 3 levels: Depression Slope Top</p></dd>
-  <dt><code>Depth</code></dt><dd><p>character variable with 4 levels: 0-10 10-30 30-60 60-90</p></dd>
-  <dt><code>Gp</code></dt><dd><p>character variable with 12 levels, giving abbreviations for the groups: D0 D1 D3 D6 S0 S1 S3 S6 T0 T1 T3 T6</p></dd>
-  <dt><code>Block</code></dt><dd><p>a factor with levels 1 2 3 4</p></dd>
-  <dt><code>pH</code></dt><dd><p>soil pH</p></dd>
-  <dt><code>N</code></dt><dd><p>total nitrogen in %</p></dd>
-  <dt><code>Dens</code></dt><dd><p>bulk density in gm/cm$^3$</p></dd>
-  <dt><code>P</code></dt><dd><p>total phosphorous in ppm</p></dd>
-  <dt><code>Ca</code></dt><dd><p>calcium in me/100 gm.</p></dd>
-  <dt><code>Mg</code></dt><dd><p>magnesium in me/100 gm.</p></dd>
-  <dt><code>K</code></dt><dd><p>phosphorous in me/100 gm.</p></dd>
-  <dt><code>Na</code></dt><dd><p>sodium in me/100 gm.</p></dd>
-  <dt><code>Conduc</code></dt><dd><p>conductivity</p></dd>
-
-</dl>
-
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p><a href='https://vincentarelbundock.github.io/Rdatasets/datasets.html'>Rdatasets from vincentarelbundock github</a></p>
+    <p>the data frame invisibly (so that it can be used in a pipeline)</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Soil characteristics as measured on samples from three types of contours
-(Top, Slope, and Depression) and at four depths (0-10cm, 10-30cm, 30-60cm, and 60-90cm). The area was divided into 4 blocks, in a randomized block design. (Suggested by Michael Friendly.)</p>
+    <p>Prints a comprehensive description of a data frame via several tables,
+a general summary table and tables that provide a breakdown of quantitative and categorical variables</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>testdata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>height<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>100</span><span class='op'>)</span>,
+                       weight<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>39</span>, <span class='fl'>88</span>, <span class='cn'>NA</span>, <span class='fl'>15</span>, <span class='op'>-</span><span class='fl'>2</span><span class='op'>)</span>,
+                       names<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Bill"</span>,<span class='st'>"Dean"</span>, <span class='st'>"Sam"</span>, <span class='cn'>NA</span>, <span class='st'>"Jane"</span><span class='op'>)</span>,
+                       race<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'b'</span>, <span class='st'>'w'</span>, <span class='st'>'w'</span>, <span class='st'>'o'</span>, <span class='st'>'b'</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'>review</span><span class='op'>(</span><span class='va'>testdata</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; 
+#&gt; The data frame testdata has 5 observations and 4 variables.
+#&gt; 
+#&gt;  <span style='color: #0000BB;font-weight: bold;text-decoration: underline;'>Overall</span><span> 
+#&gt;  pos variable      type n_unique n_missing pct_missing
+#&gt;    1   height   numeric        5         0          0%
+#&gt;    2   weight   numeric        5         1         20%
+#&gt;    3    names character        5         1         20%
+#&gt;    4     race character        3         0          0%
+#&gt; 
+#&gt;  </span><span style='color: #0000BB;font-weight: bold;text-decoration: underline;'>Quantitative Variables</span><span> 
+#&gt;    name n mean    sd skew min   p25 median   p75 max
+#&gt;  height 5 22.8 43.17 1.07   2  3.00      4  5.00 100
+#&gt;  weight 4 35.0 39.13 0.38  -2 10.75     27 51.25  88
+#&gt; 
+#&gt;  </span><span style='color: #0000BB;font-weight: bold;text-decoration: underline;'>Categorical Variables</span><span> 
+#&gt;  variable level n pct 
+#&gt;  names    Bill  1 0.25
+#&gt;           Dean  1 0.25
+#&gt;           Jane  1 0.25
+#&gt;           Sam   1 0.25
+#&gt;  race     b     2 0.40
+#&gt;           o     1 0.20
+#&gt;           w     2 0.40</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
