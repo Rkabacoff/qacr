@@ -25,6 +25,9 @@
     <loc>http://rkabacoff.github.io/qacr/reference/coffee.html</loc>
   </url>
   <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/contents.html</loc>
+  </url>
+  <url>
     <loc>http://rkabacoff.github.io/qacr/reference/corplot.html</loc>
   </url>
   <url>
@@ -94,9 +97,6 @@
     <loc>http://rkabacoff.github.io/qacr/reference/Recoder.html</loc>
   </url>
   <url>
-    <loc>http://rkabacoff.github.io/qacr/reference/review.html</loc>
-  </url>
-  <url>
     <loc>http://rkabacoff.github.io/qacr/reference/rocPlot.html</loc>
   </url>
   <url>
@@ -124,13 +124,13 @@
     <loc>http://rkabacoff.github.io/qacr/reference/wine.html</loc>
   </url>
   <url>
+    <loc>http://rkabacoff.github.io/qacr/articles/contents.html</loc>
+  </url>
+  <url>
     <loc>http://rkabacoff.github.io/qacr/articles/crosstab.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/articles/Intro_dstats.html</loc>
-  </url>
-  <url>
-    <loc>http://rkabacoff.github.io/qacr/articles/review.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/articles/tab.html</loc>

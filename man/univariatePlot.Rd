@@ -8,7 +8,7 @@ univariatePlot(
   data,
   x,
   bins = 30,
-  fill = "steelblue",
+  fill = "deepskyblue",
   pointcolor = "black",
   density = TRUE,
   densitycolor = "grey",

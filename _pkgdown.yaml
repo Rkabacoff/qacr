@@ -7,10 +7,11 @@ reference:
   - title: Main Functions
     desc: ~
     contents:
+      - '`contents`'
       - '`crosstab`'
       - '`dstats`'
+      - '`import`'
       - '`Recoder`'
-      - '`review`'
       - '`tab`'
   - title: Graphing
     desc: ~
@@ -26,7 +27,6 @@ reference:
   - title: Utilities
     desc: ~
     contents:
-      - '`import`'
       - '`phelp`'
       - '`print.crosstab`'
       - '`print.tab`'
@@ -61,23 +61,23 @@ navbar:
     - icon: fa-home
       href: index.html
   right:
-    - text: "Articles"
+    - text: "Vignettes"
       icon: fas fa-book
       menu:
-      -  text: Reviewing a data set
-         href: articles/review.html
+      -  text: Exploring a data set
+         href: articles/contents.html
       -  text: Creating frequency tables
          href: articles/tab.html
       -  text: Creating two-way frequency tables
          href: articles/crosstab.html
       -  text: Introduction to the dstats function
          href: articles/Intro_dstats.html
+    - icon: fa-file-code-o
+      text: "Documentation"
+      href: reference/index.html
     - icon: fa-newspaper-o
       text: "news"
       href: news/index.html
-    - icon: fa-file-code-o
-      text: "functions"
-      href: reference/index.html
     - icon: fa-github fa-lg
       text: "github"
       href: https://github.com/rkabacoff/qacr/

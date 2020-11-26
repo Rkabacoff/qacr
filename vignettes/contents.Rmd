@@ -1,0 +1,55 @@
+---
+title: "Exploring a data frame"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Exploring a data frame}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(qacr)
+```
+
+
+The purpose of the **qacr** package is to provide functions for descriptive statistics, data management, and data visualization.  As a part of this package, the **contents** function produces a series of informational tables that allow for users to have a comprehensive understanding of their dataset of choice as well as the each of the quantitative and categorical variables featured in their dataset.  This document is intended to show you how to best use the contents function.
+
+## Example Dataset: Edgar Anderson's Iris Data
+To understand how to use the contents function, we’ll use the **iris** dataset as an example. This data frame contains 150 observations noting the measurements in centimeters of the variables sepal length and width and petal length and width, for 50 flowers from each of 3 species of iris. The data was originally collected by Edgar Anderson and is documented is detail in ?iris
+```{r message=FALSE, warning=FALSE}
+data(iris)
+
+str(iris)
+```
+As you can see above, the dataset contains 1 quantitative variable and 4 numerical variables.  Now let's see how the `contents` function can be applied to this data to allow us to gain a better understanding of the variables.
+
+## Data Breakdown with **contents()**
+```{r message=FALSE, warning=FALSE}
+contents(iris)
+```
+As shown above, the `contents` function produced three tables, one that provides an overall summary of the data and two tables that break down the quantitative and categorical variables of the dataset respectively. 
+
+The **overall table** describes each of the variables in the dataset, listing their position number (as determined by the column number of the variable), the variable name, the variable type (integer, factor, etc.), the number of unique observations for each variable, the number of missing values for each variable, and the corresponding percentage of missing values.
+
+The **quantitative table** provides information for each of the quantitative variables in the dataset, listing the variable name, the number of nonmissing values for each variable, and a series of summary statistics including the mean, standard deviation, skewness, minimum, 25%tile, median, 75%tile, and maximum.
+
+The **categorical table** provides information for each of the categorical variables in the dataset, listing the variable name, the specific levels of each variable, and the number of observations for each level, and percentage distribution of each variable level.
+
+If the dataset only contains quantitative or categorical, then only the overall summary table and the relevant variable table would be printed.
+
+## Missing Data
+The iris dataset did not contain any missing data.  Therefore, in order to understand how the `contents` function treats missing data, we must use a differet dataset.  The **airquality** dataset, which records the daily air quality measurements in New York for May to September 1973, contains missing information for two variables, *Ozone* and *Solar.R*. The data is documented is detail in ?airquality
+```{r}
+summary(airquality)
+```
+
+If a user inputed a dataset with missing values into the `contents` function, the following tables would be produced:
+```{r}
+contents(airquality)
+```
+
+For more information on this function, please use `?contents`.

@@ -35,7 +35,7 @@
 #'                densitycolor="darkgreen", alpha=.4)
 #' univariatePlot(mtcars, wt, density=FALSE, bins=20)
 univariatePlot <- function(data, x, bins=30,
-                           fill="steelblue",
+                           fill="deepskyblue",
                            pointcolor="black",
                            density=TRUE,
                            densitycolor="grey",
@@ -75,7 +75,7 @@ univariatePlot <- function(data, x, bins=30,
                    na.rm=TRUE) +
     geom_vline(xintercept=mean,
                linetype="dashed",
-               color="grey") +
+               color="grey40") +
     scale_x_continuous(limits=c(minx, maxx)) +
     labs(title=title,
          subtitle=subtitle) +
