@@ -32,4 +32,7 @@ Dataset on oil investment
 \details{
 Data for oil investments between the period 1969 to 1992 in the United Kingdom.
 }
+\examples{
+summary(oil)
+}
 \keyword{datasets}

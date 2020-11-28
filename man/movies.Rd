@@ -31,6 +31,7 @@ A dataset containing detailed plot descriptions for 3670 British movies from 192
 This is a good dataset for text mining.
 }
 \examples{
+summary(movies)
 movies[1, ]
 }
 \keyword{datasets}

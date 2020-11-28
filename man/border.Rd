@@ -27,4 +27,7 @@ border
 Provides summary statistics for inbound crossings at the U.S.-
 Canada and the U.S.-Mexico border at the port level.
 }
+\examples{
+summary(border)
+}
 \keyword{datasets}

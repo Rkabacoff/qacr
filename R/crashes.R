@@ -33,4 +33,6 @@
 #' @keywords datasets
 #' @name crashes
 #' @source \href{https://data.montgomerycountymd.gov/Public-Safety/Crash-Reporting-Incidents-Data/bhju-22kf}{Montgomery Car Crash Data}
+#' @examples 
+#' summary(crashes)
 NULL

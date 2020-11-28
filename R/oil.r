@@ -20,4 +20,6 @@
 #' @usage oil
 #' @details Data for oil investments between the period 1969 to 1992 in the United Kingdom.
 #' @source Datasets from \href{https://vincentarelbundock.github.io/Rdatasets/datasets.html}{vincentarelbundock} on github.
+#' @examples 
+#' summary(oil)
 NULL

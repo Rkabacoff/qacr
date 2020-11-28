@@ -18,5 +18,7 @@
 #' @name venues
 #' @usage venues
 #' @source \href{https://hifld-geoplatform.opendata.arcgis.com/datasets/major-sport-venues}{Homeland Infrastructure Foundation-Level Data}
+#' @examples 
+#' summary(venues)
 
 NULL

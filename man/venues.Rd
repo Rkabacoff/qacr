@@ -28,4 +28,7 @@ The data is a subset of the data extracted from HIFLD Open Data.
 It includes all of the major venues for American professional sports, their location, and what
 type of sports are performed there.
 }
+\examples{
+summary(venues)
+}
 \keyword{datasets}

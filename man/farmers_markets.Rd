@@ -30,4 +30,7 @@ Dataset of all farmers markets in the US
 \details{
 Dataset which includes the location and ID for every Farmers Market in the US
 }
+\examples{
+summary(farmers_markets)
+}
 \keyword{datasets}

@@ -193,6 +193,72 @@ County Police, Gaithersburg Police, Rockville Police, or the Maryland-National C
 
     <p><a href='https://data.montgomerycountymd.gov/Public-Safety/Crash-Reporting-Incidents-Data/bhju-22kf'>Montgomery Car Crash Data</a></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>crashes</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     Crash_Type                   Route_Type               Cross_Street_Type
+#&gt;  Nonfatal:44270   County              :19022   County              :26556  
+#&gt;  Fatal   :  109   Maryland (State)    :18456   Maryland (State)    : 6627  
+#&gt;                   Municipality        : 2607   Municipality        : 4878  
+#&gt;                   US (State)          : 1954   Ramp                : 2313  
+#&gt;                   Interstate (State)  : 1189   Other Public Roadway: 1661  
+#&gt;                   Other Public Roadway:  606   Government          :  884  
+#&gt;                   (Other)             :  545   (Other)             : 1460  
+#&gt;            Municipality               Related_NonMotorist        At_Fault    
+#&gt;  GAITHERSBURG    :15889                         :    0    BOTH       :  126  
+#&gt;  ROCKVILLE       :14004   BICYCLIST/PEDALCYCLIST:17190    DRIVER     :43544  
+#&gt;  WASHINGTON GROVE: 2516   OTHER                 :10443    NONMOTORIST:  709  
+#&gt;  GARRETT PARK    : 1508   PEDESTRIAN            :16746    UNKNOWN    :    0  
+#&gt;  KENSINGTON      : 1217                                                      
+#&gt;  CHEVY CHASE #5  : 1189                                                      
+#&gt;  (Other)         : 8056                                                      
+#&gt;             Collision_Type                   Weather     
+#&gt;  Angle             : 7358   CLEAR                :31866  
+#&gt;  HEAD ON           : 3935   CLOUDY               : 5218  
+#&gt;  Opposite Direction:  854   FOGGY                :  298  
+#&gt;  OTHER             : 6087   OTHER                :  184  
+#&gt;  Same Direction    :18818   RAINING              : 5788  
+#&gt;  SINGLE VEHICLE    : 7327   Snow/Sleet/Wintry Mix:  863  
+#&gt;                             Windy                :  162  
+#&gt;       Surface_Condition          Brightness                   Traffic_Control 
+#&gt;  DRY           :34288   DARK          : 2195   NO CONTROLS            :23765  
+#&gt;  Ice/Snow/Slush: 1452   DARK LIGHTS ON:10108   TRAFFIC SIGNAL         :14217  
+#&gt;  Other         :  186   Dawn/Dusk     : 2036   STOP SIGN              : 3493  
+#&gt;  WET           : 8453   DAYLIGHT      :29778   OTHER                  :  935  
+#&gt;                         OTHER         :  262   FLASHING TRAFFIC SIGNAL:  641  
+#&gt;                                                YIELD SIGN             :  596  
+#&gt;                                                (Other)                :  732  
+#&gt;    Driver_Substance_Abuse NonMotorist_Substance_Abuse
+#&gt;  Alcohol      : 4112      Alcohol      :  575        
+#&gt;  Combination  :  434      Illegal Drug :    7        
+#&gt;  Illegal Drug :  650      Medication   :    2        
+#&gt;  Medication   :  974      NONE DETECTED:43795        
+#&gt;  NONE DETECTED:38110                                 
+#&gt;  OTHER        :   99                                 
+#&gt;  UNKNOWN      :    0                                 
+#&gt;         First_Collision_Event Second_Collision_Event        Fixed_Object_Struck
+#&gt;  OTHER VEHICLE     :30630     No :33426              Bridge           :  253   
+#&gt;  FIXED OBJECT      : 5464     Yes:10953              BUILDING         : 1248   
+#&gt;  PARKED VEHICLE    : 4336                            Curb/Ditch       :24487   
+#&gt;  PEDESTRIAN        : 1684                            FENCE            : 1945   
+#&gt;  OFF ROAD          :  505                            Guardrail/Barrier: 3661   
+#&gt;  Bicycle/Pedalcycle:  454                            Other            :10980   
+#&gt;  (Other)           : 1306                            Tree             : 1805   
+#&gt;              Junction                 Intersection_Type  Road_Alignment 
+#&gt;  DRIVEWAY        : 1543   FIVE-POINT OR MORE   :  304   Curve   : 6468  
+#&gt;  Intersection    :22590   FOUR-WAY INTERSECTION:19259   OTHER   : 1262  
+#&gt;  NON INTERSECTION:18595   OTHER                : 8327   STRAIGHT:36649  
+#&gt;  Other           : 1651   ROUNDABOUT           :  311                   
+#&gt;                           T-INTERSECTION       :15203                   
+#&gt;                           TRAFFIC CIRCLE       :   79                   
+#&gt;                           Y-INTERSECTION       :  896                   
+#&gt;  Road_Condition Road_Division      Latitude       Longitude     
+#&gt;  No :43398      One-way: 1419   Min.   :38.01   Min.   :-79.43  
+#&gt;  Yes:  981      OTHER  : 1748   1st Qu.:39.03   1st Qu.:-77.19  
+#&gt;                 Two-way:41212   Median :39.08   Median :-77.11  
+#&gt;                                 Mean   :39.08   Mean   :-77.12  
+#&gt;                                 3rd Qu.:39.14   3rd Qu.:-77.04  
+#&gt;                                 Max.   :39.99   Max.   :-75.53  
+#&gt;                                                                 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

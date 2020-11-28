@@ -27,5 +27,6 @@
 #' @source The data are a subset of the Kaggle Wikipedia movie plots dataset 
 #' \href{https://www.kaggle.com/jrobischon/wikipedia-movie-plots}{https://www.kaggle.com/jrobischon/wikipedia-movie-plots}
 #' @examples
+#' summary(movies)
 #' movies[1, ]
 NULL

@@ -37,21 +37,29 @@ reference:
     desc: ~
     contents:
       - '`amazon`'
+      - '`appointments`'
       - '`batting`'
       - '`border`'
+      - '`Boston`'
+      - '`breast`'
       - '`cardata`'
       - '`cars74`'
       - '`coffee`'
+      - '`contraception`'
+      - '`countries`'
       - '`crashes`'
       - '`farmers_markets`'
       - '`googleplay`'
       - '`hostels`'
       - '`hate_crimes`'
+      - '`heart`'
       - '`housing`'
+      - '`insurance`'
       - '`movies`'
       - '`oil`'
       - '`pbp2018`'
       - '`soils`'
+      - '`student`'
       - '`tv`'
       - '`venues`'
       - '`wine`'
@@ -81,4 +89,3 @@ navbar:
     - icon: fa-github fa-lg
       text: "github"
       href: https://github.com/rkabacoff/qacr/
-

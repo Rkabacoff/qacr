@@ -24,4 +24,6 @@
 #' @details Soil characteristics as measured on samples from three types of contours
 #' (Top, Slope, and Depression) and at four depths (0-10cm, 10-30cm, 30-60cm, and 60-90cm). The area was divided into 4 blocks, in a randomized block design. (Suggested by Michael Friendly.)
 #' @source \href{https://vincentarelbundock.github.io/Rdatasets/datasets.html}{Rdatasets from vincentarelbundock github}
+#' @examples 
+#' summary(soils)
 NULL

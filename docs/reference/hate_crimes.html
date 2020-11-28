@@ -181,6 +181,40 @@ FiveThirtyEight on 23 January, 2017, authored by Maimuna Majumder.</p>
 
     <p><a href='https://www.kaggle.com/fivethirtyeight/fivethirtyeight-hate-crimes-dataset'>Fivethirtyeight Kaggle repository</a></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>hate_crimes</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     state           median_household_income share_unemployed_seasonal
+#&gt;  Length:51          Min.   :35521           Min.   :0.02800          
+#&gt;  Class :character   1st Qu.:48657           1st Qu.:0.04200          
+#&gt;  Mode  :character   Median :54916           Median :0.05100          
+#&gt;                     Mean   :55224           Mean   :0.04957          
+#&gt;                     3rd Qu.:60719           3rd Qu.:0.05750          
+#&gt;                     Max.   :76165           Max.   :0.07300          
+#&gt;                                                                      
+#&gt;  share_population_in_metro_areas share_population_with_high_school_degree
+#&gt;  Min.   :0.3100                  Min.   :0.7990                          
+#&gt;  1st Qu.:0.6300                  1st Qu.:0.8405                          
+#&gt;  Median :0.7900                  Median :0.8740                          
+#&gt;  Mean   :0.7502                  Mean   :0.8691                          
+#&gt;  3rd Qu.:0.8950                  3rd Qu.:0.8980                          
+#&gt;  Max.   :1.0000                  Max.   :0.9180                          
+#&gt;                                                                          
+#&gt;  share_non_citizen share_white_poverty   gini_index     share_non_white 
+#&gt;  Min.   :0.01000   Min.   :0.04000     Min.   :0.4190   Min.   :0.0600  
+#&gt;  1st Qu.:0.03000   1st Qu.:0.07500     1st Qu.:0.4400   1st Qu.:0.1950  
+#&gt;  Median :0.04500   Median :0.09000     Median :0.4540   Median :0.2800  
+#&gt;  Mean   :0.05458   Mean   :0.09176     Mean   :0.4538   Mean   :0.3157  
+#&gt;  3rd Qu.:0.08000   3rd Qu.:0.10000     3rd Qu.:0.4665   3rd Qu.:0.4200  
+#&gt;  Max.   :0.13000   Max.   :0.17000     Max.   :0.5320   Max.   :0.8100  
+#&gt;  NA's   :3                                                              
+#&gt;  share_voters_voted_trump hate_crimes_per_100k_splc avg_hatecrimes_per_100k_fbi
+#&gt;  Min.   :0.040            Min.   :0.06745           Min.   : 0.2669            
+#&gt;  1st Qu.:0.415            1st Qu.:0.14271           1st Qu.: 1.2931            
+#&gt;  Median :0.490            Median :0.22620           Median : 1.9871            
+#&gt;  Mean   :0.490            Mean   :0.30409           Mean   : 2.3676            
+#&gt;  3rd Qu.:0.575            3rd Qu.:0.35694           3rd Qu.: 3.1843            
+#&gt;  Max.   :0.700            Max.   :1.52230           Max.   :10.9535            
+#&gt;                           NA's   :4                 NA's   :1                  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

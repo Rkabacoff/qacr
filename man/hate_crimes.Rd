@@ -32,4 +32,7 @@ This dataset contains the data that supports the article,
 "Higher Rates of Hate Crimes Are Tied to Income Inequality", published by
 FiveThirtyEight on 23 January, 2017, authored by Maimuna Majumder.
 }
+\examples{
+summary(hate_crimes)
+}
 \keyword{datasets}

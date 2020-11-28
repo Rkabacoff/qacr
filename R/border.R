@@ -17,4 +17,6 @@
 #' @name border
 #' @usage border
 #' @source \href{https://www.kaggle.com/akhilv11/border-crossing-entry-data}{Akhil repository on Kaggle}
+#' @examples 
+#' summary(border)
 NULL

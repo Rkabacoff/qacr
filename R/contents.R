@@ -64,7 +64,7 @@ contents <- function(data, digits = 2,
 
   results$overall <- overall
 
-  cat("\n", crayon::blue$underline$bold('Overall'), "\n")
+  cat("\n", crayon::blue$underline$bold('Overall'), "\n", sep="")
   print(overall, row.names=FALSE, right=FALSE)
 
 
@@ -95,7 +95,8 @@ contents <- function(data, digits = 2,
     qvars <- as.data.frame(t(qvars))
 
     results$qvars <- qvars
-    cat("\n", crayon::blue$underline$bold('Numeric Variables'), "\n")
+    cat("\n", crayon::blue$underline$bold('Numeric Variables'),
+        "\n", sep="")
     print(qvars)
   }
 
@@ -145,13 +146,9 @@ contents <- function(data, digits = 2,
     results$cvars <- cvars
     cat("\n",
         crayon::blue$underline$bold('Categorical Variables'),
-        "\n")
+        "\n", sep="")
     print.data.frame(cvars, right=FALSE, row.names=FALSE)
 
   }
   invisible(results)
 }
-
-## todo jtools
-## md_table(x$cvars, row.names=FALSE,
-## format="simple", align="llrr", digits=2, sig.digits=TRUE)

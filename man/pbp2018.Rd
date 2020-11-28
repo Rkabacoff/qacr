@@ -58,8 +58,6 @@ Pitch by pitch data for select pitchers in the 2018 MLB season.
 \examples{
 summary(pbp2018$release_speed[pbp2018$player_name=="Jacob deGrom" & pbp2018$pitch_type=="FF"])
 
-smoothScatter(pbp2018$plate_x, pbp2018$plate_z)
-
 table(pbp2018$player_name, pbp2018$pitch_type)
 }
 \keyword{datasets}

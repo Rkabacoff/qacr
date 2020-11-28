@@ -41,4 +41,7 @@ collisions occurring on county and local roadways within Montgomery County betwe
 as collected via the Automated Crash Reporting System (ACRS) of the Maryland State Police, and reported by the Montgomery
 County Police, Gaithersburg Police, Rockville Police, or the Maryland-National Capital Park Police.
 }
+\examples{
+summary(crashes)
+}
 \keyword{datasets}

@@ -22,4 +22,6 @@
 #' @name hate_crimes
 #' @usage hate_crimes
 #' @source \href{https://www.kaggle.com/fivethirtyeight/fivethirtyeight-hate-crimes-dataset}{Fivethirtyeight Kaggle repository}
+#' @examples 
+#' summary(hate_crimes)
 NULL

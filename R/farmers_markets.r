@@ -18,4 +18,6 @@
 #' @name farmers_markets
 #' @usage farmers_markets
 #' @source \href{https://apps.ams.usda.gov/FarmersMarketsExport/ExcelExport.aspx}{https://apps.ams.usda.gov/FarmersMarketsExport/ExcelExport.aspx}
+#' @examples 
+#' summary(farmers_markets)
 NULL
