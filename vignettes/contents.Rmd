@@ -28,10 +28,8 @@ data(cars74)
 
 ### Data Breakdown with `contents()`
 ```{r message=FALSE, warning=FALSE}
-x <- contents(cars74)
-kable(x$overall)
-kable(x$qvars)
-kable(x$cvars)
+contents(cars74)
+
 ```
 As shown above, the `contents` function produced three tables, one that provides an overall summary of the data and two tables that break down the quantitative and categorical variables of the dataset respectively. 
 
