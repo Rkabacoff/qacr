@@ -10,7 +10,7 @@
 #' skewness(mtcars$mpg)
 skewness <- function(x, na.rm=TRUE){
   if(na.rm){
-    v <- na.omit(x)
+    v <- stats::na.omit(x)
   }
   n <- length(v)
   v <- v - mean(v)

@@ -4,10 +4,10 @@
 \alias{plot.tab}
 \title{Plot a tab object}
 \usage{
-\method{plot}{tab}(df, fill = "deepskyblue2", size = 3.5, ...)
+\method{plot}{tab}(x, fill = "deepskyblue2", size = 3.5, ...)
 }
 \arguments{
-\item{df}{An object of class \code{tab}}
+\item{x}{An object of class \code{tab}}
 
 \item{fill}{Fill color for bars}
 

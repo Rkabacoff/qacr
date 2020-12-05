@@ -31,16 +31,22 @@ df <- Recoder(df, vars=c("A", "B", "C"), from=c(86, 99, 999), to=NA)
 df <- Recoder(df, vars=c("A", "B", "C"), from=NA, to=0)
 
 # For variable X1, X2, and X3 convert 1 to Yes and 2 to No
-df <- Recoder(df, vars=c("X1", "X2", "X3"), from=c(1, 2), to=c("Yes", "No"))
+df <- Recoder(df, vars=c("X1", "X2", "X3"),
+              from=c(1, 2), to=c("Yes", "No"))
 
 # For variable SEX convert m to Male and f to Female
-df <- Recoder(df, vars="SEX", from=c("m", "f"), to=c("Male", "Female"))
+df <- Recoder(df, vars="SEX",
+              from=c("m", "f"), to=c("Male", "Female"))
 
 # For variable OUTCOME convert Live to 0 and Die to 1
-df <- Recoder(df, vars="OUTCOME", from=c("live", "die"), to=c(0, 1))
+df <- Recoder(df, vars="OUTCOME",
+              from=c("live", "die"), to=c(0, 1))
 
-# For variable AGE convert age <= 20 to young, 20 < age < =60 to middle, and age > 60 to old
-df <- Recoder(df, vars="AGE", from=c("$ < = 20", "$ > 20 & $ <= 60", "$  > 60"), to=c("young", "middle", "old"))
+# For variable AGE convert age <= 20 to young,
+#    20 < age < =60 to middle, and age > 60 to old
+df <- Recoder(df, vars="AGE",
+              from=c("$ < = 20", "$ > 20 & $ <= 60", "$  > 60"),
+              to=c("young", "middle", "old"))
 
 # Reverse code variable Rating from 1 to 10, to 10 to 1
 df <- Recoder(df, vars="Rating", from=1:10, to=10:1)

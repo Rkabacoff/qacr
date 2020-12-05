@@ -112,104 +112,497 @@
 
     
     
-<p>The purpose of the <strong>qacr</strong> package is to provide functions for descriptive statistics, data management, and data visualization. As a part of this package, the <strong>contents</strong> function produces a series of informational tables that allow for users to have a comprehensive understanding of their dataset of choice as well as the each of the quantitative and categorical variables featured in their dataset. This document is intended to show you how to best use the contents function.</p>
-<div id="example-dataset-edgar-andersons-iris-data" class="section level2">
+<p>The purpose of the <strong>qacr</strong> package is to provide functions for descriptive statistics, data management, and data visualization. As a part of this package, the <strong>contents</strong> function produces a series of informational tables that allow for users to have a comprehensive understanding of their dataset of choice as well as the each of the quantitative and categorical variables featured in their dataset. Graphical functions, such as <strong>barcharts</strong>, <strong>histograms</strong>, and <strong>densities</strong> provide succinct visualizations of the variables in a data frame.</p>
+<div id="example-dataset-motor-trend-magazine-review-of-cars" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example-dataset-edgar-andersons-iris-data" class="anchor"></a>Example Dataset: Edgar Anderson’s Iris Data</h2>
-<p>To understand how to use the contents function, we’ll use the <strong>iris</strong> dataset as an example. This data frame contains 150 observations noting the measurements in centimeters of the variables sepal length and width and petal length and width, for 50 flowers from each of 3 species of iris. The data was originally collected by Edgar Anderson and is documented is detail in ?iris</p>
+<a href="#example-dataset-motor-trend-magazine-review-of-cars" class="anchor"></a>Example Dataset: Motor Trend Magazine Review of Cars</h2>
+<p>How can you quickly become familiar with the data in a data frame? We’ll use the <strong>cars74</strong> data frame as an example. This data frame contains information on the characteristics of 32 cars in 1974.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
-<span class="co">#&gt; 'data.frame':    150 obs. of  5 variables:</span>
-<span class="co">#&gt;  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...</span>
-<span class="co">#&gt;  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...</span>
-<span class="co">#&gt;  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...</span>
-<span class="co">#&gt;  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...</span>
-<span class="co">#&gt;  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...</span></pre></div>
-<p>As you can see above, the dataset contains 1 quantitative variable and 4 numerical variables. Now let’s see how the <code>contents</code> function can be applied to this data to allow us to gain a better understanding of the variables.</p>
-</div>
-<div id="data-breakdown-with-contents" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-breakdown-with-contents" class="anchor"></a>Data Breakdown with <strong>contents()</strong>
-</h2>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></pre></div>
+<div id="data-breakdown-with-contents" class="section level3">
+<h3 class="hasAnchor">
+<a href="#data-breakdown-with-contents" class="anchor"></a>Data Breakdown with <code>contents()</code>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/contents.html">contents</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/contents.html">contents</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; The data frame iris has 150 observations and 5 variables.</span>
+<span class="co">#&gt; The data frame cars74 has 32 observations and 12 variables.</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Overall</span>
-<span class="co">#&gt;  pos varname      type    n_unique n_miss pct_miss</span>
-<span class="co">#&gt;  1   Sepal.Length numeric 35       0      0%      </span>
-<span class="co">#&gt;  2   Sepal.Width  numeric 23       0      0%      </span>
-<span class="co">#&gt;  3   Petal.Length numeric 43       0      0%      </span>
-<span class="co">#&gt;  4   Petal.Width  numeric 22       0      0%      </span>
-<span class="co">#&gt;  5   Species      factor   3       0      0%      </span>
+<span class="co">#&gt;  pos varname type      n_unique n_miss pct_miss</span>
+<span class="co">#&gt;   1  auto    character 32       0      0%      </span>
+<span class="co">#&gt;   2  mpg     numeric   25       0      0%      </span>
+<span class="co">#&gt;   3  cyl     ordered    3       0      0%      </span>
+<span class="co">#&gt;   4  disp    numeric   27       0      0%      </span>
+<span class="co">#&gt;   5  hp      numeric   22       0      0%      </span>
+<span class="co">#&gt;   6  drat    numeric   22       0      0%      </span>
+<span class="co">#&gt;   7  wt      numeric   29       0      0%      </span>
+<span class="co">#&gt;   8  qsec    numeric   30       0      0%      </span>
+<span class="co">#&gt;   9  vs      factor     2       0      0%      </span>
+<span class="co">#&gt;  10  am      factor     2       0      0%      </span>
+<span class="co">#&gt;  11  gear    ordered    3       0      0%      </span>
+<span class="co">#&gt;  12  carb    ordered    6       0      0%      </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Numeric Variables</span>
-<span class="co">#&gt;                n mean   sd  skew min p25 median p75 max</span>
-<span class="co">#&gt; Sepal.Length 150 5.84 0.83  0.31 4.3 5.1   5.80 6.4 7.9</span>
-<span class="co">#&gt; Sepal.Width  150 3.06 0.44  0.31 2.0 2.8   3.00 3.3 4.4</span>
-<span class="co">#&gt; Petal.Length 150 3.76 1.77 -0.27 1.0 1.6   4.35 5.1 6.9</span>
-<span class="co">#&gt; Petal.Width  150 1.20 0.76 -0.10 0.1 0.3   1.30 1.8 2.5</span>
+<span class="co">#&gt;       n   mean     sd skew   min    p25 median    p75    max</span>
+<span class="co">#&gt; mpg  32  20.09   6.03 0.61 10.40  15.43  19.20  22.80  33.90</span>
+<span class="co">#&gt; disp 32 230.72 123.94 0.38 71.10 120.83 196.30 326.00 472.00</span>
+<span class="co">#&gt; hp   32 146.69  68.56 0.73 52.00  96.50 123.00 180.00 335.00</span>
+<span class="co">#&gt; drat 32   3.60   0.53 0.27  2.76   3.08   3.70   3.92   4.93</span>
+<span class="co">#&gt; wt   32   3.22   0.98 0.42  1.51   2.58   3.33   3.61   5.42</span>
+<span class="co">#&gt; qsec 32  17.85   1.79 0.37 14.50  16.89  17.71  18.90  22.90</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Categorical Variables</span>
-<span class="co">#&gt;  variable level      n  pct </span>
-<span class="co">#&gt;  Species  setosa     50 0.33</span>
-<span class="co">#&gt;           versicolor 50 0.33</span>
-<span class="co">#&gt;           virginica  50 0.33</span></pre></div>
+<span class="co">#&gt;  variable level              n  pct </span>
+<span class="co">#&gt;  auto     AMC Javelin         1 0.03</span>
+<span class="co">#&gt;           Cadillac Fleetwood  1 0.03</span>
+<span class="co">#&gt;           Camaro Z28          1 0.03</span>
+<span class="co">#&gt;           Chrysler Imperial   1 0.03</span>
+<span class="co">#&gt;           Datsun 710          1 0.03</span>
+<span class="co">#&gt;           Dodge Challenger    1 0.03</span>
+<span class="co">#&gt;           Duster 360          1 0.03</span>
+<span class="co">#&gt;           Ferrari Dino        1 0.03</span>
+<span class="co">#&gt;           Fiat 128            1 0.03</span>
+<span class="co">#&gt;           Fiat X1-9           1 0.03</span>
+<span class="co">#&gt;           (22 more levels)   22 0.69</span>
+<span class="co">#&gt;  cyl      cyl4               11 0.34</span>
+<span class="co">#&gt;           cyl6                7 0.22</span>
+<span class="co">#&gt;           cyl8               14 0.44</span>
+<span class="co">#&gt;  vs       V-shaped           18 0.56</span>
+<span class="co">#&gt;           straight           14 0.44</span>
+<span class="co">#&gt;  am       automatic          19 0.59</span>
+<span class="co">#&gt;           manual             13 0.41</span>
+<span class="co">#&gt;  gear     gears3             15 0.47</span>
+<span class="co">#&gt;           gears4             12 0.38</span>
+<span class="co">#&gt;           gears5              5 0.16</span>
+<span class="co">#&gt;  carb     carb1               7 0.22</span>
+<span class="co">#&gt;           carb2              10 0.31</span>
+<span class="co">#&gt;           carb3               3 0.09</span>
+<span class="co">#&gt;           carb4              10 0.31</span>
+<span class="co">#&gt;           carb6               1 0.03</span>
+<span class="co">#&gt;           carb8               1 0.03</span>
+<span class="fu">kable</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">overall</span><span class="op">)</span></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left"></th>
+<th align="right">pos</th>
+<th align="left">varname</th>
+<th align="left">type</th>
+<th align="right">n_unique</th>
+<th align="right">n_miss</th>
+<th align="left">pct_miss</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">auto</td>
+<td align="right">1</td>
+<td align="left">auto</td>
+<td align="left">character</td>
+<td align="right">32</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="even">
+<td align="left">mpg</td>
+<td align="right">2</td>
+<td align="left">mpg</td>
+<td align="left">numeric</td>
+<td align="right">25</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="odd">
+<td align="left">cyl</td>
+<td align="right">3</td>
+<td align="left">cyl</td>
+<td align="left">ordered</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="even">
+<td align="left">disp</td>
+<td align="right">4</td>
+<td align="left">disp</td>
+<td align="left">numeric</td>
+<td align="right">27</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="odd">
+<td align="left">hp</td>
+<td align="right">5</td>
+<td align="left">hp</td>
+<td align="left">numeric</td>
+<td align="right">22</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="even">
+<td align="left">drat</td>
+<td align="right">6</td>
+<td align="left">drat</td>
+<td align="left">numeric</td>
+<td align="right">22</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="odd">
+<td align="left">wt</td>
+<td align="right">7</td>
+<td align="left">wt</td>
+<td align="left">numeric</td>
+<td align="right">29</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="even">
+<td align="left">qsec</td>
+<td align="right">8</td>
+<td align="left">qsec</td>
+<td align="left">numeric</td>
+<td align="right">30</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="odd">
+<td align="left">vs</td>
+<td align="right">9</td>
+<td align="left">vs</td>
+<td align="left">factor</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="even">
+<td align="left">am</td>
+<td align="right">10</td>
+<td align="left">am</td>
+<td align="left">factor</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="odd">
+<td align="left">gear</td>
+<td align="right">11</td>
+<td align="left">gear</td>
+<td align="left">ordered</td>
+<td align="right">3</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+<tr class="even">
+<td align="left">carb</td>
+<td align="right">12</td>
+<td align="left">carb</td>
+<td align="left">ordered</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="left">0%</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu">kable</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">qvars</span><span class="op">)</span></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left"></th>
+<th align="right">n</th>
+<th align="right">mean</th>
+<th align="right">sd</th>
+<th align="right">skew</th>
+<th align="right">min</th>
+<th align="right">p25</th>
+<th align="right">median</th>
+<th align="right">p75</th>
+<th align="right">max</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">mpg</td>
+<td align="right">32</td>
+<td align="right">20.09</td>
+<td align="right">6.03</td>
+<td align="right">0.61</td>
+<td align="right">10.40</td>
+<td align="right">15.43</td>
+<td align="right">19.20</td>
+<td align="right">22.80</td>
+<td align="right">33.90</td>
+</tr>
+<tr class="even">
+<td align="left">disp</td>
+<td align="right">32</td>
+<td align="right">230.72</td>
+<td align="right">123.94</td>
+<td align="right">0.38</td>
+<td align="right">71.10</td>
+<td align="right">120.83</td>
+<td align="right">196.30</td>
+<td align="right">326.00</td>
+<td align="right">472.00</td>
+</tr>
+<tr class="odd">
+<td align="left">hp</td>
+<td align="right">32</td>
+<td align="right">146.69</td>
+<td align="right">68.56</td>
+<td align="right">0.73</td>
+<td align="right">52.00</td>
+<td align="right">96.50</td>
+<td align="right">123.00</td>
+<td align="right">180.00</td>
+<td align="right">335.00</td>
+</tr>
+<tr class="even">
+<td align="left">drat</td>
+<td align="right">32</td>
+<td align="right">3.60</td>
+<td align="right">0.53</td>
+<td align="right">0.27</td>
+<td align="right">2.76</td>
+<td align="right">3.08</td>
+<td align="right">3.70</td>
+<td align="right">3.92</td>
+<td align="right">4.93</td>
+</tr>
+<tr class="odd">
+<td align="left">wt</td>
+<td align="right">32</td>
+<td align="right">3.22</td>
+<td align="right">0.98</td>
+<td align="right">0.42</td>
+<td align="right">1.51</td>
+<td align="right">2.58</td>
+<td align="right">3.33</td>
+<td align="right">3.61</td>
+<td align="right">5.42</td>
+</tr>
+<tr class="even">
+<td align="left">qsec</td>
+<td align="right">32</td>
+<td align="right">17.85</td>
+<td align="right">1.79</td>
+<td align="right">0.37</td>
+<td align="right">14.50</td>
+<td align="right">16.89</td>
+<td align="right">17.71</td>
+<td align="right">18.90</td>
+<td align="right">22.90</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu">kable</span><span class="op">(</span><span class="va">x</span><span class="op">$</span><span class="va">cvars</span><span class="op">)</span></pre></div>
+<table class="table">
+<thead><tr class="header">
+<th align="left">variable</th>
+<th align="left">level</th>
+<th align="right">n</th>
+<th align="right">pct</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">auto</td>
+<td align="left">AMC Javelin</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Cadillac Fleetwood</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Camaro Z28</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Chrysler Imperial</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Datsun 710</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Dodge Challenger</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Duster 360</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Ferrari Dino</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">Fiat 128</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">Fiat X1-9</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">(22 more levels)</td>
+<td align="right">22</td>
+<td align="right">0.69</td>
+</tr>
+<tr class="even">
+<td align="left">cyl</td>
+<td align="left">cyl4</td>
+<td align="right">11</td>
+<td align="right">0.34</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">cyl6</td>
+<td align="right">7</td>
+<td align="right">0.22</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">cyl8</td>
+<td align="right">14</td>
+<td align="right">0.44</td>
+</tr>
+<tr class="odd">
+<td align="left">vs</td>
+<td align="left">V-shaped</td>
+<td align="right">18</td>
+<td align="right">0.56</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">straight</td>
+<td align="right">14</td>
+<td align="right">0.44</td>
+</tr>
+<tr class="odd">
+<td align="left">am</td>
+<td align="left">automatic</td>
+<td align="right">19</td>
+<td align="right">0.59</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">manual</td>
+<td align="right">13</td>
+<td align="right">0.41</td>
+</tr>
+<tr class="odd">
+<td align="left">gear</td>
+<td align="left">gears3</td>
+<td align="right">15</td>
+<td align="right">0.47</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">gears4</td>
+<td align="right">12</td>
+<td align="right">0.38</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">gears5</td>
+<td align="right">5</td>
+<td align="right">0.16</td>
+</tr>
+<tr class="even">
+<td align="left">carb</td>
+<td align="left">carb1</td>
+<td align="right">7</td>
+<td align="right">0.22</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">carb2</td>
+<td align="right">10</td>
+<td align="right">0.31</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">carb3</td>
+<td align="right">3</td>
+<td align="right">0.09</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">carb4</td>
+<td align="right">10</td>
+<td align="right">0.31</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left">carb6</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left">carb8</td>
+<td align="right">1</td>
+<td align="right">0.03</td>
+</tr>
+</tbody>
+</table>
 <p>As shown above, the <code>contents</code> function produced three tables, one that provides an overall summary of the data and two tables that break down the quantitative and categorical variables of the dataset respectively.</p>
-<p>The <strong>overall table</strong> describes each of the variables in the dataset, listing their position number (as determined by the column number of the variable), the variable name, the variable type (integer, factor, etc.), the number of unique observations for each variable, the number of missing values for each variable, and the corresponding percentage of missing values.</p>
-<p>The <strong>quantitative table</strong> provides information for each of the quantitative variables in the dataset, listing the variable name, the number of nonmissing values for each variable, and a series of summary statistics including the mean, standard deviation, skewness, minimum, 25%tile, median, 75%tile, and maximum.</p>
-<p>The <strong>categorical table</strong> provides information for each of the categorical variables in the dataset, listing the variable name, the specific levels of each variable, and the number of observations for each level, and percentage distribution of each variable level.</p>
+<p>The <strong>overall table</strong> describes each of the variables in the data frame, listing their column position, variable name, the variable type, number of unique values, the number of missing values, and the corresponding percentage of missing values.</p>
+<p>The <strong>quantitative table</strong> provides information for each of the quantitative variables in the data frame, listing the variable name, the number of non-missing values, and a series of summary statistics including the mean, standard deviation, skewness, minimum, 25%tile, median, 75%tile, and maximum.</p>
+<p>The <strong>categorical table</strong> provides information for each of the categorical variables in the data frame, listing the variable name, the specific levels of each variable, and the number of observations for each level, and percentage distribution of each variable level. By default, up to 10 levels of a categorical variable are displayed (but you can increase this by adding the option maxcat = #, where # is the number of levels to display).</p>
 <p>If the dataset only contains quantitative or categorical, then only the overall summary table and the relevant variable table would be printed.</p>
 </div>
-<div id="missing-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#missing-data" class="anchor"></a>Missing Data</h2>
-<p>The iris dataset did not contain any missing data. Therefore, in order to understand how the <code>contents</code> function treats missing data, we must use a differet dataset. The <strong>airquality</strong> dataset, which records the daily air quality measurements in New York for May to September 1973, contains missing information for two variables, <em>Ozone</em> and <em>Solar.R</em>. The data is documented is detail in ?airquality</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span>
-<span class="co">#&gt;      Ozone           Solar.R           Wind             Temp      </span>
-<span class="co">#&gt;  Min.   :  1.00   Min.   :  7.0   Min.   : 1.700   Min.   :56.00  </span>
-<span class="co">#&gt;  1st Qu.: 18.00   1st Qu.:115.8   1st Qu.: 7.400   1st Qu.:72.00  </span>
-<span class="co">#&gt;  Median : 31.50   Median :205.0   Median : 9.700   Median :79.00  </span>
-<span class="co">#&gt;  Mean   : 42.13   Mean   :185.9   Mean   : 9.958   Mean   :77.88  </span>
-<span class="co">#&gt;  3rd Qu.: 63.25   3rd Qu.:258.8   3rd Qu.:11.500   3rd Qu.:85.00  </span>
-<span class="co">#&gt;  Max.   :168.00   Max.   :334.0   Max.   :20.700   Max.   :97.00  </span>
-<span class="co">#&gt;  NA's   :37       NA's   :7                                       </span>
-<span class="co">#&gt;      Month            Day      </span>
-<span class="co">#&gt;  Min.   :5.000   Min.   : 1.0  </span>
-<span class="co">#&gt;  1st Qu.:6.000   1st Qu.: 8.0  </span>
-<span class="co">#&gt;  Median :7.000   Median :16.0  </span>
-<span class="co">#&gt;  Mean   :6.993   Mean   :15.8  </span>
-<span class="co">#&gt;  3rd Qu.:8.000   3rd Qu.:23.0  </span>
-<span class="co">#&gt;  Max.   :9.000   Max.   :31.0  </span>
-<span class="co">#&gt; </span></pre></div>
-<p>If a user inputed a dataset with missing values into the <code>contents</code> function, the following tables would be produced:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/contents.html">contents</a></span><span class="op">(</span><span class="va">airquality</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; The data frame airquality has 153 observations and 6 variables.</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Overall</span>
-<span class="co">#&gt;  pos varname type    n_unique n_miss pct_miss</span>
-<span class="co">#&gt;  1   Ozone   integer  68      37     24%     </span>
-<span class="co">#&gt;  2   Solar.R integer 118       7     5%      </span>
-<span class="co">#&gt;  3   Wind    numeric  31       0     0%      </span>
-<span class="co">#&gt;  4   Temp    integer  40       0     0%      </span>
-<span class="co">#&gt;  5   Month   integer   5       0     0%      </span>
-<span class="co">#&gt;  6   Day     integer  31       0     0%      </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Numeric Variables</span>
-<span class="co">#&gt;           n   mean    sd  skew  min    p25 median    p75   max</span>
-<span class="co">#&gt; Ozone   116  42.13 32.99  1.21  1.0  18.00   31.5  63.25 168.0</span>
-<span class="co">#&gt; Solar.R 146 185.93 90.06 -0.42  7.0 115.75  205.0 258.75 334.0</span>
-<span class="co">#&gt; Wind    153   9.96  3.52  0.34  1.7   7.40    9.7  11.50  20.7</span>
-<span class="co">#&gt; Temp    153  77.88  9.47 -0.37 56.0  72.00   79.0  85.00  97.0</span>
-<span class="co">#&gt; Month   153   6.99  1.42  0.00  5.0   6.00    7.0   8.00   9.0</span>
-<span class="co">#&gt; Day     153  15.80  8.86  0.00  1.0   8.00   16.0  23.00  31.0</span></pre></div>
-<p>For more information on this function, please use <code><a href="../reference/contents.html">?contents</a></code>.</p>
+<div id="visualizing-the-data-frame" class="section level3">
+<h3 class="hasAnchor">
+<a href="#visualizing-the-data-frame" class="anchor"></a>Visualizing the Data Frame</h3>
+<p>The <code>dfPlot</code> function provides a single graph displaying the variables, their types, and the percent of values present (or missing).</p>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="../reference/dfPlot.html">dfPlot</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></pre></div>
+<p><img src="contents_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
+</div>
+<div id="visualizing-the-categorical-variables" class="section level3">
+<h3 class="hasAnchor">
+<a href="#visualizing-the-categorical-variables" class="anchor"></a>Visualizing the categorical variables</h3>
+<p>The <code>barcharts</code> function plots the distribution of each of the categorical variables in the data frame.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu"><a href="../reference/barcharts.html">barcharts</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
+<span class="co">#&gt; The following variable had more than 20 levels and were not graphed:</span>
+<span class="co">#&gt;  auto</span></pre></div>
+<p><img src="contents_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
+</div>
+<div id="visualizing-the-quantitative-variables" class="section level3">
+<h3 class="hasAnchor">
+<a href="#visualizing-the-quantitative-variables" class="anchor"></a>Visualizing the quantitative variables</h3>
+<p>The <code>histograms</code> and <code>densities</code> functions plot the distribution of each of the quantitative variables in the data frame.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="fu"><a href="../reference/histograms.html">histograms</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></pre></div>
+<p><img src="contents_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+
+<span class="fu"><a href="../reference/densities.html">densities</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></pre></div>
+<p><img src="contents_files/figure-html/unnamed-chunk-6-2.png" width="700"></p>
+</div>
 </div>
   </div>
 

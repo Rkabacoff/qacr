@@ -19,7 +19,6 @@ Suggests:
 VignetteBuilder: knitr
 BugReports: https://github.com/rkabacoff/qacr/issues
 Imports: 
-    e1071,
     haven,
     purrr,
     readr,
@@ -29,5 +28,11 @@ Imports:
     tidyr,
     vroom,
     readxl,
-    patchwork
+    patchwork,
+    crayon,
+    plotROC,
+    caret,
+    scales,
+    e1071,
+    rlang
 URL: https://github.com/rkabacoff/qacr

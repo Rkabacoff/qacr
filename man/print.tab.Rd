@@ -4,12 +4,12 @@
 \alias{print.tab}
 \title{Print a tab object}
 \usage{
-\method{print}{tab}(df, ...)
+\method{print}{tab}(x, ...)
 }
 \arguments{
-\item{...}{Parameters passed to the print function}
-
 \item{x}{An object of class \code{tab}}
+
+\item{...}{Parameters passed to the print function}
 }
 \description{
 Print the results of calculating a frequency table

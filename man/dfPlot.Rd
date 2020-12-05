@@ -34,5 +34,5 @@ dfPlot(pbp2018)
 }
 \seealso{
 For more descriptive statistics on
-a data frame see \link{df_summary}.
+a data frame see \link{contents}.
 }

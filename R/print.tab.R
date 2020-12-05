@@ -11,14 +11,14 @@
 #' @rdname print.tab
 #' @export
 
-print.tab <- function(df, ...) {
-  if(!inherits(df, "tab")) stop("Must be class 'tab'")
-  digits <- attr(df, "digits")
-  df$percent = paste(as.character(round(df$percent, digits)),
+print.tab <- function(x, ...) {
+  if(!inherits(x, "tab")) stop("Must be class 'tab'")
+  digits <- attr(x, "digits")
+  x$percent = paste(as.character(round(x$percent, digits)),
                      "%", sep = "")
-  if (length(df) == 5)
-    df$cum_percent = paste(as.character(round(df$cum_percent, digits)),
+  if (length(x) == 5)
+    x$cum_percent = paste(as.character(round(x$cum_percent, digits)),
                            "%", sep = "")
-  print.data.frame(df, row.names=FALSE, ...)
+  print.data.frame(x, row.names=FALSE, ...)
 }
 

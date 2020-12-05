@@ -30,7 +30,7 @@ scatter <- function(data, x, y, fit=TRUE,
   y <- enquo(y)
   x <- enquo(x)
   df <- data %>% select(!!x, !!y)
-  R2 <- round(cor(df[1], df[2])^2, 2)
+  R2 <- round(stats::cor(df[1], df[2])^2, 2)
   p <- ggplot(data, aes(x = !!x, y = !!y)) +
     theme_minimal()
   title <- paste("Scatterplot of", as_label(x),

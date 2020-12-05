@@ -12,6 +12,7 @@
 #' @importFrom purrr map_dfc
 #' @import dplyr
 #' @import haven
+#' @import rlang
 #' @return a data frame, where columns are grouping variables (optional) and
 #' statistics
 #' @examples
@@ -84,7 +85,7 @@ dstats <- function(data, x, ...){
   data <- data %>% select(!!x, !!!grouping_vars)
 
   if(na.rm){
-    data <- na.omit(data)
+    data <- stats::na.omit(data)
   }
 
   data %>%

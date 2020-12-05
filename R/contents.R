@@ -38,6 +38,9 @@ contents <- function(data, digits = 2,
     stop("You need to input a data frame")
   }
 
+  # bind global variables to keep check from warning
+  numstats <- NULL
+
   dataname <- deparse(substitute(data))
 
   cat("\nThe data frame", dataname, "has",
@@ -76,15 +79,16 @@ contents <- function(data, digits = 2,
   if(any(nindex)){
     # get statistics
     numstats <- function(x){
-      x = na.omit(x)
+      # bind global variables to keep check from warning
+      x = stats::na.omit(x)
       n=sum(!is.na((x)))
       mean=round(mean(x), digits=digits)
       sd=round(sd(x), digits=digits)
       skew=round(skewness(x), digits=digits)
       min=round(min(x), digits=digits)
-      p25=round(quantile(x, 0.25)[[1]], digits=digits)
+      p25=round(stats::quantile(x, 0.25)[[1]], digits=digits)
       median=round(median(x), digits=digits)
-      p75=round(quantile(x, 0.75)[[1]], digits=digits)
+      p75=round(stats::quantile(x, 0.75)[[1]], digits=digits)
       max=round(max(x), digits=digits)
       return(c(n=n, mean=mean, sd=sd, skew=skew,
                min=min, p25=p25, median=median,

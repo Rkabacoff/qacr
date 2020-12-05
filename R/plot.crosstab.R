@@ -3,6 +3,7 @@
 #' frequency table.
 #' @param x An object of class \code{crosstab}
 #' @param size numeric. Size of bar text labels.
+#' @param ... no currently used.
 #' @return a ggplot2 graph
 #' @rdname plot.crosstab
 #' @import ggplot2
@@ -29,7 +30,7 @@ plot.crosstab <- function(x, size=3.5, ...) {
     p <- ggplot(plotdata,
                 aes_string(x=rowvar, y="Freq", fill=colvar)) +
       geom_bar(stat="identity", position="stack") +
-      geom_text(aes(label=lbl), size=size,
+      geom_text(aes(label=.data[["lbl"]]), size=size,
                 position=position_stack(vjust=0.5)) +
       labs(y="Frequency", title=title, subtitle="cell counts")
 
@@ -44,7 +45,7 @@ plot.crosstab <- function(x, size=3.5, ...) {
     p <- ggplot(plotdata,
                 aes_string(x=rowvar, y="Freq", fill=colvar)) +
       geom_bar(stat="identity", position="stack") +
-      geom_text(aes(label=lbl), size=size,
+      geom_text(aes(label=.data[["lbl"]]), size=size,
                 position=position_stack(vjust=0.5)) +
       labs(y="Percent", title=title, subtitle="cell percents")
 
@@ -59,7 +60,7 @@ plot.crosstab <- function(x, size=3.5, ...) {
     p <- ggplot(plotdata,
                 aes_string(x=rowvar, y="Freq", fill=colvar)) +
       geom_bar(stat="identity", position="fill") +
-      geom_text(aes(label=lbl), size=size,
+      geom_text(aes(label=.data[["lbl"]]), size=size,
                 position=position_stack(vjust=0.5)) +
       scale_y_continuous(labels=c("0%", "25%", "50%", "75%", "100%")) +
       labs(y="Percent", title=title, subtitle="row percents") +
@@ -76,7 +77,7 @@ plot.crosstab <- function(x, size=3.5, ...) {
     p <- ggplot(plotdata,
                 aes_string(x=rowvar, y="Freq", fill=colvar)) +
       geom_bar(stat="identity", position="fill") +
-      geom_text(aes(label=lbl), size=size,
+      geom_text(aes(label=.data[["lbl"]]), size=size,
                 position=position_stack(vjust=0.5)) +
       scale_y_continuous(labels=c("0%", "25%", "50%", "75%", "100%")) +
       labs(y="Percent", title=title, subtitle="column percents")

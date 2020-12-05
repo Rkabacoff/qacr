@@ -13,43 +13,61 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 library(qacr)
+library(knitr)
 ```
 
 
-The purpose of the **qacr** package is to provide functions for descriptive statistics, data management, and data visualization.  As a part of this package, the **contents** function produces a series of informational tables that allow for users to have a comprehensive understanding of their dataset of choice as well as the each of the quantitative and categorical variables featured in their dataset.  This document is intended to show you how to best use the contents function.
+The purpose of the **qacr** package is to provide functions for descriptive statistics, data management, and data visualization.  As a part of this package, the **contents** function produces a series of informational tables that allow for users to have a comprehensive understanding of their dataset of choice as well as the each of the quantitative and categorical variables featured in their dataset.  Graphical functions, such as **barcharts**, **histograms**, and **densities** provide succinct visualizations of the variables in a data frame.
 
-## Example Dataset: Edgar Anderson's Iris Data
-To understand how to use the contents function, we’ll use the **iris** dataset as an example. This data frame contains 150 observations noting the measurements in centimeters of the variables sepal length and width and petal length and width, for 50 flowers from each of 3 species of iris. The data was originally collected by Edgar Anderson and is documented is detail in ?iris
+## Example Dataset: Motor Trend Magazine Review of Cars
+How can you quickly become familiar with the data in a data frame? We'll use the **cars74** data frame as an example. This data frame contains information on the characteristics of 32 cars in 1974.
+
 ```{r message=FALSE, warning=FALSE}
-data(iris)
-
-str(iris)
+data(cars74)
 ```
-As you can see above, the dataset contains 1 quantitative variable and 4 numerical variables.  Now let's see how the `contents` function can be applied to this data to allow us to gain a better understanding of the variables.
 
-## Data Breakdown with **contents()**
+### Data Breakdown with `contents()`
 ```{r message=FALSE, warning=FALSE}
-contents(iris)
+x <- contents(cars74)
+kable(x$overall)
+kable(x$qvars)
+kable(x$cvars)
 ```
 As shown above, the `contents` function produced three tables, one that provides an overall summary of the data and two tables that break down the quantitative and categorical variables of the dataset respectively. 
 
-The **overall table** describes each of the variables in the dataset, listing their position number (as determined by the column number of the variable), the variable name, the variable type (integer, factor, etc.), the number of unique observations for each variable, the number of missing values for each variable, and the corresponding percentage of missing values.
+The **overall table** describes each of the variables in the data frame, listing their column position, variable name, the variable type, number of unique values, the number of missing values, and the corresponding percentage of missing values.
 
-The **quantitative table** provides information for each of the quantitative variables in the dataset, listing the variable name, the number of nonmissing values for each variable, and a series of summary statistics including the mean, standard deviation, skewness, minimum, 25%tile, median, 75%tile, and maximum.
+The **quantitative table** provides information for each of the quantitative variables in the data frame, listing the variable name, the number of non-missing values, and a series of summary statistics including the mean, standard deviation, skewness, minimum, 25%tile, median, 75%tile, and maximum.
 
-The **categorical table** provides information for each of the categorical variables in the dataset, listing the variable name, the specific levels of each variable, and the number of observations for each level, and percentage distribution of each variable level.
+The **categorical table** provides information for each of the categorical variables in the data frame, listing the variable name, the specific levels of each variable, and the number of observations for each level, and percentage distribution of each variable level. By default, up to 10 levels of a categorical variable are displayed (but you can increase this by adding the option maxcat = #, where # is the number of levels to display).
 
 If the dataset only contains quantitative or categorical, then only the overall summary table and the relevant variable table would be printed.
 
-## Missing Data
-The iris dataset did not contain any missing data.  Therefore, in order to understand how the `contents` function treats missing data, we must use a differet dataset.  The **airquality** dataset, which records the daily air quality measurements in New York for May to September 1973, contains missing information for two variables, *Ozone* and *Solar.R*. The data is documented is detail in ?airquality
-```{r}
-summary(airquality)
+### Visualizing the Data Frame
+
+The `dfPlot` function provides a single graph displaying the variables, their types, and the percent of values present (or missing).
+
+```{r message=FALSE, warning=FALSE}
+dfPlot(cars74)
+
 ```
 
-If a user inputed a dataset with missing values into the `contents` function, the following tables would be produced:
-```{r}
-contents(airquality)
+### Visualizing the categorical variables
+
+The `barcharts` function plots the distribution of each of the categorical variables in the data frame.
+
+```{r message=FALSE, warning=FALSE}
+barcharts(cars74)
+
 ```
 
-For more information on this function, please use `?contents`.
+### Visualizing the quantitative variables
+
+The `histograms` and `densities` functions plot the distribution of each of the quantitative variables in the data frame.
+
+```{r message=FALSE, warning=FALSE}
+histograms(cars74)
+
+densities(cars74)
+
+```

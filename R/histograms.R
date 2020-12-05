@@ -17,7 +17,7 @@ histograms <- function(data, fill="deepskyblue2", bins=30){
   index <- sapply(data, is.numeric)
   qdata <- data[index]
   qdata_long <- tidyr::gather(qdata)
-  ggplot2::ggplot(data=qdata_long, aes(x=value)) +
+  ggplot2::ggplot(data=qdata_long, aes(x=.data[["value"]])) +
     ggplot2::geom_histogram(fill=fill, bins=bins) +
     ggplot2::facet_wrap(~key, scale="free") +
     ggplot2::theme_bw() +

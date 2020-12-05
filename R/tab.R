@@ -34,7 +34,7 @@ tab <- function(data, x, sort = FALSE, maxcat = NULL, minp = NULL,
                 na.rm = FALSE, total = FALSE, digits = 2,
                 cum = FALSE, plot=FALSE) {
   if (na.rm) {
-    data = na.omit(data)
+    data = stats::na.omit(data)
   }
 
   vname <- as.character(substitute(x))

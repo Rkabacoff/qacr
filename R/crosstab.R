@@ -74,7 +74,7 @@ crosstab <- function(data, rowvar, colvar,
   # chisquare test
   x2 <- NULL
   if (chisquare){
-    x2 <- suppressWarnings(chisq.test(tb))
+    x2 <- suppressWarnings(stats::chisq.test(tb))
     x2 <- paste0("Chi-square = ", round(x2$statistic,2),
                 ", df = ", x2$parameter,
                 ", p = ", format.pval(x2$p.value, digits=2))

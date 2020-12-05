@@ -52,7 +52,7 @@ univariatePlot <- function(data, x, bins=30,
   IQR <- IQR(data[[x]], na.rm=TRUE)
 
   # skewness
-  v <- na.omit(data[[x]])
+  v <- stats::na.omit(data[[x]])
   n <- length(v)
   v <- v - mean(v)
   v <- sqrt(n) * sum(v^3)/(sum(v^2)^(3/2))
@@ -94,7 +94,7 @@ univariatePlot <- function(data, x, bins=30,
   p2 <- ggplot(data, (aes(x=.data[[x]]))) +
     geom_boxplot(fill=fill) +
     geom_point(data=df,
-               mapping=aes(x=x, y=y),
+               mapping=aes(x=x, y=.data[["y"]]),
                shape="plus",
                color="white",
                size=1) +
@@ -106,7 +106,7 @@ univariatePlot <- function(data, x, bins=30,
           panel.grid.minor.y = element_blank())
 
   df <- data.frame(x=data[[x]], y=0)
-  p3 <- ggplot(df, (aes(x=x, y=y))) +
+  p3 <- ggplot(df, (aes(x=x, y=.data[["y"]]))) +
     geom_jitter(alpha=alpha, color=pointcolor) +
     scale_x_continuous(limits=c(minx, maxx)) +
     theme_minimal() +

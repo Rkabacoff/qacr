@@ -13,11 +13,15 @@
 #' @import tidyr
 #' @import ggplot2
 #' @import dplyr
+#' @import scales
 #' @export
 barcharts <- function(data, fill="deepskyblue2",
                       color="grey30", labels=TRUE,
                       maxcat=20, abbrev=20){
 
+
+  # bind global variables to keep check from warning
+  key <- value <- tot <- pct <- pctlabel <- NULL
 
   index <- sapply(data, function(x) is.factor(x) |
                     is.character(x)|is.logical(x))
@@ -56,7 +60,6 @@ barcharts <- function(data, fill="deepskyblue2",
 
   cdata_long <- suppressWarnings(tidyr::gather(cdata2))
 
-  require(dplyr)
   cdatl_a <- cdata_long %>%
     group_by(key, value) %>%
     summarize(n=n(), .groups="drop")
@@ -68,13 +71,11 @@ barcharts <- function(data, fill="deepskyblue2",
     mutate(pct = (n/ tot)*100,
            pctlabel = paste0(round(pct), "%"))
 
-  require(ggplot2)
-  require(scales)
   p <- ggplot(data=cdata_long, aes(x=value, y=pct)) +
     geom_bar(fill=fill, stat="identity") +
     labs(x="Value", y="Percent", title="Bar charts") +
     scale_y_continuous(breaks=pretty_breaks()) +
-    facet_wrap(~key, scale="free") +
+    facet_wrap(~key, scales="free") +
     theme_bw() + coord_flip()  +
     theme(panel.grid.major.y=element_blank())
   if(labels)

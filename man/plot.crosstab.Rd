@@ -10,6 +10,8 @@
 \item{x}{An object of class \code{crosstab}}
 
 \item{size}{numeric. Size of bar text labels.}
+
+\item{...}{no currently used.}
 }
 \value{
 a ggplot2 graph

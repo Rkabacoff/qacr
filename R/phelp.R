@@ -14,5 +14,5 @@
 #' # phelp(ggplot2)
 #'
 phelp <- function(pckg) {
-  help(package=deparse(substitute(pckg)))
+  utils::help(package=deparse(substitute(pckg)))
 }

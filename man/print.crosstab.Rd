@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{x}{An object of class \code{crosstab}}
+
+\item{...}{not currently used.}
 }
 \description{
 This function prints the results of a calculated two-way

@@ -2,6 +2,8 @@
 #' @description This function prints the results of a calculated two-way
 #' frequency table.
 #' @param x An object of class \code{crosstab}
+#' @param ... not currently used.
+#' @importFrom stats addmargins
 #' @return NULL
 #' @examples
 #' mycrosstab <- crosstab(mtcars, cyl, gear, type = "freq", digits = 2)
@@ -41,10 +43,10 @@ print.crosstab <- function(x, ...) {
       tb <- addmargins(tb, 1, FUN=list(Total=sum), quiet=TRUE)
     }
     tb <- replace(tb, TRUE, sprintf(paste0("%.", x$digits,"f%%"), tb*100))
-    
+
   }
   print.table(tb, right=TRUE, justify="right")
-  
+
   if (!is.null(x$chisquare)){
     cat("\n", x$chisquare, "\n")
   }

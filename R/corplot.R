@@ -27,7 +27,9 @@
 corplot <- function(data, sort=FALSE, lab_size=4){
   index <- sapply(data, is.numeric)
   qdata <- data[index]
-  r <- cor(qdata, use="complete.obs")
+  # bind global variables to keep check from warning
+
+  r <- stats::cor(qdata, use="complete.obs")
   p <- ggcorrplot(r,
                   hc.order = sort,
                   colors = c("red", "white", "blue"),

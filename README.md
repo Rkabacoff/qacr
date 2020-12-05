@@ -28,7 +28,7 @@ Here are some basic examples demonstrating a few of these functions. Each functi
 library(qacr)
 
 # summarize a data frame
-df_summary(cars74)
+contents(cars74)
 
 
 # obtain descriptive statistics on a quantitative variable 

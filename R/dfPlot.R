@@ -16,10 +16,11 @@
 #' Variables are sorted by type and the total number of variables
 #' and cases are printed in the caption.
 #' @param data a data frame.
+#' @import ggplot2
 #' @export
 #' @return a \code{ggplot2} graph
 #' @seealso For more descriptive statistics on
-#' a data frame see \link{df_summary}.
+#' a data frame see \link{contents}.
 #' @examples
 #' dfPlot(coffee)
 #' dfPlot(pbp2018)
@@ -27,7 +28,7 @@
 dfPlot <- function(data){
   if (!is.data.frame(data))
     stop('data must be a data.frame', call.=FALSE)
-  require(ggplot2)
+
   classes <- vector(mode="character",
                     length=length(data))
   for (i in seq_along(data)){
@@ -42,7 +43,8 @@ dfPlot <- function(data){
                    classes_n = as.numeric(as.factor(classes)))
 
   ggplot(df,
-         aes(x=reorder(var, classes_n), y=pct_n, fill=classes)) +
+         aes(x=stats::reorder(.data[["var"]], .data[["classes_n"]]),
+             y=.data[["pct_n"]], fill=.data[["classes"]])) +
     geom_bar(stat="identity") +
     labs(x="", y="Percent Available",
          title=paste(as.character(deparse(substitute(data)))),

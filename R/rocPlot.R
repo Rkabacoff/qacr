@@ -53,13 +53,13 @@ rocPlot <- function(model, positive, n.cuts=20, labelsize=3,
   outcome <- ifelse(outcome == positive, 1, 0)
 
   # predicted probability
-  prob <- predict(model, df, type="prob")
+  prob <- stats::predict(model, df, type="prob")
   prob <- prob[[positive]]
 
   df <- data.frame(d = outcome,
                    m = prob)
 
-  p <- ggplot(df, aes(d=d, m=m)) +
+  p <- ggplot(df, aes(d=.data[["d"]], m=.data[["m"]])) +
     geom_roc(n.cuts=n.cuts, labelsize=labelsize,
              labelround=labelround, size=.5) +
     geom_abline(intercept=0, slope=1, color="red", linetype="dashed") +
