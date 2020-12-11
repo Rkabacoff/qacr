@@ -40,8 +40,7 @@
 
 
 <meta property="og:title" content="Scatterplot — scatter" />
-<meta property="og:description" content="Create a scatter plot between two
-quantitative variables." />
+<meta property="og:description" content="Create a scatter plot between two quantitative variables." />
 
 
 
@@ -87,7 +86,14 @@ quantitative variables." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <li>
+  <a href="../articles/qacr.html">
+    <span class="fas fa fas fa-chalkboard-teacher"></span>
+     
+    Getting Started
+  </a>
+</li>
+<li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fas fa fas fa-book"></span>
      
@@ -106,7 +112,7 @@ quantitative variables." />
       <a href="../articles/crosstab.html">Creating two-way frequency tables</a>
     </li>
     <li>
-      <a href="../articles/Intro_dstats.html">Introduction to the dstats function</a>
+      <a href="../articles/qstats.html">Descriptive statistics by group</a>
     </li>
   </ul>
 </li>
@@ -121,14 +127,14 @@ quantitative variables." />
   <a href="../news/index.html">
     <span class="fa fa-newspaper-o"></span>
      
-    news
+    News
   </a>
 </li>
 <li>
   <a href="https://github.com/rkabacoff/qacr/">
     <span class="fa fa-github fa-lg"></span>
      
-    github
+    GitHub
   </a>
 </li>
       </ul>
@@ -150,11 +156,24 @@ quantitative variables." />
     </div>
 
     <div class="ref-description">
-    <p>Create a scatter plot between two
-quantitative variables.</p>
+    <p>Create a scatter plot between two quantitative variables.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>scatter</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>x</span>, <span class='va'>y</span>, fit <span class='op'>=</span> <span class='cn'>TRUE</span>, jitter <span class='op'>=</span> <span class='cn'>FALSE</span>, color <span class='op'>=</span> <span class='st'>"deepskyblue2"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>scatter</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>x</span>,
+  <span class='va'>y</span>,
+  outlier <span class='op'>=</span> <span class='fl'>3</span>,
+  alpha <span class='op'>=</span> <span class='fl'>1</span>,
+  digits <span class='op'>=</span> <span class='fl'>3</span>,
+  <span class='va'>title</span>,
+  margin <span class='op'>=</span> <span class='st'>"none"</span>,
+  stats <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  point_color <span class='op'>=</span> <span class='st'>"deepskyblue2"</span>,
+  outlier_color <span class='op'>=</span> <span class='st'>"violetred1"</span>,
+  line_color <span class='op'>=</span> <span class='st'>"grey30"</span>,
+  margin_color <span class='op'>=</span> <span class='st'>"deepskyblue2"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -172,34 +191,80 @@ quantitative variables.</p>
       <td><p>quantitative response variable</p></td>
     </tr>
     <tr>
-      <th>fit</th>
-      <td><p>logical. If <code>TRUE</code>, add a line
-of best fit with 95 percent confidence interval.</p></td>
+      <th>outlier</th>
+      <td><p>number. Observations with studentized residuals
+larger than this value are flagged. If set to 0, observations
+are not flagged.</p></td>
     </tr>
     <tr>
-      <th>jitter</th>
-      <td><p>logical. If <code>TRUE</code>, points
-are jittered</p></td>
+      <th>alpha</th>
+      <td><p>Transparency of data points. A numeric value between 0
+(completely transparent) and 1 (completely opaque).</p></td>
     </tr>
     <tr>
-      <th>color</th>
-      <td><p>character. color for points</p></td>
+      <th>digits</th>
+      <td><p>Number of significant digits in displayed statistics.</p></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><p>Optional title.</p></td>
+    </tr>
+    <tr>
+      <th>margin</th>
+      <td><p>Marginal plots. If specified, parameter can be
+<code>histogram</code>, <code>boxplot</code>, <code>violin</code>,
+or <code>density</code>. Will add these
+features to the top and right margin of the graph.</p></td>
+    </tr>
+    <tr>
+      <th>stats</th>
+      <td><p>logical. If <code>TRUE</code>, the slope,
+correlation, and correlation squared (expressed as a percentage) for the
+regression line are printed on the subtitle line.</p></td>
+    </tr>
+    <tr>
+      <th>point_color</th>
+      <td><p>Color used for points.</p></td>
+    </tr>
+    <tr>
+      <th>outlier_color</th>
+      <td><p>Color used to identify outliers (see the <code>outlier</code>
+parameter.</p></td>
+    </tr>
+    <tr>
+      <th>line_color</th>
+      <td><p>Color for regression line.</p></td>
+    </tr>
+    <tr>
+      <th>margin_color</th>
+      <td><p>Fill color for margin boxplots, density plots, or
+histograms.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a ggplot graph</p>
+    <p>a ggplot2 graph</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The <code>scatter</code> function creates a scatter plot with
-a linear line of best fit. The equation and R-squared,
-along with level of significance.</p>
+    <p>The <code>scatter</code> function generates a scatterplot between two quantitative
+variables, along with a line of best fit and a 95% confidence interval.
+By default, regression statistics (b, r, r2, p) are printed and
+outliers (observations with studentized residuals &gt; 3) are flagged.
+Optionally, variable distributions (histograms, boxplots, violin plots,
+density plots) can be added to the plot margins.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Variable names do not have to be quoted.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>scatter</span><span class='op'>(</span><span class='va'>cars74</span>, <span class='va'>wt</span>, <span class='va'>mpg</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>`geom_smooth()` using formula 'y ~ x'</span></div><div class='img'><img src='scatter-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>scatter</span><span class='op'>(</span><span class='va'>cars74</span>, <span class='va'>hp</span>, <span class='va'>mpg</span><span class='op'>)</span>
+</div><div class='img'><img src='scatter-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>scatter</span><span class='op'>(</span><span class='va'>cars74</span>, <span class='va'>wt</span>, <span class='va'>hp</span><span class='op'>)</span>
+</div><div class='img'><img src='scatter-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='va'>p</span> <span class='op'>&lt;-</span> <span class='fu'>scatter</span><span class='op'>(</span><span class='fu'>ggplot2</span><span class='fu'>::</span><span class='va'><a href='https://ggplot2.tidyverse.org/reference/mpg.html'>mpg</a></span>, <span class='va'>displ</span>, <span class='va'>hwy</span>,
+        margin<span class='op'>=</span><span class='st'>"histogram"</span>,
+        title<span class='op'>=</span><span class='st'>"Engine Displacement vs. Highway Mileage"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>p</span><span class='op'>)</span>
+</div><div class='img'><img src='scatter-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

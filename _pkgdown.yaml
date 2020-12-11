@@ -7,27 +7,26 @@ reference:
   - title: Main Functions
     desc: ~
     contents:
-      - '`contents`'
-      - '`crosstab`'
-      - '`dstats`'
-      - '`import`'
-      - '`Recoder`'
-      - '`tab`'
-  - title: Graphing
-    desc: ~
-    contents:
-      - '`corplot`'
       - '`barcharts`'
+      - '`contents`'
+      - '`corplot`'
+      - '`crosstab`'
       - '`densities`'
       - '`dfPlot`'
+      - '`dstats`'
       - '`histograms`'
+      - '`import`'
+      - '`recodes`'
       - '`rocPlot`'
       - '`scatter`'
+      - '`tab`'
       - '`univariatePlot`'
+      - '`qstats`'
   - title: Utilities
     desc: ~
     contents:
       - '`phelp`'
+      - '`print.contents`'
       - '`print.crosstab`'
       - '`print.tab`'
       - '`plot.crosstab`'
@@ -69,6 +68,9 @@ navbar:
     - icon: fa-home
       href: index.html
   right:
+    - text: Getting Started
+      icon: fas fa-chalkboard-teacher
+      href: articles/qacr.html
     - text: "Vignettes"
       icon: fas fa-book
       menu:
@@ -78,14 +80,14 @@ navbar:
          href: articles/tab.html
       -  text: Creating two-way frequency tables
          href: articles/crosstab.html
-      -  text: Introduction to the dstats function
-         href: articles/Intro_dstats.html
+      -  text: Descriptive statistics by group
+         href: articles/qstats.html
     - icon: fa-file-code-o
       text: "Documentation"
       href: reference/index.html
     - icon: fa-newspaper-o
-      text: "news"
+      text: "News"
       href: news/index.html
     - icon: fa-github fa-lg
-      text: "github"
+      text: "GitHub"
       href: https://github.com/rkabacoff/qacr/

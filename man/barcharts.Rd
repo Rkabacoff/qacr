@@ -9,6 +9,7 @@ barcharts(
   fill = "deepskyblue2",
   color = "grey30",
   labels = TRUE,
+  sort = TRUE,
   maxcat = 20,
   abbrev = 20
 )
@@ -21,6 +22,8 @@ barcharts(
 \item{color}{color for bar labels}
 
 \item{labels}{if \code{TRUE}, bars are labeled with percents}
+
+\item{sort}{if \code{TRUE}, bars are sorted by frequency}
 
 \item{maxcat}{numeric. barcharts with more than this number of bars will not be plotted.}
 

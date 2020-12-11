@@ -9,8 +9,11 @@
 #' variable to print.
 #' @param label_length maximum length of factor level label
 #' to print. Longer labels will be truncated.
-#' @return a list with 3 components:
+#' @return a list with 6 components:
 #' \describe{
+#' \item{dfname}{name of data frame}
+#' \item{nrow}{number of rows}
+#' \item{ncol}{number of columns}
 #' \item{overall}{data frame of overall dataset characteristics}
 #' \item{qvars}{data frame with summary statistics for quantitative variables}
 #' \item{cvars}{data frame with summary statistics for categorical variables}
@@ -28,7 +31,6 @@
 #' contents(testdata)
 #'
 #' @rdname contents
-#' @importFrom crayon blue
 #' @export
 
 contents <- function(data, digits = 2,
@@ -43,11 +45,8 @@ contents <- function(data, digits = 2,
 
   dataname <- deparse(substitute(data))
 
-  cat("\nThe data frame", dataname, "has",
-      format(nrow(data), big.mark=","), "observations and",
-      format(ncol(data), big.mark=","), "variables.\n")
-
-  results <- list(overall=NULL, qvars=NULL, cvars=NULL)
+  results <- list(dfname=dataname, nrow=nrow(data), ncol=ncol(data),
+                  overall=NULL, qvars=NULL, cvars=NULL)
 
   # overall summary --------------------------
   varnames <- colnames(data)
@@ -60,16 +59,11 @@ contents <- function(data, digits = 2,
   n_unique = sapply(data, function(x)length(unique(x)))
   n_miss = sapply(data, function(x)sum(is.na(x)))
   pct_miss = paste0(round(n_miss/nrow(data), digits) * 100, "%")
-  #pct_miss = round(n_miss/nrow(data), digits)
   overall <- data.frame(
     pos, varname, type, n_unique, n_miss, pct_miss
   )
 
   results$overall <- overall
-
-  cat("\n", crayon::blue$underline$bold('Overall'), "\n", sep="")
-  print(overall, row.names=FALSE, right=FALSE)
-
 
   # numeric variables-----------------------------
 
@@ -99,9 +93,6 @@ contents <- function(data, digits = 2,
     qvars <- as.data.frame(t(qvars))
 
     results$qvars <- qvars
-    cat("\n", crayon::blue$underline$bold('Numeric Variables'),
-        "\n", sep="")
-    print(qvars)
   }
 
 
@@ -148,11 +139,8 @@ contents <- function(data, digits = 2,
     }
 
     results$cvars <- cvars
-    cat("\n",
-        crayon::blue$underline$bold('Categorical Variables'),
-        "\n", sep="")
-    print.data.frame(cvars, right=FALSE, row.names=FALSE)
 
   }
-  invisible(results)
+  class(results) <- c("contents")
+  return(results)
 }

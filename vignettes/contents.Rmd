@@ -26,7 +26,7 @@ How can you quickly become familiar with the data in a data frame? We'll use the
 data(cars74)
 ```
 
-### Data Breakdown with `contents()`
+### Data description with `contents()`
 ```{r message=FALSE, warning=FALSE}
 contents(cars74)
 
@@ -41,7 +41,7 @@ The **categorical table** provides information for each of the categorical varia
 
 If the dataset only contains quantitative or categorical, then only the overall summary table and the relevant variable table would be printed.
 
-### Visualizing the Data Frame
+### Visualizing the data frame
 
 The `dfPlot` function provides a single graph displaying the variables, their types, and the percent of values present (or missing).
 

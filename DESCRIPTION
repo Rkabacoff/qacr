@@ -34,5 +34,6 @@ Imports:
     caret,
     scales,
     e1071,
-    rlang
+    rlang,
+    ggExtra
 URL: https://github.com/rkabacoff/qacr

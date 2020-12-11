@@ -18,8 +18,11 @@ variable to print.}
 to print. Longer labels will be truncated.}
 }
 \value{
-a list with 3 components:
+a list with 6 components:
 \describe{
+\item{dfname}{name of data frame}
+\item{nrow}{number of rows}
+\item{ncol}{number of columns}
 \item{overall}{data frame of overall dataset characteristics}
 \item{qvars}{data frame with summary statistics for quantitative variables}
 \item{cvars}{data frame with summary statistics for categorical variables}

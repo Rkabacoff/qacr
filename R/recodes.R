@@ -1,6 +1,6 @@
 #' Recode One or More Variables
 #'
-#' \code{Recoder} recodes the values of one or more variables in
+#' \code{recodes} recodes the values of one or more variables in
 #' a data frame
 #'
 #' @param data a data frame.
@@ -12,35 +12,35 @@
 #' @examples
 #' \dontrun{
 #' # For variables A, B and C, convert 86, 99, and 999 to missing
-#' df <- Recoder(df, vars=c("A", "B", "C"), from=c(86, 99, 999), to=NA)
+#' df <- recodes(df, vars=c("A", "B", "C"), from=c(86, 99, 999), to=NA)
 #'
 #' # For variables A, B, and C convert NA to 0
-#' df <- Recoder(df, vars=c("A", "B", "C"), from=NA, to=0)
+#' df <- recodes(df, vars=c("A", "B", "C"), from=NA, to=0)
 #'
 #' # For variable X1, X2, and X3 convert 1 to Yes and 2 to No
-#' df <- Recoder(df, vars=c("X1", "X2", "X3"),
+#' df <- recodes(df, vars=c("X1", "X2", "X3"),
 #'               from=c(1, 2), to=c("Yes", "No"))
 #'
 #' # For variable SEX convert m to Male and f to Female
-#' df <- Recoder(df, vars="SEX",
+#' df <- recodes(df, vars="SEX",
 #'               from=c("m", "f"), to=c("Male", "Female"))
 #'
 #' # For variable OUTCOME convert Live to 0 and Die to 1
-#' df <- Recoder(df, vars="OUTCOME",
+#' df <- recodes(df, vars="OUTCOME",
 #'               from=c("live", "die"), to=c(0, 1))
 #'
 #' # For variable AGE convert age <= 20 to young,
 #' #    20 < age < =60 to middle, and age > 60 to old
-#' df <- Recoder(df, vars="AGE",
+#' df <- recodes(df, vars="AGE",
 #'               from=c("$ < = 20", "$ > 20 & $ <= 60", "$  > 60"),
 #'               to=c("young", "middle", "old"))
 #'
 #' # Reverse code variable Rating from 1 to 10, to 10 to 1
-#' df <- Recoder(df, vars="Rating", from=1:10, to=10:1)
+#' df <- recodes(df, vars="Rating", from=1:10, to=10:1)
 #'
 #' }
 #'
-Recoder <- function(data, vars, from, to){
+recodes <- function(data, vars, from, to){
   df <- as.character(substitute(data))
 
   # special character representing the variable being coded when

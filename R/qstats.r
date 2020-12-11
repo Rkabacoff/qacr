@@ -1,12 +1,13 @@
 #' @title Summary statistics for a quantitative variable
 #' @description This function provides descriptive statistics for a quantitative
-#' variable alone or seperately by groups. You can provide user-defined statistics.
+#' variable alone or seperately by groups. Any function that returns a single
+#' numeric value can bue used.
 #' @param data data frame
 #' @param x numeric variable in data (unquoted)
 #' @param statistics statistics to calculate (any function that produces a
-#'  value), Default: c("n", "mean", "sd")
-#' @param na.rm if TRUE, delete cases with missing values on x and or grouping
-#'  variables, Default: TRUE
+#'  numeric value), Default: \code{c("n", "mean", "sd")}
+#' @param na.rm if \code{TRUE}, delete cases with missing values on x and or grouping
+#'  variables, Default: \code{TRUE}
 #' @param digits number of decimal digits to print, Default: 2
 #' @param ... list of grouping variables
 #' @importFrom purrr map_dfc
@@ -17,19 +18,20 @@
 #' statistics
 #' @examples
 #' # If no keyword arguments are provided, default values are used
-#' dstats(mtcars, mpg, am, gear)
+#' qstats(mtcars, mpg, am, gear)
 #'
 #' # You can supply as many (or no) grouping variables as needed
-#' dstats(mtcars, mpg)
+#' qstats(mtcars, mpg)
 #'
-#' dstats(mtcars, mpg, am, gear, cyl, carb)
+#' qstats(mtcars, mpg, am, cyl)
 #'
-#' # You can input user-defined functions
-#' # my_n <- function(xs) length(xs)
-#' # dstats(mtcars, mpg, stats = c("my_n"), am, gear)
-#' @rdname dstats
+#' # You can specify your own functions (e.g., median,
+#' # median absolute deviation, minimum, maximum))
+#' qstats(mtcars, mpg, am, gear,
+#'        stats = c("median", "mad", "min", "max"))
+#' @rdname qstats
 #' @export
-dstats <- function(data, x, ...){
+qstats <- function(data, x, ...){
   x <- enquo(x)
   dots <- enquos(...)
   if(!is.numeric(data %>% pull(!!x))){

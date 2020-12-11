@@ -4,12 +4,14 @@
 \alias{histograms}
 \title{Histograms}
 \usage{
-histograms(data, fill = "deepskyblue2", bins = 30)
+histograms(data, fill = "deepskyblue2", color = "white", bins = 30)
 }
 \arguments{
 \item{data}{data frame}
 
 \item{fill}{fill color for histogram bars}
+
+\item{color}{border color for histogram bars}
 
 \item{bins}{number of bins (bars) for the histograms}
 }

@@ -58,9 +58,6 @@
     <loc>http://rkabacoff.github.io/qacr/reference/dfPlot.html</loc>
   </url>
   <url>
-    <loc>http://rkabacoff.github.io/qacr/reference/dstats.html</loc>
-  </url>
-  <url>
     <loc>http://rkabacoff.github.io/qacr/reference/farmers_markets.html</loc>
   </url>
   <url>
@@ -106,6 +103,9 @@
     <loc>http://rkabacoff.github.io/qacr/reference/plot.tab.html</loc>
   </url>
   <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/print.contents.html</loc>
+  </url>
+  <url>
     <loc>http://rkabacoff.github.io/qacr/reference/print.crosstab.html</loc>
   </url>
   <url>
@@ -115,7 +115,10 @@
     <loc>http://rkabacoff.github.io/qacr/reference/qacr-package.html</loc>
   </url>
   <url>
-    <loc>http://rkabacoff.github.io/qacr/reference/Recoder.html</loc>
+    <loc>http://rkabacoff.github.io/qacr/reference/qstats.html</loc>
+  </url>
+  <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/recodes.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/reference/rocPlot.html</loc>
@@ -154,7 +157,10 @@
     <loc>http://rkabacoff.github.io/qacr/articles/crosstab.html</loc>
   </url>
   <url>
-    <loc>http://rkabacoff.github.io/qacr/articles/Intro_dstats.html</loc>
+    <loc>http://rkabacoff.github.io/qacr/articles/qacr.html</loc>
+  </url>
+  <url>
+    <loc>http://rkabacoff.github.io/qacr/articles/qstats.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/articles/tab.html</loc>

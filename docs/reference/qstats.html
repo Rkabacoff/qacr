@@ -41,7 +41,8 @@
 
 <meta property="og:title" content="Summary statistics for a quantitative variable — qstats" />
 <meta property="og:description" content="This function provides descriptive statistics for a quantitative
-variable alone or seperately by groups. You can provide user-defined statistics." />
+variable alone or seperately by groups. Any function that returns a single
+numeric value can bue used." />
 
 
 
@@ -87,7 +88,14 @@ variable alone or seperately by groups. You can provide user-defined statistics.
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <li>
+  <a href="../articles/qacr.html">
+    <span class="fas fa fas fa-chalkboard-teacher"></span>
+     
+    Getting Started
+  </a>
+</li>
+<li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fas fa fas fa-book"></span>
      
@@ -106,7 +114,7 @@ variable alone or seperately by groups. You can provide user-defined statistics.
       <a href="../articles/crosstab.html">Creating two-way frequency tables</a>
     </li>
     <li>
-      <a href="../articles/Intro_dstats.html">Introduction to the dstats function</a>
+      <a href="../articles/qstats.html">Descriptive statistics by group</a>
     </li>
   </ul>
 </li>
@@ -121,14 +129,14 @@ variable alone or seperately by groups. You can provide user-defined statistics.
   <a href="../news/index.html">
     <span class="fa fa-newspaper-o"></span>
      
-    news
+    News
   </a>
 </li>
 <li>
   <a href="https://github.com/rkabacoff/qacr/">
     <span class="fa fa-github fa-lg"></span>
      
-    github
+    GitHub
   </a>
 </li>
       </ul>
@@ -151,7 +159,8 @@ variable alone or seperately by groups. You can provide user-defined statistics.
 
     <div class="ref-description">
     <p>This function provides descriptive statistics for a quantitative
-variable alone or seperately by groups. You can provide user-defined statistics.</p>
+variable alone or seperately by groups. Any function that returns a single
+numeric value can bue used.</p>
     </div>
 
     <pre class="usage"><span class='fu'>qstats</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -171,23 +180,26 @@ variable alone or seperately by groups. You can provide user-defined statistics.
       <th>...</th>
       <td><p>list of grouping variables</p></td>
     </tr>
+    <tr>
+      <th>statistics</th>
+      <td><p>statistics to calculate (any function that produces a
+numeric value), Default: <code><a href='https://rdrr.io/r/base/c.html'>c("n", "mean", "sd")</a></code></p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>if <code>TRUE</code>, delete cases with missing values on x and or grouping
+variables, Default: <code>TRUE</code></p></td>
+    </tr>
+    <tr>
+      <th>digits</th>
+      <td><p>number of decimal digits to print, Default: 2</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a data frame, where columns are grouping variables (optional) and
 statistics</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>By default, <code>dstats</code> calculates the n, mean, and sd of the
-numeric variable. However you can select any statistics that return
-single numbers. For example, adding
-<code>statistics=c("n", "median", "min", "max")</code> returns
-those statistics instead.</p>
-<p>Be default, cases with missing values on x or the grouping variables are
-deleted. Add <code>na.rm = FALSE</code> to change this behavior.</p>
-<p>By default, two significant digits are printed. Add
-<code>digits=3</code> to print 3 significant digits, etc.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># If no keyword arguments are provided, default values are used</span>
@@ -201,26 +213,23 @@ deleted. Add <code>na.rm = FALSE</code> to change this behavior.</p>
 <span class='fu'>qstats</span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>mpg</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;    n  mean   sd
 #&gt; 1 32 20.09 6.03</div><div class='input'>
-<span class='fu'>qstats</span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>mpg</span>, <span class='va'>am</span>, <span class='va'>gear</span>, <span class='va'>cyl</span>, <span class='va'>carb</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    am gear cyl carb n  mean   sd
-#&gt; 1   0    3   4    1 1 21.50   NA
-#&gt; 2   0    3   6    1 2 19.75 2.33
-#&gt; 3   0    3   8    2 4 17.15 2.09
-#&gt; 4   0    3   8    3 3 16.30 1.05
-#&gt; 5   0    3   8    4 5 12.62 2.09
-#&gt; 6   0    4   4    2 2 23.60 1.13
-#&gt; 7   0    4   6    4 2 18.50 0.99
-#&gt; 8   1    4   4    1 4 29.10 5.06
-#&gt; 9   1    4   4    2 2 25.90 6.36
-#&gt; 10  1    4   6    4 2 21.00 0.00
-#&gt; 11  1    5   4    2 2 28.20 3.11
-#&gt; 12  1    5   6    6 1 19.70   NA
-#&gt; 13  1    5   8    4 1 15.80   NA
-#&gt; 14  1    5   8    8 1 15.00   NA</div><div class='input'>
-<span class='co'># You can input user-defined functions</span>
-<span class='co'># my_n &lt;- function(xs) length(xs)</span>
-<span class='co'># qstats(mtcars, mpg, stats = c("my_n"), am, gear)</span>
-</div></pre>
+<span class='fu'>qstats</span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>mpg</span>, <span class='va'>am</span>, <span class='va'>cyl</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   am cyl  n  mean   sd
+#&gt; 1  0   4  3 22.90 1.45
+#&gt; 2  0   6  4 19.12 1.63
+#&gt; 3  0   8 12 15.05 2.77
+#&gt; 4  1   4  8 28.08 4.48
+#&gt; 5  1   6  3 20.57 0.75
+#&gt; 6  1   8  2 15.40 0.57</div><div class='input'>
+<span class='co'># You can specify your own functions (e.g., median,</span>
+<span class='co'># median absolute deviation, minimum, maximum))</span>
+<span class='fu'>qstats</span><span class='op'>(</span><span class='va'>mtcars</span>, <span class='va'>mpg</span>, <span class='va'>am</span>, <span class='va'>gear</span>,
+       stats <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"median"</span>, <span class='st'>"mad"</span>, <span class='st'>"min"</span>, <span class='st'>"max"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   am gear median  mad  min  max
+#&gt; 1  0    3  15.50 3.26 10.4 21.5
+#&gt; 2  0    4  21.00 3.71 17.8 24.4
+#&gt; 3  1    4  25.05 6.00 21.0 33.9
+#&gt; 4  1    5  19.70 6.97 15.0 30.4</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

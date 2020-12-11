@@ -4,7 +4,21 @@
 \alias{scatter}
 \title{Scatterplot}
 \usage{
-scatter(data, x, y, fit = TRUE, jitter = FALSE, color = "deepskyblue2")
+scatter(
+  data,
+  x,
+  y,
+  outlier = 3,
+  alpha = 1,
+  digits = 3,
+  title,
+  margin = "none",
+  stats = TRUE,
+  point_color = "deepskyblue2",
+  outlier_color = "violetred1",
+  line_color = "grey30",
+  margin_color = "deepskyblue2"
+)
 }
 \arguments{
 \item{data}{data frame}
@@ -13,27 +27,58 @@ scatter(data, x, y, fit = TRUE, jitter = FALSE, color = "deepskyblue2")
 
 \item{y}{quantitative response variable}
 
-\item{fit}{logical. If \code{TRUE}, add a line
-of best fit with 95 percent confidence interval.}
+\item{outlier}{number. Observations with studentized residuals
+larger than this value are flagged. If set to 0, observations
+are not flagged.}
 
-\item{jitter}{logical. If \code{TRUE}, points
-are jittered}
+\item{alpha}{Transparency of data points. A numeric value between 0
+(completely transparent) and 1 (completely opaque).}
 
-\item{color}{character. color for points}
+\item{digits}{Number of significant digits in displayed statistics.}
+
+\item{title}{Optional title.}
+
+\item{margin}{Marginal plots. If specified, parameter can be
+\code{histogram}, \code{boxplot}, \code{violin},
+or \code{density}. Will add these
+features to the top and right margin of the graph.}
+
+\item{stats}{logical. If \code{TRUE}, the slope,
+correlation, and correlation squared (expressed as a percentage) for the
+regression line are printed on the subtitle line.}
+
+\item{point_color}{Color used for points.}
+
+\item{outlier_color}{Color used to identify outliers (see the \code{outlier}
+parameter.}
+
+\item{line_color}{Color for regression line.}
+
+\item{margin_color}{Fill color for margin boxplots, density plots, or
+histograms.}
 }
 \value{
-a ggplot graph
+a ggplot2 graph
 }
 \description{
-Create a scatter plot between two
-quantitative variables.
+Create a scatter plot between two quantitative variables.
 }
 \details{
-The \code{scatter} function creates a scatter plot with
-a linear line of best fit. The equation and R-squared,
-along with level of significance.
+The \code{scatter} function generates a scatterplot between two quantitative
+variables, along with a line of best fit and a 95\% confidence interval.
+By default, regression statistics (b, r, r2, p) are printed and
+outliers (observations with studentized residuals > 3) are flagged.
+Optionally, variable distributions (histograms, boxplots, violin plots,
+density plots) can be added to the plot margins.
+}
+\note{
+Variable names do not have to be quoted.
 }
 \examples{
-scatter(cars74, wt, mpg)
-
+scatter(cars74, hp, mpg)
+scatter(cars74, wt, hp)
+p <- scatter(ggplot2::mpg, displ, hwy,
+        margin="histogram",
+        title="Engine Displacement vs. Highway Mileage")
+plot(p)
 }

@@ -4,6 +4,7 @@
 #' @param fill fill color for bars
 #' @param color color for bar labels
 #' @param labels if \code{TRUE}, bars are labeled with percents
+#' @param sort if \code{TRUE}, bars are sorted by frequency
 #' @param maxcat numeric. barcharts with more than this number of bars will not be plotted.
 #' @param abbrev numeric. abbreviate bar labels to at most, this character length.
 #' @return a ggplot graph
@@ -16,8 +17,11 @@
 #' @import scales
 #' @export
 barcharts <- function(data, fill="deepskyblue2",
-                      color="grey30", labels=TRUE,
-                      maxcat=20, abbrev=20){
+                      color="grey30",
+                      labels=TRUE,
+                      sort=TRUE,
+                      maxcat=20,
+                      abbrev=20){
 
 
   # bind global variables to keep check from warning
@@ -71,7 +75,12 @@ barcharts <- function(data, fill="deepskyblue2",
     mutate(pct = (n/ tot)*100,
            pctlabel = paste0(round(pct), "%"))
 
-  p <- ggplot(data=cdata_long, aes(x=value, y=pct)) +
+  if(sort){
+    p <- ggplot(data=cdata_long, aes(reorder(x=value,pct), y=pct))
+  } else {
+    p <- ggplot(data=cdata_long, aes(x=value, y=pct))
+  }
+  p <- p +
     geom_bar(fill=fill, stat="identity") +
     labs(x="Value", y="Percent", title="Bar charts") +
     scale_y_continuous(breaks=pretty_breaks()) +

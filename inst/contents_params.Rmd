@@ -1,0 +1,76 @@
+---
+title: Review
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
+```
+
+
+```{r echo=FALSE}
+require(qacr)
+require(knitr)
+require(kableExtra)
+x <- contents(coffee)
+```
+
+## Data frame: `r x$dfname`.
+
+The data frame has `r x$nrow` rows and `r x$ncol` columns.
+
+### Overall
+
+#### Description
+```{r echo=FALSE}
+kable(x$overall) %>%
+  kable_styling(bootstrap_options=c("striped", "hover"), 
+                full_width=FALSE, position="left")
+
+```
+
+#### Plot
+
+```{r echo=FALSE}
+dfPlot(coffee)
+```
+
+### Quantitative Variables
+
+#### Description
+```{r echo=FALSE}
+kable(x$qvars) %>%
+  kable_styling(bootstrap_options=c("striped", "hover"), 
+                full_width=FALSE, position="left")
+
+```
+
+#### Plot
+
+```{r echo=FALSE}
+histograms(coffee)
+```
+
+### Categorical Variables
+
+#### Description
+```{r echo=FALSE}
+kable(x$cvars) %>%
+  kable_styling(bootstrap_options=c("striped", "hover"), 
+                full_width=FALSE, position="left")
+
+```
+
+#### Plot
+
+```{r echo=FALSE}
+barcharts(coffee)
+```
+
+### Correlations
+
+#### Plot
+
+```{r echo=FALSE}
+corplot(coffee, sort=TRUE,lab_size=2)
+```
