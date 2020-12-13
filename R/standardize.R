@@ -47,8 +47,7 @@ standardize <- function(data, mean = 0, sd = 1,
       doit <- number & !dummy
     }
     if (doit) {
-      x <- x[!is.na(x)]
-      x <- (x - mean(x)) / sd(x)
+      x <- (x - mean(x, na.rm=TRUE)) / sd(x, na.rm=TRUE)
       x <- x * sd + mean
     }
     return(x)

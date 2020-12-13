@@ -30,9 +30,8 @@ normalize <- function(data, new_min = 0, new_max = 1) {
 
   rerange <- function(x) {
       if (is.numeric(x)) {
-        x <- x[!is.na(x)]
-        oldmin <- min(x)
-        newmax <- max(x)
+        oldmin <- min(x, na.rm=TRUE)
+        newmax <- max(x, na.rm=TRUE)
         x <- (new_max - new_min)/(newmax-oldmin)*(x-oldmin)+new_min
     }
     return(x)
