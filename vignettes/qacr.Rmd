@@ -190,6 +190,21 @@ kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position
 
 ## Machine learning
 
+### Cluster Analysis
+
+```{r, echo=FALSE}
+d <- data.frame(Function=c("[**wss_plot**](../reference/wss_plot.html)"),
+                Description=c("Create a within-groups sums-of-squares
+                              plot for determining the number of clusters
+                              in a numeric dataset."
+                              ))
+
+kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+
+```
+
+### Classification
+
 ```{r, echo=FALSE}
 d <- data.frame(Function=c("[**rocPlot**](../reference/rocPlot.html)"),
                 Description=c("Produce a Receive Operating Curve (ROC) for

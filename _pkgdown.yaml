@@ -23,6 +23,7 @@ reference:
       - '`tab`'
       - '`univariatePlot`'
       - '`qstats`'
+      - '`wss_plot`'
   - title: Utilities
     desc: ~
     contents:
