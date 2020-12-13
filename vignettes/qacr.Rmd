@@ -12,8 +12,235 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(qacr)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+```
+<div>
+![](duckhead.jpg)
+</div>
+
+The **qacr** package contains functions and data sets designed to simplify data analyses and aid in the instruction of data science courses. The primary functions and data sets are described below.
+
+## Preparing Data
+
+```{r, echo=FALSE}
+d <- data.frame(Function=c("[**import**](../reference/import.html)", 
+                           "[**recodes**](../reference/recodes.html)",
+                         "[**standardize**](../reference/standardize.html)",
+                         "[**normalize**](../reference/normalize.html)"),
+                Description=c("`import()` can read data from an excel
+                              spreadsheet, SAS, SPSS, or Stata data file, 
+                              or a delimited text file (e.g., csv) and 
+                              save it as a data frame. In the
+                              case of a delimited text file, the structure
+                              and delimiters are determined from the data.",
+                              
+                              "`recodes()` provides a simple and
+                              intuitive way to recode the values of
+                              one or more variables.
+                              Numeric, character, and factor values can be
+                              quickly recoded, missing values can be
+                              specified or replaced with valid values, 
+                              and the scoring of scales can be
+                              reversed (e.g. 1-low to 7-high becomes 1-high 
+                              to 7-low).
+                              Additionally, numeric variables can be converted
+                              to categorical or factor variables based on
+                              value ranges, and  the levels 
+                              of a categorical variables can be
+                              collapsed/combined.",
+                              
+                              "`standardize()` transforms all the 
+                              numeric variables in a data frame to same
+                              mean and standard deviation (mean=0 sd=1,
+                              by default),
+                              without modifying character, factor, or dummy
+                              coded variables.",
+                              
+                               "`normalize()` transforms all the 
+                              numeric variables in a data frame to same
+                              range of values ([0, 1] by default). Again,
+                              character and factor variables are left
+                              unchanged."))
+
+kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+
 ```
 
-```{r setup}
-library(qacr)
+
+## Describing a data set
+
+```{r, echo=FALSE}
+d <- data.frame(Function=c("[**contents**](../reference/contents.html)", 
+                           "[**dfPlot**](../reference/dfPlot.html)",
+                           "[**barcharts**](../reference/barcharts.html)",
+                           "[**histograms**](../reference/histograms.html)",
+                           "[**densities**](../reference/densities.html)"
+                          ),
+                Description=c("`contents()` provides a comprehensive 
+                              description of a data frame. The output is
+                              **much** more detailed than that provided by
+                              the base `summary.data.frame()` function, 
+                              and is easier to read and understand. This
+                              function should be your first stop when 
+                              looking a new dataset.",
+                              
+                              "`dfPlot()` helps you visual a data frame. 
+                              Variable are grouped by type (numeric, integer,
+                              character, factor, date) and color coded. The
+                              percent of missing data for each variable is
+                              also displayed, along with the total number
+                              of variables and cases.",
+                              
+                              "`barcharts()` provides bar charts of all the
+                              character or factor variables in a data frame,
+                              within a single multipart graph.",
+                              
+                              "`histograms()` provides histograms of the all
+                              quantitative variables in a data frame,
+                              within a single multipart graph.",
+                              
+                              "`densities()` provides density charts of all
+                              the quantitative variables in a data frame,
+                              within a single multipart graph."
+                              ))
+
+kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+
+```
+
+
+## Exploratory data analysis
+
+### Numeric variables
+
+```{r, echo=FALSE}
+d <- data.frame(Function=c(
+  "[**qstats**](../reference/qstats.html)",
+  "[**univariatePlot**](../reference/univariatePlot.html)",
+  "[**scatter**](../reference/scatter.html)",
+  "[**corPlot**](../reference/corPlot.html)"),
+                
+   Description=c("`qstats()` allows you to easily calculate any number
+                 of descriptive statistics (e.g., n, mean, sd) for a
+                 quantiatative variable. The results can be broken down by the
+                 levels of one of more categorical variables
+                 (groups). Any function that procudes a single number can
+                  be used. See the [vignette](qstats.html) for examples.",
+                  
+                   "`univariatePlot()` provides a detailed
+                   visualization of the distribution of values in 
+                   a quantiative variable. The graph contains a
+                   histrogram, jittered dot plot, density curve,
+                   and boxplot, Annotations provide statistics
+                   such as *n*, *mean*, *sd*, *median*, *min*,
+                              *max*, *skew*, and *outliers*.",
+                              
+                   "`scatter()` generates a scatter plot and line
+                   of best fit with 95% confidence interval
+                   displaying the relationship between two
+                   quantiative variables. Annotations include
+                   the slope, correlation coefficient
+                   (r), r-squared, and p_value. Oultiers
+                   (determinded by studentized residuals) are
+                   flagged. Optionally, marginal distributions
+                   (histograms, boxplots, density curves, 
+                    violin plots) can be added to the margins of the plot.",
+                    
+                    "`corplot()` plots the correlations among
+                 numeric variables in a data frame. Variables
+                 can be sorted to place variables with similar correlation
+                 patterns together."
+                              ))
+
+kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+
+```
+
+
+
+### Categorical Variables
+
+```{r, echo=FALSE}
+d <- data.frame(Function=c("[**tab**](../reference/tab.html)", 
+                          "[**crosstab**](../reference/crosstab.html)"
+                          ),
+                Description=c("`tab()` generates a frequency table and 
+                              bar chart for a categorical
+                              variable. There are many options including
+                              sorting categories by frequency, adding
+                              cumulative frequencies and percents, and
+                              combining infrequent categories into an 
+                              'Other' category. See the
+                              [vignette](tab.html) for examples.",
+                              
+                              "`crosstab()` generates a two-way frequency
+                              table from two categorical variables. There 
+                              are many options including cell, row, and column
+                              percents, plotting options, and a chi-square 
+                              test of independence. See the
+                              [vignette](crosstab.html) for examples."
+                              ))
+
+kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+
+```
+
+## Machine learning
+
+```{r, echo=FALSE}
+d <- data.frame(Function=c("[**rocPlot**](../reference/rocPlot.html)"),
+                Description=c("Produce a Receive Operating Curve (ROC) for
+                              a binary prediction problem."
+                              ))
+
+kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+
+```
+
+## Example Data sets
+
+The `qacr` package contains over 25 datasets chosen to illustrate exploratory
+data analysis, data visualization, and machine learning. They are large enough to be interesting, while small enough to run easily on a laptop.
+
+While **each** dataset can be used for data visualization, here are some pointers to get your started with specialized applications.
+
+
+```{r, echo=FALSE}
+d <- data.frame(Ideas=c("Mapping",
+                      "Regression",
+                      "Classification",
+                      "Text Mining"),
+                Datasets=c("[Amazon forest fires](../reference/amazon.html),
+                           [US border crossings](../reference/border.html), 
+                           [CIA World FactBook](../reference/countries.html), 
+                           [Maryland crash data](../reference/crashes.html),
+                    [US farmer\'s markets](..reference/farmers_markets.html),
+                           [Japanese hostels](../reference/hostels.html), 
+                    [US hate crimes](../reference/hate_crimes.html),
+                    [California housing data](../reference/housing.html),
+                    [Major sports venues](../reference/venues.html)",
+                    
+                    "[MLB batting statistics](../reference/batting.html), 
+                    [Boston housing data](../reference/Boston.html), 
+                    [Automobile dataset (large)](../reference/cardata.html), 
+                    [Automobile dataset (small)](../reference/cars74.html), 
+                    [Coffee ratings](../reference/coffee.html),
+                    [Google play apps](../reference/googleplay.html), 
+                    [Medical costs](../reference/insurance.html), 
+                    [Student grades](../reference/student.html), 
+                    [Time spent watching TV](../reference/tv.html)",
+                    
+        "[Missed medial appointments](../reference/appointments.html),
+                    [Breast cancer](../reference/breast.html), 
+        [Contraceptive use](../reference/contraception.html),
+                    [Heart disease](../reference/heart.html)",
+        
+                    "[British movie plots](../reference/movies.html), 
+        [Wine reviews](../reference/wine.html)"))
+
+kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+
 ```

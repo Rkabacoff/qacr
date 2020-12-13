@@ -7,3 +7,4 @@
 * Added `univariatePlot` function for exploring the distribution of a quantitative variable.  
 * The function `dstats` renamed to `qstats` with new documentation. 
 * A `getting started` vignette added.
+* Two functions - `standarize` and `normalize` were added.

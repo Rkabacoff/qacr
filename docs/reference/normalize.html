@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • qacr</title>
+<title>Normalize numeric variables — normalize • qacr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Normalize numeric variables — normalize" />
+<meta property="og:description" content="Normalize the numeric variables in a data frame" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -149,36 +150,86 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/rkabacoff/qacr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Normalize numeric variables</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/normalize.R'><code>R/normalize.R</code></a></small>
+    <div class="hidden name"><code>normalize.Rd</code></div>
     </div>
 
-    <div id="qacr-0010" class="section level1">
-<h1 class="page-header" data-toc-text="0.0.1.0">
-<a href="#qacr-0010" class="anchor"></a>qacr 0.0.1.0</h1>
-<ul>
-<li>Added a <code>recodes</code> function to easily recode one or more variables in a data frame.<br>
-</li>
-<li>Updated the <code>scatter</code> function to include regression statistics and marginal distribution plots.</li>
-<li>Replace <code>df_summary</code> function with <code>contents</code> function.<br>
-</li>
-<li>Added new <code>rocPlot</code> function for plot Receiver Operating Curves.<br>
-</li>
-<li>Added <code>univariatePlot</code> function for exploring the distribution of a quantitative variable.<br>
-</li>
-<li>The function <code>dstats</code> renamed to <code>qstats</code> with new documentation.</li>
-<li>A <code>getting started</code> vignette added.</li>
-<li>Two functions - <code>standarize</code> and <code>normalize</code> were added.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Normalize the numeric variables in a data frame</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>normalize</span><span class='op'>(</span><span class='va'>data</span>, new_min <span class='op'>=</span> <span class='fl'>0</span>, new_max <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>a data frame.</p></td>
+    </tr>
+    <tr>
+      <th>new_min</th>
+      <td><p>minimum for the transformed variables.</p></td>
+    </tr>
+    <tr>
+      <th>new_max</th>
+      <td><p>maximum for the transformed variables.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a data frame</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>normalize</code> transforms all the numeric variables
+in a data frame to have the same minimum and maximum values.
+By default, this will be a minimum of 0 and maximum of 1.
+Character variables and factors are left unchanged.</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>Use this function to be transform variables into a given range. The default
+is [0, 1], but [-1, 1], [0, 100], or any other range is permissible.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>cars74</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;                auto  mpg  cyl disp  hp drat    wt  qsec       vs        am
+#&gt; 1         Mazda RX4 21.0 cyl6  160 110 3.90 2.620 16.46 V-shaped    manual
+#&gt; 2     Mazda RX4 Wag 21.0 cyl6  160 110 3.90 2.875 17.02 V-shaped    manual
+#&gt; 3        Datsun 710 22.8 cyl4  108  93 3.85 2.320 18.61 straight    manual
+#&gt; 4    Hornet 4 Drive 21.4 cyl6  258 110 3.08 3.215 19.44 straight automatic
+#&gt; 5 Hornet Sportabout 18.7 cyl8  360 175 3.15 3.440 17.02 V-shaped automatic
+#&gt; 6           Valiant 18.1 cyl6  225 105 2.76 3.460 20.22 straight automatic
+#&gt;     gear  carb
+#&gt; 1 gears4 carb4
+#&gt; 2 gears4 carb4
+#&gt; 3 gears4 carb1
+#&gt; 4 gears3 carb1
+#&gt; 5 gears3 carb2
+#&gt; 6 gears3 carb1</div><div class='input'>
+<span class='va'>cars74_st</span> <span class='op'>&lt;-</span> <span class='fu'>normalize</span><span class='op'>(</span><span class='va'>cars74</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>cars74_st</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;                auto       mpg  cyl      disp        hp      drat        wt
+#&gt; 1         Mazda RX4 0.4510638 cyl6 0.2217511 0.2049470 0.5253456 0.2830478
+#&gt; 2     Mazda RX4 Wag 0.4510638 cyl6 0.2217511 0.2049470 0.5253456 0.3482485
+#&gt; 3        Datsun 710 0.5276596 cyl4 0.0920429 0.1448763 0.5023041 0.2063411
+#&gt; 4    Hornet 4 Drive 0.4680851 cyl6 0.4662010 0.2049470 0.1474654 0.4351828
+#&gt; 5 Hornet Sportabout 0.3531915 cyl8 0.7206286 0.4346290 0.1797235 0.4927129
+#&gt; 6           Valiant 0.3276596 cyl6 0.3838863 0.1872792 0.0000000 0.4978266
+#&gt;        qsec       vs        am   gear  carb
+#&gt; 1 0.2333333 V-shaped    manual gears4 carb4
+#&gt; 2 0.3000000 V-shaped    manual gears4 carb4
+#&gt; 3 0.4892857 straight    manual gears4 carb1
+#&gt; 4 0.5880952 straight automatic gears3 carb1
+#&gt; 5 0.3000000 V-shaped automatic gears3 carb2
+#&gt; 6 0.6809524 straight automatic gears3 carb1</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 
