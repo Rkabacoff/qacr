@@ -28,7 +28,6 @@
 #' wss_plot(iris[-5])
 
 wss_plot <- function(data, nc=15, standardize=TRUE, seed=1234){
-  require(ggplot2)
 
   # standardize data
   if(!any(sapply(data, is.numeric)))stop("data must be numeric.")

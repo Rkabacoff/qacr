@@ -1,3 +1,8 @@
+# qacr 1.0.0.1
+
+* First major release after testing
+* Addition of cluster analysis support functions
+
 # qacr 0.0.1.0
 
 * Added a `recodes` function to easily recode one or more variables in a data frame.  

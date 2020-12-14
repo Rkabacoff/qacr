@@ -1,6 +1,6 @@
 Package: qacr
 Title: Functions to Facilitate Data Science Projects
-Version: 0.0.1.0
+Version: 1.0.0.1
 Authors@R: 
     person(given = "QAC",
            family = "356",
@@ -35,5 +35,6 @@ Imports:
     scales,
     e1071,
     rlang,
-    ggExtra
+    ggExtra,
+    kableExtra
 URL: https://github.com/rkabacoff/qacr

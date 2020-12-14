@@ -16,6 +16,7 @@ reference:
       - '`histograms`'
       - '`import`'
       - '`normalize`'
+      - '`profile_plot`'
       - '`recodes`'
       - '`rocPlot`'
       - '`scatter`'
