@@ -16,6 +16,9 @@
     <loc>http://rkabacoff.github.io/qacr/reference/batting.html</loc>
   </url>
   <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/biPlot.html</loc>
+  </url>
+  <url>
     <loc>http://rkabacoff.github.io/qacr/reference/border.html</loc>
   </url>
   <url>
@@ -58,6 +61,9 @@
     <loc>http://rkabacoff.github.io/qacr/reference/dfPlot.html</loc>
   </url>
   <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/FA.html</loc>
+  </url>
+  <url>
     <loc>http://rkabacoff.github.io/qacr/reference/farmers_markets.html</loc>
   </url>
   <url>
@@ -97,10 +103,16 @@
     <loc>http://rkabacoff.github.io/qacr/reference/pbp2018.html</loc>
   </url>
   <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/PCA.html</loc>
+  </url>
+  <url>
     <loc>http://rkabacoff.github.io/qacr/reference/phelp.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/reference/plot.crosstab.html</loc>
+  </url>
+  <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/plot.factorAnalysis.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/reference/plot.tab.html</loc>
@@ -131,6 +143,12 @@
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/reference/scatter.html</loc>
+  </url>
+  <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/score.html</loc>
+  </url>
+  <url>
+    <loc>http://rkabacoff.github.io/qacr/reference/screePlot.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/reference/skewness.html</loc>
@@ -167,6 +185,9 @@
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/articles/crosstab.html</loc>
+  </url>
+  <url>
+    <loc>http://rkabacoff.github.io/qacr/articles/factorAnalysis.html</loc>
   </url>
   <url>
     <loc>http://rkabacoff.github.io/qacr/articles/qacr.html</loc>

@@ -8,18 +8,22 @@ reference:
     desc: ~
     contents:
       - '`barcharts`'
+      - '`biPlot`'
       - '`contents`'
       - '`corplot`'
       - '`crosstab`'
       - '`densities`'
       - '`dfPlot`'
+      - '`FA`'
       - '`histograms`'
       - '`import`'
       - '`normalize`'
+      - '`PCA`'
       - '`profile_plot`'
       - '`recodes`'
       - '`rocPlot`'
       - '`scatter`'
+      - '`screePlot`'
       - '`standardize`'
       - '`tab`'
       - '`univariatePlot`'
@@ -31,9 +35,11 @@ reference:
       - '`phelp`'
       - '`print.contents`'
       - '`print.crosstab`'
+      - '`plot.factorAnalysis`'
       - '`print.tab`'
       - '`plot.crosstab`'
       - '`plot.tab`'
+      - '`score`'
       - '`skewness`'
   - title: Datasets
     desc: ~
@@ -85,6 +91,8 @@ navbar:
          href: articles/crosstab.html
       -  text: Descriptive statistics by group
          href: articles/qstats.html
+      -  text: Dimension Reduction
+         href: articles/factorAnalysis.html
     - icon: fa-file-code-o
       text: "Documentation"
       href: reference/index.html

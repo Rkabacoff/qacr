@@ -205,6 +205,26 @@ kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position
 
 ```
 
+### Dimension Reduction
+
+```{r, echo=FALSE}
+d <- data.frame(Function=c("[**biPlot**](../reference/biPlot.html)",
+                           "[**FA**](../reference/FA.html)",
+                           "[**PCA**](../reference/PCA.html)",
+                           "[**screePlot**](../reference/screePlot.html)"),
+                Description=c("Creates a principal components biplot.",
+                              "Performs common factor analysis (principle
+                              axis, maximum likelihood) with options.",
+                              "Performs a principal components analysis, 
+                              with options.",
+                              "Performs a parallel analysis for determining
+                              the number of factors or compoents in a numeric
+                              dataset."
+                              ))
+
+kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+
+```
 ### Classification
 
 ```{r, echo=FALSE}

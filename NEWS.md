@@ -1,3 +1,8 @@
+# qacr 1.0.1.1
+
+* Addition of dimension reduction functions including `biPlot`, `FA`, `PCA`, 
+and `screePlot`.
+
 # qacr 1.0.0.1
 
 * First major release after testing
