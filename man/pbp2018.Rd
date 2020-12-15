@@ -3,7 +3,7 @@
 \docType{data}
 \name{pbp2018}
 \alias{pbp2018}
-\title{2018 MLB Pitcher Data}
+\title{2018 MLB pitcher data}
 \format{
 A data frame with 84007 rows and 33 variables.
 
@@ -42,7 +42,7 @@ The variables are as follows:
  \item{fld_score}{current score for defensive team}
  \item{if_fielding_alignment}{type of infield shift}
  \item{of_fielding_alignment}{type of outfield shift}
- 
+
 }
 }
 \source{

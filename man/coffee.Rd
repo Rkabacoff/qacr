@@ -13,19 +13,19 @@ The variables are as follows:
    \item{number_of_bags}{Number of bags harvested}
    \item{in_country_partner}{Partner of the Company in the Country of Origin}
    \item{grading_date}{Date the Coffee was reviewed}
-   \item{owner_1}{Owner of the Company or the Company Name}  
+   \item{owner_1}{Owner of the Company or the Company Name}
    \item{variety}{Variety of Coffee}
    \item{processing_method}{Method by Which the Beans were Processed}
    \item{aroma}{Reviewer's Score of Aroma on a 1-10 scale}
-   \item{flavor}{Reviewer's Score of Flavor on a 1-10 scale}  
+   \item{flavor}{Reviewer's Score of Flavor on a 1-10 scale}
    \item{aftertaste}{Reviewer's Score of Aftertaste on a 1-10 scale}
    \item{acidity}{Reviewer's Score of Acidity on a 1-10 scale}
    \item{body}{Reviewer's Score of Body on a 1-10 scale}
-   \item{balance}{Reviewer's Score of Balance on a 1-10 scale}  
+   \item{balance}{Reviewer's Score of Balance on a 1-10 scale}
    \item{uniformity}{Reviewer's Score of Uniformity on a 1-10 scale}
    \item{clean_cup}{Reviewer's Score of "Transparency of a cup" on a 1-10 scale}
    \item{sweetness}{Reviewer's Score of Sweetness on a 1-10 scale}
-   \item{cupper_points}{Reviewer's Holistic Score of the cup on a 1-10 scale}  
+   \item{cupper_points}{Reviewer's Holistic Score of the cup on a 1-10 scale}
    \item{total_cup_points}{Sum of the Reviewer's Scores}
    \item{moisture}{Moisture percentage from Green Analysis}
    \item{category_one_defects}{Major defects in the beans}
@@ -38,7 +38,7 @@ The variables are as follows:
 }
 \source{
 The data is a subset scraped from the Coffee Quality Institute website
-using the scraper developed by *jldbc*. Full data can be 
+using the scraper developed by *jldbc*. Full data can be
 found at \href{https://github.com/jldbc/coffee-quality-database}{https://github.com/jldbc/coffee-quality-database}.
 }
 \usage{

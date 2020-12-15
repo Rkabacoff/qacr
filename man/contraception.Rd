@@ -3,7 +3,7 @@
 \docType{data}
 \name{contraception}
 \alias{contraception}
-\title{Contraceptive Method Choice}
+\title{Contraceptive method choice}
 \format{
 A data frame with 1473 rows and 10 variables:
 \describe{
@@ -20,23 +20,23 @@ A data frame with 1473 rows and 10 variables:
 }
 }
 \source{
-Dua, D. and Graff, C. (2019). 
-UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. 
+Dua, D. and Graff, C. (2019).
+UCI Machine Learning Repository [http://archive.ics.uci.edu/ml].
 Irvine, CA: University of California, School of Information and Computer Science
 }
 \usage{
 contraception
 }
 \description{
-This dataset is a subset of the 1987 National Indonesia 
+This dataset is a subset of the 1987 National Indonesia
 Contraceptive Prevalence Survey.
 }
 \details{
-The samples are married women 
-who were either not pregnant or do not know if they were at the 
-time of interview. The problem is to predict the current 
-contraceptive method choice (no use, long-term methods, 
-or short-term methods) of a woman based on her demographic and 
+The samples are married women
+who were either not pregnant or do not know if they were at the
+time of interview. The problem is to predict the current
+contraceptive method choice (no use, long-term methods,
+or short-term methods) of a woman based on her demographic and
 socio-economic characteristics.
 }
 \examples{

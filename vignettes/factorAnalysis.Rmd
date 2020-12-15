@@ -34,7 +34,7 @@ Next, well create a scree plot of the data.
 ```{r fig.width=6, fig.height=6}
 
 # scree plot
-screePlot(ratings)
+scree_plot(ratings)
 ```
 
 The scree plot suggests two components. In the next step, we'll extract two principal components and rotate them using a *varimax* rotation.
@@ -71,7 +71,7 @@ Again, we'll start with a scree plot. This time we'll run 200 simulations. A ran
 
 # scree plot
 set.seed(1234)
-screePlot(ratings, method = "ml", n.iter=200)
+scree_plot(ratings, method = "ml", n.iter=200)
 ```
 
 The scree plot suggests four factors. In the next step, we'll extract two factors and rotate them using a *promax* rotation.

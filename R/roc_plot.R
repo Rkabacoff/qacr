@@ -1,6 +1,6 @@
-#' @title ROC Plot
+#' @title Receiver Operating Characteristic curve
 #'
-#' @description Plot a receiver operating curve for a binary predictive model
+#' @description Plot a receiver operating characteristic curve for a binary predictive model
 #'
 #' @details
 #' Takes a model produced by the train function in the caret package and
@@ -23,9 +23,9 @@
 #' model.lr <- train(Class ~ Age + Amount + Duration,
 #'                   data=GermanCredit,
 #'                   method="glm", family="binomial")
-#' rocPlot(model=model.lr, positive="Bad")
+#' roc_plot(model=model.lr, positive="Bad")
 #'
-rocPlot <- function(model, positive, n.cuts=20, labelsize=3,
+roc_plot <- function(model, positive, n.cuts=20, labelsize=3,
                     labelround=2){
 
   if (!inherits(model, "train")){

@@ -3,7 +3,7 @@
 \docType{data}
 \name{batting}
 \alias{batting}
-\title{Major League Baseball Batting Statistics}
+\title{Major League Baseball batting statistics}
 \format{
 A data frame with 9395 observations on 36 variables. The variables
 are as follows:
@@ -48,7 +48,7 @@ are as follows:
 }
 }
 \source{
-Lahman, S. (2010) Lahman's Baseball Database, 1871-2012, 2012 version, 
+Lahman, S. (2010) Lahman's Baseball Database, 1871-2012, 2012 version,
 \href{http://baseball1.com/statistics/}{http://baseball1.com/statistics/}.
 }
 \usage{
@@ -59,10 +59,10 @@ The batting dataset contains MLB player, salary, and hitting
 statistics from Sean Lahman's Baseball Database.
 }
 \details{
-This dataset combines Lahman's Master, Batting, and Salaries 
-datasets to provide comprehensive batting statistics for each 
-Major League Baseball player. The dataset was reduced to a 
-15 year time frame (2001-2016) and simplified by removing all 
+This dataset combines Lahman's Master, Batting, and Salaries
+datasets to provide comprehensive batting statistics for each
+Major League Baseball player. The dataset was reduced to a
+15 year time frame (2001-2016) and simplified by removing all
 incomplete cases.
 }
 \examples{

@@ -3,7 +3,7 @@
 \docType{data}
 \name{cars74}
 \alias{cars74}
-\title{Motor Trend Car Road Tests}
+\title{Motor Trend car road tests}
 \format{
 A data frame with 32 rows and 11 variables. The variables are
 as follows:
@@ -23,20 +23,20 @@ as follows:
 }
 }
 \source{
-Henderson and Velleman (1981), Building multiple 
+Henderson and Velleman (1981), Building multiple
 regression models interactively. Biometrics, 37, 391-411.
 }
 \usage{
 cars74
 }
 \description{
-The data was extracted from the 1974 Motor Trend US magazine, and 
-comprises fuel consumption and 10 aspects of automobile design and 
+The data was extracted from the 1974 Motor Trend US magazine, and
+comprises fuel consumption and 10 aspects of automobile design and
 performance for 32 automobiles (1973-74 models).
 }
 \details{
 This dataset is the \code{\link[datasets]{mtcars}} dataset that comes
-with base R. However, \code{cyl}, \code{vs}, \code{am}, \code{gear} 
+with base R. However, \code{cyl}, \code{vs}, \code{am}, \code{gear}
 and \code{carb} have been converted
 to factors and rownames have been converted to the variable \code{auto}.
 A description of the variables by Soren Heitmann can be found

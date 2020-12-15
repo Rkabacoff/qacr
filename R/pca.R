@@ -17,7 +17,7 @@
 #' @importFrom psych principal
 #'
 #' @seealso \link{FA}, \link{plot.factorAnalysis}, \link{score}, and
-#' \link{screePlot}.
+#' \link{scree_plot}.
 #'
 #' @return returns a list with 5 components:
 #' \item{call}{the call}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/profile_plot.R
 \name{profile_plot}
 \alias{profile_plot}
-\title{Profile Plots}
+\title{Cluster profile plots}
 \usage{
 profile_plot(data, cluster = "cluster", type = c("bar", "line"))
 }

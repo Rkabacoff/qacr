@@ -3,7 +3,7 @@
 \docType{data}
 \name{Boston}
 \alias{Boston}
-\title{Housing Values in Suburbs of Boston}
+\title{Housing values in suburbs of Boston}
 \format{
 A data frame with 506 rows and 14 variables:
 \describe{
@@ -26,7 +26,7 @@ A data frame with 506 rows and 14 variables:
 \source{
 Harrison, D. and Rubinfeld, D.L. (1978) Hedonic prices and the demand for clean air. J. Environ. Economics and Management 5, 81–102.
 
-Belsley D.A., Kuh, E. and Welsch, R.E. (1980) 
+Belsley D.A., Kuh, E. and Welsch, R.E. (1980)
 Regression Diagnostics. Identifying Influential Data and Sources of Collinearity. New York: Wiley.
 }
 \usage{
@@ -37,13 +37,13 @@ Housing Values in Suburbs of Boston
 }
 \details{
 The \code{\link[MASS]{Boston}} data frame was obtained from Venables and Ripley's \code{MASS} package.
-The data utilize census tracts in the Boston Standard Metropolitatn 
+The data utilize census tracts in the Boston Standard Metropolitatn
 Statistical Area in 1970. Two changes have been made from this original
-dataset. The dollar values for \code{tax} and 
-\code{medv} have been converted to 2020 US dollars (assuming a 299.4\% 
-cumulative inflation rate). Additionally, the \code{black} variable has 
+dataset. The dollar values for \code{tax} and
+\code{medv} have been converted to 2020 US dollars (assuming a 299.4\%
+cumulative inflation rate). Additionally, the \code{black} variable has
 been transformed from its original metric
-(1000*(proportion of blacks by town - 0.63)^2) to a simple the proportion 
+(1000*(proportion of blacks by town - 0.63)^2) to a simple the proportion
 of blacks by town.
 }
 \examples{

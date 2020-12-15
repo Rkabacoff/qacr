@@ -1,4 +1,4 @@
-#' @title British Movie Plots
+#' @title British movie plots
 #'
 #' @description
 #' A dataset containing detailed plot descriptions for 3670 British movies from 1920 to 2017 from their Wikipedia pages.
@@ -20,11 +20,11 @@
 #'   \item{url}{Wikipedia web page}
 #'   \item{plot}{Film's plot from Wikipedia page}
 #' }
-#' 
+#'
 #' @note
 #' This is a good dataset for text mining.
 #'
-#' @source The data are a subset of the Kaggle Wikipedia movie plots dataset 
+#' @source The data are a subset of the Kaggle Wikipedia movie plots dataset
 #' \href{https://www.kaggle.com/jrobischon/wikipedia-movie-plots}{https://www.kaggle.com/jrobischon/wikipedia-movie-plots}
 #' @examples
 #' summary(movies)

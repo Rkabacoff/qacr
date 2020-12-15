@@ -1,25 +1,25 @@
-#' @title Major League Baseball Batting Statistics
-#' 
-#' @description 
+#' @title Major League Baseball batting statistics
+#'
+#' @description
 #' The batting dataset contains MLB player, salary, and hitting
-#' statistics from Sean Lahman's Baseball Database. 
-#' 
+#' statistics from Sean Lahman's Baseball Database.
+#'
 #' @details
-#' This dataset combines Lahman's Master, Batting, and Salaries 
-#' datasets to provide comprehensive batting statistics for each 
-#' Major League Baseball player. The dataset was reduced to a 
-#' 15 year time frame (2001-2016) and simplified by removing all 
+#' This dataset combines Lahman's Master, Batting, and Salaries
+#' datasets to provide comprehensive batting statistics for each
+#' Major League Baseball player. The dataset was reduced to a
+#' 15 year time frame (2001-2016) and simplified by removing all
 #' incomplete cases.
-#' 
+#'
 #' @docType data
 #' @keywords datasets
 #' @name batting
 #' @usage batting
-#' 
-#' @format 
+#'
+#' @format
 #' A data frame with 9395 observations on 36 variables. The variables
 #' are as follows:
-#' 
+#'
 #' \describe{
 #' \item{playerID}{Unique identifier for each player}
 #' \item{yearID}{Year data was observed}
@@ -58,13 +58,13 @@
 #' \item{bats}{Player's batting hand}
 #' \item{age}{Player's age}
 #' }
-#' 
+#'
 #' @author Shane Ross <saross@@wesleyan.edu>
-#' 
-#' @source 
-#' Lahman, S. (2010) Lahman's Baseball Database, 1871-2012, 2012 version, 
+#'
+#' @source
+#' Lahman, S. (2010) Lahman's Baseball Database, 1871-2012, 2012 version,
 #' \href{http://baseball1.com/statistics/}{http://baseball1.com/statistics/}.
-#' 
+#'
 #' @examples
 #' summary(batting)
 NULL

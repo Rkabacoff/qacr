@@ -3,7 +3,7 @@
 \docType{data}
 \name{tv}
 \alias{tv}
-\title{Time Spent Watching TV - 2017}
+\title{Time spent watching television - 2017}
 \format{
 A data frame with 10,223 rows and 21 variables. The variables are
 as follows:
@@ -48,9 +48,9 @@ tv
 This is a data set detailing TV usage on days surveyed as determined by the 2017 American Time Use Survey. The data set includes demographic information, as well as details regarding employment and family makeup, where applicable. Information on days surveyed, as well as whether the day is a holiday, is also included.
 }
 \details{
-For more information regarding the key visit 
-\href{https://www.bls.gov/tus/atusintcodebk17.pdf}{https://www.bls.gov/tus/atusintcodebk17.pdf}. 
-This data is retrieved from the American Time Use Survey, made available through the 
+For more information regarding the key visit
+\href{https://www.bls.gov/tus/atusintcodebk17.pdf}{https://www.bls.gov/tus/atusintcodebk17.pdf}.
+This data is retrieved from the American Time Use Survey, made available through the
 Bureau of Labor Statistics \href{https://www.bls.gov/tus/datafiles_2017.htm}{https://www.bls.gov/tus/datafiles_2017.htm}.
 }
 \examples{

@@ -40,5 +40,5 @@ plot(fit.pca, type="bar")
 }
 \seealso{
 \link{FA}, \link{plot.factorAnalysis}, \link{score}, and
-\link{screePlot}.
+\link{scree_plot}.
 }

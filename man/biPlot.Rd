@@ -2,7 +2,7 @@
 % Please edit documentation in R/biPlot.R
 \name{biPlot}
 \alias{biPlot}
-\title{Principal Components Biplot}
+\title{Principal components biplot}
 \usage{
 biPlot(data, ...)
 }

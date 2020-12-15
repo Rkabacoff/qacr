@@ -3,7 +3,7 @@
 \docType{data}
 \name{heart}
 \alias{heart}
-\title{Heart Disease}
+\title{Heart disease}
 \format{
 A data frame with 303 rows and 14 variables:
 \describe{
@@ -30,13 +30,13 @@ Data obtained from the \href{https://archive.ics.uci.edu/ml/datasets/Heart+Disea
 
 Creators:
 
-\enumerate{  
+\enumerate{
 \item Hungarian Institute of Cardiology. Budapest: Andras Janosi, M.D.
 \item University Hospital, Zurich, Switzerland: William Steinbrunn, M.D.
 \item University Hospital, Basel, Switzerland: Matthias Pfisterer, M.D.
 \item V.A. Medical Center, Long Beach and Cleveland Clinic Foundation: Robert Detrano, M.D., Ph.D.
 }
-  
+
 Donor: David W. Aha (aha '@' ics.uci.edu) (714) 856-8779
 }
 \usage{

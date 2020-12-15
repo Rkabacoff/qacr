@@ -1,7 +1,7 @@
 #' @title Visualize a data frame
 #'
 #' @description
-#' \code{dfPlot} visualizes the variables in a data frame.
+#' \code{df_plot} visualizes the variables in a data frame.
 #'
 #' @details
 #' For each variable, the plot displays
@@ -22,10 +22,10 @@
 #' @seealso For more descriptive statistics on
 #' a data frame see \link{contents}.
 #' @examples
-#' dfPlot(coffee)
-#' dfPlot(pbp2018)
+#' df_plot(coffee)
+#' df_plot(pbp2018)
 
-dfPlot <- function(data){
+df_plot <- function(data){
   if (!is.data.frame(data))
     stop('data must be a data.frame', call.=FALSE)
 

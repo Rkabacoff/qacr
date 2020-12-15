@@ -2,7 +2,7 @@
 % Please edit documentation in R/recodes.R
 \name{recodes}
 \alias{recodes}
-\title{Recode One or More Variables}
+\title{Recode one or more variables}
 \usage{
 recodes(data, vars, from, to)
 }

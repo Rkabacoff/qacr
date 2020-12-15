@@ -1,10 +1,10 @@
-#' @title Univariate Plot
+#' @title Univariate plot
 #'
 #' @description
 #' Generates a descriptive graph for a quantitative variable.
 #'
 #' @details
-#' \code{univariatePlot} generates a plot containing three graphs:
+#' \code{univariate_plot} generates a plot containing three graphs:
 #' a histogram (with an optional density curve), a horizontal
 #' jittered point plot, and a horizontal box plot. The \code{subtitle}
 #' contains descriptive statistics, including the mean, standard
@@ -30,11 +30,11 @@
 #' @return a ggplot2 graph
 #' @export
 #' @examples
-#' univariatePlot(mtcars, mpg)
-#' univariatePlot(mtcars, mpg, pointcolor="darkgreen",
+#' univariate_plot(mtcars, mpg)
+#' univariate_plot(mtcars, mpg, pointcolor="darkgreen",
 #'                densitycolor="darkgreen", alpha=.4)
-#' univariatePlot(mtcars, wt, density=FALSE, bins=20)
-univariatePlot <- function(data, x, bins=30,
+#' univariate_plot(mtcars, wt, density=FALSE, bins=20)
+univariate_plot <- function(data, x, bins=30,
                            fill="deepskyblue",
                            pointcolor="black",
                            density=TRUE,

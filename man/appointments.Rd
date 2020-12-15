@@ -3,7 +3,7 @@
 \docType{data}
 \name{appointments}
 \alias{appointments}
-\title{Medical Appointment No Shows}
+\title{Medical appointment no shows}
 \format{
 A data frame with 110527 rows and 14 variables:
 \describe{
@@ -12,7 +12,7 @@ A data frame with 110527 rows and 14 variables:
   \item{\code{Gender}}{factor. \code{Male, Female}.}
   \item{\code{ScheduledDay}}{datatime. The day and time of the actual appointment,
   when they have to visit the doctor.}
-  \item{\code{AppointmentDay}}{double. The day someone called or 
+  \item{\code{AppointmentDay}}{double. The day someone called or
   registered the appointment, this is before appointment of course.}
   \item{\code{Age}}{double. Age of the patient.}
   \item{\code{Neighbourhood}}{character. Where the appointment takes place.}
@@ -28,7 +28,7 @@ A data frame with 110527 rows and 14 variables:
 }
 }
 \source{
-Joni Hoppen, Kaggle Medical Appointment No Shows 
+Joni Hoppen, Kaggle Medical Appointment No Shows
 \href{https://www.kaggle.com/joniarroba/noshowappointments}{https://www.kaggle.com/joniarroba/noshowappointments}.
 }
 \usage{
@@ -38,7 +38,7 @@ appointments
 Predicting no-show medical appointments
 }
 \details{
-This Kaggle competition was designed to challenge participants to 
+This Kaggle competition was designed to challenge participants to
 predict office no-shows. It is also a good dataset to practice
 date and time manipulation.
 }

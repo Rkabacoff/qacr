@@ -43,10 +43,10 @@ If the dataset only contains quantitative or categorical, then only the overall 
 
 ### Visualizing the data frame
 
-The `dfPlot` function provides a single graph displaying the variables, their types, and the percent of values present (or missing).
+The `df_plot` function provides a single graph displaying the variables, their types, and the percent of values present (or missing).
 
 ```{r message=FALSE, warning=FALSE}
-dfPlot(cars74)
+df_plot(cars74)
 
 ```
 

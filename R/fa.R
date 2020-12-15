@@ -1,4 +1,4 @@
-#' Factor Analysis
+#' Factor analysis
 #'
 #' \code{FA} performs common factor analysis
 #'
@@ -19,7 +19,7 @@
 #' @importFrom psych fa
 #'
 #' @seealso \link{PCA}, \link{plot.factorAnalysis}, \link{score}, and
-#' \link{screePlot}.
+#' \link{scree_plot}.
 #'
 #' @return returns a list with 5 components:
 #' \item{call}{the call}

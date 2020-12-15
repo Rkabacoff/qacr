@@ -3,7 +3,7 @@
 \docType{data}
 \name{breast}
 \alias{breast}
-\title{Breast Cancer}
+\title{Breast cancer data}
 \format{
 A data frame with 286 rows and 10 variables:
 \describe{
@@ -20,9 +20,9 @@ A data frame with 286 rows and 10 variables:
 }
 }
 \source{
-This breast cancer domain was obtained from the University Medical 
-Centre, Institute of Oncology, Ljubljana, Yugoslavia. 
-Thanks go to M. Zwitter and M. Soklic for providing the data. 
+This breast cancer domain was obtained from the University Medical
+Centre, Institute of Oncology, Ljubljana, Yugoslavia.
+Thanks go to M. Zwitter and M. Soklic for providing the data.
 Downloaded from \href{https://www.openml.org/d/13}{OpenML}.
 }
 \usage{

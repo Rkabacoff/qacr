@@ -1,4 +1,4 @@
-#' Plot a Factor Solution
+#' Plot a factor solution
 #'
 #' This function plots the pattern matrix for a principal components or
 #' common factor analysis solution
@@ -11,7 +11,6 @@
 #' @export
 #' @return a ggplot2 graph
 #' @import ggplot2
-#' @importFrom scales muted
 #' @importFrom grDevices dev.off pdf
 #' @importFrom stats prcomp var
 #'

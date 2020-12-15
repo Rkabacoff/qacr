@@ -2,7 +2,7 @@
 % Please edit documentation in R/wss_plot.R
 \name{wss_plot}
 \alias{wss_plot}
-\title{WSS Plot}
+\title{Within groups sum of squares plot}
 \usage{
 wss_plot(data, nc = 15, standardize = TRUE, seed = 1234)
 }

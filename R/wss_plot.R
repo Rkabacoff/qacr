@@ -1,4 +1,4 @@
-#' @title WSS Plot
+#' @title Within groups sum of squares plot
 #'
 #' @description
 #' Within Groups Sum of Squares Plot

@@ -3,7 +3,7 @@
 \docType{data}
 \name{student}
 \alias{student}
-\title{Student Grade Prediction}
+\title{Student grade prediction}
 \format{
 A data frame with 395 rows and 33 variables:
 \describe{
@@ -43,15 +43,15 @@ A data frame with 395 rows and 33 variables:
 }
 }
 \source{
-Data obtained from 
-\href{https://archive.ics.uci.edu/ml/datasets/student+performance}{UCI Machine Learning Repository}. 
+Data obtained from
+\href{https://archive.ics.uci.edu/ml/datasets/student+performance}{UCI Machine Learning Repository}.
 
 Original source: Paulo Cortez, University of Minho, GuimarÃ£es, Portugal, \url{http://www3.dsi.uminho.pt/pcortez}
 
 Please include this citations when using the data:
-P. Cortez and A. Silva. Using Data Mining to Predict Secondary 
-School Student Performance. In A. Brito and J. Teixeira Eds., 
-Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008) 
+P. Cortez and A. Silva. Using Data Mining to Predict Secondary
+School Student Performance. In A. Brito and J. Teixeira Eds.,
+Proceedings of 5th FUture BUsiness TEChnology Conference (FUBUTEC 2008)
 pp. 5-12, Porto, Portugal, April, 2008, EUROSIS, ISBN 978-9077381-39-7.
 \href{http://www3.dsi.uminho.pt/pcortez/student.pdf}{Web Link}.
 }
@@ -62,15 +62,15 @@ student
 Student math achievement in secondary education of two Portuguese schools
 }
 \details{
-This data approach student achievement in secondary education of 
-two Portuguese schools. The data attributes include student grades, 
-demographic, social and school related features) and it was collected 
-by using school reports and questionnaires. This dataset provides 
-regarding the performance in Mathematics. Important note: the target attribute G3 has a 
-strong correlation with attributes G2 and G1. This occurs because 
-G3 is the final year grade (issued at the 3rd period), while G1 and 
-G2 correspond to the 1st and 2nd period grades. It is more difficult 
-to predict G3 without G2 and G1, but such prediction is much more 
+This data approach student achievement in secondary education of
+two Portuguese schools. The data attributes include student grades,
+demographic, social and school related features) and it was collected
+by using school reports and questionnaires. This dataset provides
+regarding the performance in Mathematics. Important note: the target attribute G3 has a
+strong correlation with attributes G2 and G1. This occurs because
+G3 is the final year grade (issued at the 3rd period), while G1 and
+G2 correspond to the 1st and 2nd period grades. It is more difficult
+to predict G3 without G2 and G1, but such prediction is much more
 useful (see paper source for more details).
 }
 \note{

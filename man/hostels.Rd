@@ -3,7 +3,7 @@
 \docType{data}
 \name{hostels}
 \alias{hostels}
-\title{Japan Hostel Dataset}
+\title{Japan hostel dataset}
 \format{
 A data frame with 342 rows and 15 variables. The variables are
 as follows:

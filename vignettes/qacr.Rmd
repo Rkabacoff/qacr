@@ -74,7 +74,7 @@ kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position
 
 ```{r, echo=FALSE}
 d <- data.frame(Function=c("[**contents**](../reference/contents.html)", 
-                           "[**dfPlot**](../reference/dfPlot.html)",
+                           "[**df_plot**](../reference/df_plot.html)",
                            "[**barcharts**](../reference/barcharts.html)",
                            "[**histograms**](../reference/histograms.html)",
                            "[**densities**](../reference/densities.html)"
@@ -119,9 +119,9 @@ kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position
 ```{r, echo=FALSE}
 d <- data.frame(Function=c(
   "[**qstats**](../reference/qstats.html)",
-  "[**univariatePlot**](../reference/univariatePlot.html)",
+  "[**univariate_plot**](../reference/univariate_plot.html)",
   "[**scatter**](../reference/scatter.html)",
-  "[**corPlot**](../reference/corPlot.html)"),
+  "[**cor_plot**](../reference/cor_plot.html)"),
                 
    Description=c("`qstats()` allows you to easily calculate any number
                  of descriptive statistics (e.g., n, mean, sd) for a
@@ -211,7 +211,7 @@ kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position
 d <- data.frame(Function=c("[**biPlot**](../reference/biPlot.html)",
                            "[**FA**](../reference/FA.html)",
                            "[**PCA**](../reference/PCA.html)",
-                           "[**screePlot**](../reference/screePlot.html)"),
+                           "[**scree_plot**](../reference/scree_plot.html)"),
                 Description=c("Creates a principal components biplot.",
                               "Performs common factor analysis (principle
                               axis, maximum likelihood) with options.",
@@ -228,7 +228,7 @@ kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position
 ### Classification
 
 ```{r, echo=FALSE}
-d <- data.frame(Function=c("[**rocPlot**](../reference/rocPlot.html)"),
+d <- data.frame(Function=c("[**roc_plot**](../reference/roc_plot.html)"),
                 Description=c("Produce a Receive Operating Curve (ROC) for
                               a binary prediction problem."
                               ))

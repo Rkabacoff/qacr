@@ -1,4 +1,4 @@
-#'@title 2018 MLB Pitcher Data
+#'@title 2018 MLB pitcher data
 #'
 #'@description
 #'Pitch by pitch data for select pitchers in the 2018 MLB season.
@@ -45,7 +45,7 @@
 #'  \item{fld_score}{current score for defensive team}
 #'  \item{if_fielding_alignment}{type of infield shift}
 #'  \item{of_fielding_alignment}{type of outfield shift}
-#'  
+#'
 #'}
 #'
 #'@source The data was obtained from \href{https://baseballsavant.mlb.com/statcast_search}{Baseball Savant}

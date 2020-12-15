@@ -15,7 +15,8 @@ LazyData: true
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    caret
 VignetteBuilder: knitr
 BugReports: https://github.com/rkabacoff/qacr/issues
 Imports: 
@@ -31,9 +32,6 @@ Imports:
     patchwork,
     crayon,
     plotROC,
-    caret,
-    scales,
-    e1071,
     rlang,
     ggExtra,
     kableExtra,

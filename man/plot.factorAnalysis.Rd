@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot.factorAnalysis.R
 \name{plot.factorAnalysis}
 \alias{plot.factorAnalysis}
-\title{Plot a Factor Solution}
+\title{Plot a factor solution}
 \usage{
 \method{plot}{factorAnalysis}(x, sort = TRUE, type = c("table", "bar"), ...)
 }

@@ -1,4 +1,4 @@
-#' @title Profile Plots
+#' @title Cluster profile plots
 #'
 #' @description
 #' \code{profile_plot} generates a mean profile plot for each cluster in

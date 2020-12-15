@@ -3,7 +3,7 @@
 \docType{data}
 \name{cardata}
 \alias{cardata}
-\title{Automobile Characteristics}
+\title{Automobile characteristics}
 \format{
 A data frame with 11914 rows and 16 variables. The variables are as follows:
 

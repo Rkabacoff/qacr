@@ -1,4 +1,4 @@
-# 1990 California Housing Dataset
+# 1990 California housing dataset
 #'@title 1990 California Housing Dataset
 #'
 #'@description

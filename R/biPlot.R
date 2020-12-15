@@ -1,4 +1,4 @@
-#' Principal Components Biplot
+#' Principal components biplot
 #'
 #' \code{biPlot} performs a principal components analysis and displays the variables
 #' and observations in the space of the first two principal components.

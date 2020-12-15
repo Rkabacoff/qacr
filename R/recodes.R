@@ -1,4 +1,4 @@
-#' Recode One or More Variables
+#' Recode one or more variables
 #'
 #' \code{recodes} recodes the values of one or more variables in
 #' a data frame

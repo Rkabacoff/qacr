@@ -3,7 +3,7 @@
 \docType{data}
 \name{movies}
 \alias{movies}
-\title{British Movie Plots}
+\title{British movie plots}
 \format{
 A data frame with 3670 rows and 7 variables. The variables are
 as follows:
@@ -18,7 +18,7 @@ as follows:
 }
 }
 \source{
-The data are a subset of the Kaggle Wikipedia movie plots dataset 
+The data are a subset of the Kaggle Wikipedia movie plots dataset
 \href{https://www.kaggle.com/jrobischon/wikipedia-movie-plots}{https://www.kaggle.com/jrobischon/wikipedia-movie-plots}
 }
 \usage{

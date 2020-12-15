@@ -1,13 +1,13 @@
-#' @title Japan Hostel Dataset
-#' 
-#' @description 
+#' @title Japan hostel dataset
+#'
+#' @description
 #' The data contains information and ratings of 342 hostels in Japan
-#' 
+#'
 #' @docType data
 #' @keywords datasets, hostels, japan, reviews
 #' @name hostels
 #' @usage hostels
-#' 
+#'
 #' @format A data frame with 342 rows and 15 variables. The variables are
 #' as follows:
 #' \describe{
@@ -27,13 +27,13 @@
 #'   \item{lon}{Longitude}
 #'   \item{lat}{Latitude}
 #' }
-#' 
-#' @note 
+#'
+#' @note
 #' This is a good dataset to explore mapping.
-#' 
+#'
 #' @source The data was obtained from \href{https://www.kaggle.com/koki25ando/hostel-world-dataset}{Japan Hostel Dataset}.
-#' 
-#' 
+#'
+#'
 #' @examples
 #' summary(hostels)
 NULL

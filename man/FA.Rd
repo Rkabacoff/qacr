@@ -2,7 +2,7 @@
 % Please edit documentation in R/fa.R
 \name{FA}
 \alias{FA}
-\title{Factor Analysis}
+\title{Factor analysis}
 \usage{
 FA(data, nfactors = NULL, rotate = "none", fm = "pa", digits = 2, ...)
 }
@@ -44,5 +44,5 @@ plot(fit.fa, type="bar")
 }
 \seealso{
 \link{PCA}, \link{plot.factorAnalysis}, \link{score}, and
-\link{screePlot}.
+\link{scree_plot}.
 }

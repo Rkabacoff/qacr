@@ -1,4 +1,4 @@
-#' @title Automobile Characteristics
+#' @title Automobile characteristics
 #'
 #' @description
 #' Cars dataset with features including make, model, year, engine, and other

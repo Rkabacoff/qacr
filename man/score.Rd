@@ -2,7 +2,7 @@
 % Please edit documentation in R/score.R
 \name{score}
 \alias{score}
-\title{Factor and Component Scores}
+\title{Factor and component scores}
 \usage{
 score(data, model)
 }

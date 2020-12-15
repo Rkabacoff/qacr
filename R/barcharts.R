@@ -14,7 +14,6 @@
 #' @import tidyr
 #' @import ggplot2
 #' @import dplyr
-#' @import scales
 #' @export
 barcharts <- function(data, fill="deepskyblue2",
                       color="grey30",
