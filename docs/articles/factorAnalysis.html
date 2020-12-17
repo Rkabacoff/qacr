@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
@@ -47,14 +47,14 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="../articles/qacr.html">
-    <span class="fas fa fas fa-chalkboard-teacher"></span>
+    <span class="fas fa-chalkboard-teacher"></span>
      
     Getting Started
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa fas fa-book"></span>
+    <span class="fas fa-book"></span>
      
     Vignettes
      
@@ -63,6 +63,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/contents.html">Exploring a data set</a>
+    </li>
+    <li>
+      <a href="../articles/recodes.html">Recoding variables</a>
     </li>
     <li>
       <a href="../articles/tab.html">Creating frequency tables</a>
@@ -80,21 +83,21 @@
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fa fa-file-code-o"></span>
+    <span class="fas fa-file-code-o"></span>
      
     Documentation
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
+    <span class="fas fa-newspaper-o"></span>
      
     News
   </a>
 </li>
 <li>
   <a href="https://github.com/rkabacoff/qacr/">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
     GitHub
   </a>
@@ -109,7 +112,7 @@
 
       
 
-      </header><script src="factorAnalysis_files/header-attrs-2.4/header-attrs.js"></script><script src="factorAnalysis_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="factorAnalysis_files/header-attrs-2.6/header-attrs.js"></script><script src="factorAnalysis_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Dimension Reduction</h1>
@@ -127,8 +130,8 @@
 <h2 class="hasAnchor">
 <a href="#principal-components-analysis" class="anchor"></a>Principal Components Analysis</h2>
 <p>Let’s perform a principal components analysis on some ratings data. First we’ll import the data into R.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># input data</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># input data</span>
 <span class="va">ratings</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://www.promptcloud.com/wp-content/uploads/2017/02/EFA.csv"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">ratings</span><span class="op">)</span>
 <span class="co">#&gt;   Price Safety Exterior_Looks Space_comfort Technology After_Sales_Service</span>
@@ -151,18 +154,18 @@
 <span class="co">#&gt; 3               4            3</span>
 <span class="co">#&gt; 4               5            3</span>
 <span class="co">#&gt; 5               5            2</span>
-<span class="co">#&gt; 6               2            3</span></pre></div>
+<span class="co">#&gt; 6               2            3</span></code></pre></div>
 <p>Next, well create a scree plot of the data.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co"># scree plot</span>
 <span class="fu"><a href="../reference/scree_plot.html">scree_plot</a></span><span class="op">(</span><span class="va">ratings</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Note: parallel analysis suggests 2 components.</span></pre></div>
+<span class="co">#&gt; Note: parallel analysis suggests 2 components.</span></code></pre></div>
 <p><img src="factorAnalysis_files/figure-html/unnamed-chunk-2-1.png" width="576"></p>
 <p>The scree plot suggests two components. In the next step, we’ll extract two principal components and rotate them using a <em>varimax</em> rotation.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="co"># extract 2 principal components</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># extract 2 principal components</span>
 <span class="va">fit.pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/PCA.html">PCA</a></span><span class="op">(</span><span class="va">ratings</span>, nfactor<span class="op">=</span><span class="fl">2</span>, rotate<span class="op">=</span><span class="st">"varimax"</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Principal Components Analysis</span>
@@ -188,20 +191,20 @@
 <span class="co">#&gt;                    PC1  PC2</span>
 <span class="co">#&gt; Variance          2.59 2.33</span>
 <span class="co">#&gt; Var Explained     0.19 0.17</span>
-<span class="co">#&gt; Cum Var Explained 0.19 0.35</span></pre></div>
+<span class="co">#&gt; Cum Var Explained 0.19 0.35</span></code></pre></div>
 <p>The two components account for 35% of the variance in the original data. Next, we’ll plot the pattern matrix as both a table and a bar chart.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="co"># plot factor pattern as table</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit.pca</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># plot factor pattern as table</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit.pca</span><span class="op">)</span></code></pre></div>
 <p><img src="factorAnalysis_files/figure-html/unnamed-chunk-4-1.png" width="576"></p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co"># plot factor pattern as bar chart</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit.pca</span>, type<span class="op">=</span><span class="st">"bar"</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit.pca</span>, type<span class="op">=</span><span class="st">"bar"</span><span class="op">)</span></code></pre></div>
 <p><img src="factorAnalysis_files/figure-html/unnamed-chunk-4-2.png" width="576"></p>
 <p>Finally, we’ll add the component scores to the original data.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="co"># save component scores</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># save component scores</span>
 <span class="va">mydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/score.html">score</a></span><span class="op">(</span><span class="va">ratings</span>, <span class="va">fit.pca</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mydata</span><span class="op">)</span>
 <span class="co">#&gt;   Price Safety Exterior_Looks Space_comfort Technology After_Sales_Service</span>
@@ -224,24 +227,24 @@
 <span class="co">#&gt; 3               4            3  1.2949130  0.09537139</span>
 <span class="co">#&gt; 4               5            3  0.5124876 -1.00007813</span>
 <span class="co">#&gt; 5               5            2  1.4584077 -0.31851462</span>
-<span class="co">#&gt; 6               2            3 -1.6599795 -0.85914096</span></pre></div>
+<span class="co">#&gt; 6               2            3 -1.6599795 -0.85914096</span></code></pre></div>
 </div>
 <div id="factor-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#factor-analysis" class="anchor"></a>Factor Analysis</h2>
 <p>In this section, the ratings data are re-analyzed using a <em>maximum likelihood</em> factor analysis.</p>
 <p>Again, we’ll start with a scree plot. This time we’ll run 200 simulations. A random number seed is set to assure reproducability.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co"># scree plot</span>
 <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span>
 <span class="fu"><a href="../reference/scree_plot.html">scree_plot</a></span><span class="op">(</span><span class="va">ratings</span>, method <span class="op">=</span> <span class="st">"ml"</span>, n.iter<span class="op">=</span><span class="fl">200</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Note: parallel analysis suggests 2 factors.</span></pre></div>
+<span class="co">#&gt; Note: parallel analysis suggests 2 factors.</span></code></pre></div>
 <p><img src="factorAnalysis_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
 <p>The scree plot suggests four factors. In the next step, we’ll extract two factors and rotate them using a <em>promax</em> rotation.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="co"># extract 4 factors</span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># extract 4 factors</span>
 <span class="va">fit.fa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/FA.html">FA</a></span><span class="op">(</span><span class="va">ratings</span>, nfactor<span class="op">=</span><span class="fl">4</span>, rotate<span class="op">=</span><span class="st">"promax"</span>, fm<span class="op">=</span><span class="st">"ml"</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Maximum Likelihood Factor Analysis</span>
@@ -293,21 +296,21 @@
 <span class="co">#&gt; F1 1.00 0.16 0.37 0.26</span>
 <span class="co">#&gt; F2 0.16 1.00 0.27 0.03</span>
 <span class="co">#&gt; F3 0.37 0.27 1.00 0.04</span>
-<span class="co">#&gt; F4 0.26 0.03 0.04 1.00</span></pre></div>
+<span class="co">#&gt; F4 0.26 0.03 0.04 1.00</span></code></pre></div>
 <p>The printout includes the factor pattern, the factor structure, and the factor intercorrelations. The four factors account for 32% of the variance in the original data. Factors 1 and 3 have the hightest correlation (0.37).</p>
 <p>Next, we’ll plot the pattern matrix as both a table and a bar chart.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="co"># plot factor pattern as table</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit.fa</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># plot factor pattern as table</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit.fa</span><span class="op">)</span></code></pre></div>
 <p><img src="factorAnalysis_files/figure-html/unnamed-chunk-8-1.png" width="576"></p>
-<div class="sourceCode" id="cb10"><pre class="downlit">
-
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="co"># plot factor pattern as bar chart</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit.fa</span>, type<span class="op">=</span><span class="st">"bar"</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fit.fa</span>, type<span class="op">=</span><span class="st">"bar"</span><span class="op">)</span></code></pre></div>
 <p><img src="factorAnalysis_files/figure-html/unnamed-chunk-8-2.png" width="576"></p>
 <p>Finally, we’ll add the factor scores to the original data.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="co"># save component scores</span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># save component scores</span>
 <span class="va">mydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/score.html">score</a></span><span class="op">(</span><span class="va">ratings</span>, <span class="va">fit.fa</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mydata</span><span class="op">)</span>
 <span class="co">#&gt;   Price Safety Exterior_Looks Space_comfort Technology After_Sales_Service</span>
@@ -330,7 +333,7 @@
 <span class="co">#&gt; 3               4            3  1.1462512  0.2886700 -0.1155376  0.4665338</span>
 <span class="co">#&gt; 4               5            3  0.5241452 -0.8581296 -0.6791612  0.4143127</span>
 <span class="co">#&gt; 5               5            2  1.3108167  0.1322874 -0.1696281  1.3488528</span>
-<span class="co">#&gt; 6               2            3 -1.2159854 -1.1217324 -1.7582189 -1.4766228</span></pre></div>
+<span class="co">#&gt; 6               2            3 -1.2159854 -1.1217324 -1.7582189 -1.4766228</span></code></pre></div>
 </div>
   </div>
 

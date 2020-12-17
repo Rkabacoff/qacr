@@ -85,6 +85,8 @@ navbar:
       menu:
       -  text: Exploring a data set
          href: articles/contents.html
+      -  text: Recoding variables
+         href: articles/recodes.html
       -  text: Creating frequency tables
          href: articles/tab.html
       -  text: Creating two-way frequency tables

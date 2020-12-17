@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
@@ -47,14 +47,14 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="../articles/qacr.html">
-    <span class="fas fa fas fa-chalkboard-teacher"></span>
+    <span class="fas fa-chalkboard-teacher"></span>
      
     Getting Started
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa fas fa-book"></span>
+    <span class="fas fa-book"></span>
      
     Vignettes
      
@@ -63,6 +63,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/contents.html">Exploring a data set</a>
+    </li>
+    <li>
+      <a href="../articles/recodes.html">Recoding variables</a>
     </li>
     <li>
       <a href="../articles/tab.html">Creating frequency tables</a>
@@ -80,21 +83,21 @@
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fa fa-file-code-o"></span>
+    <span class="fas fa-file-code-o"></span>
      
     Documentation
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
+    <span class="fas fa-newspaper-o"></span>
      
     News
   </a>
 </li>
 <li>
   <a href="https://github.com/rkabacoff/qacr/">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
     GitHub
   </a>
@@ -109,7 +112,7 @@
 
       
 
-      </header><script src="tab_files/header-attrs-2.4/header-attrs.js"></script><script src="tab_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="tab_files/header-attrs-2.6/header-attrs.js"></script><script src="tab_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Frequency tables</h1>
@@ -127,42 +130,42 @@
 <h3 class="hasAnchor">
 <a href="#creating-a-frequency-table" class="anchor"></a>Creating a frequency table</h3>
 <p>The <strong>cardata</strong> data frame contains information on 11,914 vehicles, including make, model, and features and price. First, let’s tabulate the number of automobiles by drive type.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">driven_wheels</span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">driven_wheels</span><span class="op">)</span>
 <span class="co">#&gt;              level    n percent</span>
 <span class="co">#&gt;    all wheel drive 2353  19.75%</span>
 <span class="co">#&gt;   four wheel drive 1403  11.78%</span>
 <span class="co">#&gt;  front wheel drive 4787  40.18%</span>
-<span class="co">#&gt;   rear wheel drive 3371  28.29%</span></pre></div>
+<span class="co">#&gt;   rear wheel drive 3371  28.29%</span></code></pre></div>
 <p>Next, lets add a <strong>Total</strong> category.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">driven_wheels</span>, total<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">driven_wheels</span>, total<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;              level     n percent</span>
 <span class="co">#&gt;    all wheel drive  2353  19.75%</span>
 <span class="co">#&gt;   four wheel drive  1403  11.78%</span>
 <span class="co">#&gt;  front wheel drive  4787  40.18%</span>
 <span class="co">#&gt;   rear wheel drive  3371  28.29%</span>
-<span class="co">#&gt;              Total 11914    100%</span></pre></div>
+<span class="co">#&gt;              Total 11914    100%</span></code></pre></div>
 </div>
 <div id="sorting-by-category" class="section level3">
 <h3 class="hasAnchor">
 <a href="#sorting-by-category" class="anchor"></a>Sorting by category</h3>
 <p>Next, we’ll tabulate the cars by driven_wheels and <strong>sort the results</strong> in descending order.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">driven_wheels</span>, total<span class="op">=</span><span class="cn">TRUE</span>, sort<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">driven_wheels</span>, total<span class="op">=</span><span class="cn">TRUE</span>, sort<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt;              level     n percent</span>
 <span class="co">#&gt;  front wheel drive  4787  40.18%</span>
 <span class="co">#&gt;   rear wheel drive  3371  28.29%</span>
 <span class="co">#&gt;    all wheel drive  2353  19.75%</span>
 <span class="co">#&gt;   four wheel drive  1403  11.78%</span>
-<span class="co">#&gt;              Total 11914    100%</span></pre></div>
+<span class="co">#&gt;              Total 11914    100%</span></code></pre></div>
 </div>
 <div id="collapsing-categories" class="section level3">
 <h3 class="hasAnchor">
 <a href="#collapsing-categories" class="anchor"></a>Collapsing categories</h3>
 <p>Next, let’s tabulate the automobiles by make, sorting from largest number to smallest number. We’ll also remove all missing observations from the data set, add a total row, and limit the makes to the <strong>10 most frequent</strong>, plus an “Other” category.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">make</span>, sort <span class="op">=</span> <span class="cn">TRUE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, total <span class="op">=</span> <span class="cn">TRUE</span>, maxcat<span class="op">=</span><span class="fl">10</span><span class="op">)</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">make</span>, sort <span class="op">=</span> <span class="cn">TRUE</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, total <span class="op">=</span> <span class="cn">TRUE</span>, maxcat<span class="op">=</span><span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt;       level     n percent</span>
 <span class="co">#&gt;   Chevrolet  1115   9.44%</span>
 <span class="co">#&gt;        Ford   868   7.35%</span>
@@ -175,28 +178,28 @@
 <span class="co">#&gt;       Mazda   403   3.41%</span>
 <span class="co">#&gt;    Cadillac   397   3.36%</span>
 <span class="co">#&gt;       Other  5348  45.26%</span>
-<span class="co">#&gt;       Total 11815    100%</span></pre></div>
+<span class="co">#&gt;       Total 11815    100%</span></code></pre></div>
 <p>Finally, let’s list the makes that have <strong>at least 5%</strong> of the cars, combining the rest into an “Other” category.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">make</span>,  minp<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">make</span>,  minp<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>
 <span class="co">#&gt;       level    n percent</span>
 <span class="co">#&gt;   Chevrolet 1123   9.43%</span>
 <span class="co">#&gt;       Dodge  626   5.25%</span>
 <span class="co">#&gt;        Ford  881   7.39%</span>
 <span class="co">#&gt;      Toyota  746   6.26%</span>
 <span class="co">#&gt;  Volkswagen  809   6.79%</span>
-<span class="co">#&gt;       Other 7729  64.87%</span></pre></div>
+<span class="co">#&gt;       Other 7729  64.87%</span></code></pre></div>
 </div>
 <div id="graphing-frequency-tables" class="section level3">
 <h3 class="hasAnchor">
 <a href="#graphing-frequency-tables" class="anchor"></a>Graphing frequency tables</h3>
 <p>Frequency tables are usually represented by bar charts. The  function can output frequency plots, and cumulative frequency plots.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">vehicle_style</span>,  sort<span class="op">=</span><span class="cn">TRUE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">vehicle_style</span>,  sort<span class="op">=</span><span class="cn">TRUE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="tab_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-
-<span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">vehicle_style</span>, sort<span class="op">=</span><span class="cn">TRUE</span>, cum<span class="op">=</span><span class="cn">TRUE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="fu"><a href="../reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">vehicle_style</span>, sort<span class="op">=</span><span class="cn">TRUE</span>, cum<span class="op">=</span><span class="cn">TRUE</span>, plot<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="tab_files/figure-html/unnamed-chunk-7-2.png" width="700"></p>
 </div>
   </div>

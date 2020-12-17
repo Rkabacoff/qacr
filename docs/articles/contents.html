@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
@@ -47,14 +47,14 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="../articles/qacr.html">
-    <span class="fas fa fas fa-chalkboard-teacher"></span>
+    <span class="fas fa-chalkboard-teacher"></span>
      
     Getting Started
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa fas fa-book"></span>
+    <span class="fas fa-book"></span>
      
     Vignettes
      
@@ -63,6 +63,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/contents.html">Exploring a data set</a>
+    </li>
+    <li>
+      <a href="../articles/recodes.html">Recoding variables</a>
     </li>
     <li>
       <a href="../articles/tab.html">Creating frequency tables</a>
@@ -80,21 +83,21 @@
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fa fa-file-code-o"></span>
+    <span class="fas fa-file-code-o"></span>
      
     Documentation
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
+    <span class="fas fa-newspaper-o"></span>
      
     News
   </a>
 </li>
 <li>
   <a href="https://github.com/rkabacoff/qacr/">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
     GitHub
   </a>
@@ -109,7 +112,7 @@
 
       
 
-      </header><script src="contents_files/header-attrs-2.4/header-attrs.js"></script><script src="contents_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="contents_files/header-attrs-2.6/header-attrs.js"></script><script src="contents_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Exploring a data frame</h1>
@@ -127,14 +130,14 @@
 <h2 class="hasAnchor">
 <a href="#example-dataset-motor-trend-magazine-review-of-cars" class="anchor"></a>Example Dataset: Motor Trend Magazine Review of Cars</h2>
 <p>How can you quickly become familiar with the data in a data frame? We’ll use the <strong>cars74</strong> data frame as an example. This data frame contains information on the characteristics of 32 cars in 1974.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></code></pre></div>
 <div id="data-description-with-contents" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-description-with-contents" class="anchor"></a>Data description with <code>contents()</code>
 </h3>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/contents.html">contents</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/contents.html">contents</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; The data frame cars74 has 32 observations and 12 variables.</span>
 <span class="co">#&gt; </span>
@@ -190,7 +193,7 @@
 <span class="co">#&gt;           carb3               3 0.09</span>
 <span class="co">#&gt;           carb4              10 0.31</span>
 <span class="co">#&gt;           carb6               1 0.03</span>
-<span class="co">#&gt;           carb8               1 0.03</span></pre></div>
+<span class="co">#&gt;           carb8               1 0.03</span></code></pre></div>
 <p>As shown above, the <code>contents</code> function produced three tables, one that provides an overall summary of the data and two tables that break down the quantitative and categorical variables of the dataset respectively.</p>
 <p>The <strong>overall table</strong> describes each of the variables in the data frame, listing their column position, variable name, the variable type, number of unique values, the number of missing values, and the corresponding percentage of missing values.</p>
 <p>The <strong>quantitative table</strong> provides information for each of the quantitative variables in the data frame, listing the variable name, the number of non-missing values, and a series of summary statistics including the mean, standard deviation, skewness, minimum, 25%tile, median, 75%tile, and maximum.</p>
@@ -201,30 +204,30 @@
 <h3 class="hasAnchor">
 <a href="#visualizing-the-data-frame" class="anchor"></a>Visualizing the data frame</h3>
 <p>The <code>df_plot</code> function provides a single graph displaying the variables, their types, and the percent of values present (or missing).</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="../reference/df_plot.html">df_plot</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/df_plot.html">df_plot</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></code></pre></div>
 <p><img src="contents_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
 <div id="visualizing-the-categorical-variables" class="section level3">
 <h3 class="hasAnchor">
 <a href="#visualizing-the-categorical-variables" class="anchor"></a>Visualizing the categorical variables</h3>
 <p>The <code>barcharts</code> function plots the distribution of each of the categorical variables in the data frame.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/barcharts.html">barcharts</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/barcharts.html">barcharts</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
 <span class="co">#&gt; The following variable had more than 20 levels and were not graphed:</span>
-<span class="co">#&gt;  auto</span></pre></div>
+<span class="co">#&gt;  auto</span></code></pre></div>
 <p><img src="contents_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
 <div id="visualizing-the-quantitative-variables" class="section level3">
 <h3 class="hasAnchor">
 <a href="#visualizing-the-quantitative-variables" class="anchor"></a>Visualizing the quantitative variables</h3>
 <p>The <code>histograms</code> and <code>densities</code> functions plot the distribution of each of the quantitative variables in the data frame.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="../reference/histograms.html">histograms</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/histograms.html">histograms</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></code></pre></div>
 <p><img src="contents_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-
-<span class="fu"><a href="../reference/densities.html">densities</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="fu"><a href="../reference/densities.html">densities</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span></code></pre></div>
 <p><img src="contents_files/figure-html/unnamed-chunk-6-2.png" width="700"></p>
 </div>
 </div>

@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home"></span>
+    <span class="fas fa-home"></span>
      
   </a>
 </li>
@@ -47,14 +47,14 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="../articles/qacr.html">
-    <span class="fas fa fas fa-chalkboard-teacher"></span>
+    <span class="fas fa-chalkboard-teacher"></span>
      
     Getting Started
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa fas fa-book"></span>
+    <span class="fas fa-book"></span>
      
     Vignettes
      
@@ -63,6 +63,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="../articles/contents.html">Exploring a data set</a>
+    </li>
+    <li>
+      <a href="../articles/recodes.html">Recoding variables</a>
     </li>
     <li>
       <a href="../articles/tab.html">Creating frequency tables</a>
@@ -80,21 +83,21 @@
 </li>
 <li>
   <a href="../reference/index.html">
-    <span class="fa fa-file-code-o"></span>
+    <span class="fas fa-file-code-o"></span>
      
     Documentation
   </a>
 </li>
 <li>
   <a href="../news/index.html">
-    <span class="fa fa-newspaper-o"></span>
+    <span class="fas fa-newspaper-o"></span>
      
     News
   </a>
 </li>
 <li>
   <a href="https://github.com/rkabacoff/qacr/">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
     GitHub
   </a>
@@ -109,7 +112,7 @@
 
       
 
-      </header><script src="qstats_files/header-attrs-2.4/header-attrs.js"></script><script src="qstats_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="qstats_files/header-attrs-2.6/header-attrs.js"></script><script src="qstats_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Descriptive statistics by group</h1>
@@ -135,8 +138,8 @@
 <h2 class="hasAnchor">
 <a href="#using-default-statistics" class="anchor"></a>Using default statistics</h2>
 <p>By default the <em>sample size</em>, <em>mean</em>, and <em>standard deviation</em> are provided. Let’s take a look at fuel efficiencies for 11,914 automobiles in the <code>cardata</code> data frame.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># simple summary statistics </span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># simple summary statistics </span>
 <span class="fu"><a href="../reference/qstats.html">qstats</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">highway_mpg</span><span class="op">)</span>
 <span class="co">#&gt;       n  mean   sd</span>
 <span class="co">#&gt; 1 11914 26.64 8.86</span>
@@ -162,14 +165,14 @@
 <span class="co">#&gt; 9       Midsize   all wheel drive 1269 25.83  4.41</span>
 <span class="co">#&gt; 10      Midsize  four wheel drive  259 18.85  2.51</span>
 <span class="co">#&gt; 11      Midsize front wheel drive 1907 30.24  9.46</span>
-<span class="co">#&gt; 12      Midsize  rear wheel drive  938 23.32  5.16</span></pre></div>
+<span class="co">#&gt; 12      Midsize  rear wheel drive  938 23.32  5.16</span></code></pre></div>
 </div>
 <div id="specifying-other-statistics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#specifying-other-statistics" class="anchor"></a>Specifying other statistics</h2>
 <p>You can supply a statistics argument with the “stats” parameter. You can pass a single statistic, or multiple statistics as a vector of names.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># single statistic</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># single statistic</span>
 <span class="fu"><a href="../reference/qstats.html">qstats</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">highway_mpg</span>, <span class="va">vehicle_size</span>, stats <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span>
 <span class="co">#&gt;   vehicle_size median</span>
 <span class="co">#&gt; 1      Compact     28</span>
@@ -182,10 +185,10 @@
 <span class="co">#&gt;   vehicle_size median min max</span>
 <span class="co">#&gt; 1      Compact     28  12 111</span>
 <span class="co">#&gt; 2        Large     22  13 107</span>
-<span class="co">#&gt; 3      Midsize     26  12 354</span></pre></div>
+<span class="co">#&gt; 3      Midsize     26  12 354</span></code></pre></div>
 <p>User-defined functions can also be used as a statistics. The only requirement is that the function returns a single number.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="co">#custom statistics</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">#custom statistics</span>
 <span class="va">p25</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span>, probs<span class="op">=</span><span class="fl">.25</span><span class="op">)</span>
 <span class="va">p75</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">x</span>, probs<span class="op">=</span><span class="fl">.75</span><span class="op">)</span>
 
@@ -195,7 +198,7 @@
 <span class="co">#&gt;   vehicle_size min p25 p75 max</span>
 <span class="co">#&gt; 1      Compact  12  24  33 111</span>
 <span class="co">#&gt; 2        Large  13  19  25 107</span>
-<span class="co">#&gt; 3      Midsize  12  23  31 354</span></pre></div>
+<span class="co">#&gt; 3      Midsize  12  23  31 354</span></code></pre></div>
 </div>
 <div id="other-options" class="section level2">
 <h2 class="hasAnchor">
@@ -208,14 +211,14 @@
 <li>
 <strong>digits</strong> The number of decimal points to print. Default = 2.</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="../reference/qstats.html">qstats</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">highway_mpg</span>, <span class="va">vehicle_size</span>,  
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/qstats.html">qstats</a></span><span class="op">(</span><span class="va">cardata</span>, <span class="va">highway_mpg</span>, <span class="va">vehicle_size</span>,  
        stats<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"n"</span>, <span class="st">"mean"</span>,<span class="st">"median"</span>,<span class="st">"sd"</span><span class="op">)</span>,  
        na.rm<span class="op">=</span><span class="cn">FALSE</span>, digits<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
 <span class="co">#&gt;   vehicle_size    n  mean median   sd</span>
 <span class="co">#&gt; 1      Compact 4764 28.94     28 9.58</span>
 <span class="co">#&gt; 2        Large 2777 22.42     22 7.37</span>
-<span class="co">#&gt; 3      Midsize 4373 26.80     26 7.91</span></pre></div>
+<span class="co">#&gt; 3      Midsize 4373 26.80     26 7.91</span></code></pre></div>
 </div>
   </div>
 

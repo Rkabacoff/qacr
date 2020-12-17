@@ -5,7 +5,7 @@
 #'
 #' @param data a data frame.
 #' @param vars character vector of variable names.
-#' @param from a vector of values or conditions (see Details).
+#' @param from a vector of values or conditions (see examples).
 #' @param to a vector of replacement values.
 #' @export
 #' @return a data frame
@@ -105,7 +105,8 @@ recodes <- function(data, vars, from, to){
         } else if (grepl(pattern, f)) {
           replacement <- paste0(df,"[['", i, "']]")
           condition <- gsub(pattern, replacement, f)
-          x <- ifelse(eval(parse(text = condition)) & !changed,
+          x <- ifelse(eval(parse(text = condition),
+                           envir=parent.frame()) & !changed,
                       t, x)
           # otherwise
         } else {

@@ -11,7 +11,7 @@ recodes(data, vars, from, to)
 
 \item{vars}{character vector of variable names.}
 
-\item{from}{a vector of values or conditions (see Details).}
+\item{from}{a vector of values or conditions (see examples).}
 
 \item{to}{a vector of replacement values.}
 }

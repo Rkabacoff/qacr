@@ -23,6 +23,18 @@ barcharts <- function(data, fill="deepskyblue2",
                       abbrev=20){
 
 
+  force_all <- function(...) list(...)
+  pretty_breaks <- function(n=5, ...){
+    force_all(n, ...)
+    n_default <- n
+    function(x, n = n_default) {
+      breaks <- pretty(x, n, ...)
+      names(breaks) <- attr(breaks, "labels")
+      breaks
+    }
+  }
+
+
   # bind global variables to keep check from warning
   key <- value <- tot <- pct <- pctlabel <- NULL
 
