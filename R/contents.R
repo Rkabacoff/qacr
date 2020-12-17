@@ -23,12 +23,7 @@
 #' several tables, a general summary table and tables that provide
 #' a breakdown of quantitative and categorical variables.
 #' @examples
-#' testdata <- data.frame(height=c(4, 5, 3, 2, 100),
-#'                        weight=c(39, 88, NA, 15, -2),
-#'                        names=c("Bill","Dean", "Sam", NA, "Jane"),
-#'                        race=c('b', 'w', 'w', 'o', 'b'))
-#'
-#' contents(testdata)
+#' contents(heart)
 #'
 #' @rdname contents
 #' @export

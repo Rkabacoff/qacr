@@ -50,7 +50,7 @@ d <- data.frame(Function=c("[**import**](../reference/import.html)",
                               to categorical or factor variables based on
                               value ranges, and  the levels 
                               of a categorical variables can be
-                              collapsed/combined.",
+                              collapsed/combined. See the [vignette](recodes.html) for examples.",
                               
                               "`standardize()` transforms all the 
                               numeric variables in a data frame to same

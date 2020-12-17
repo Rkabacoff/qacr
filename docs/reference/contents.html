@@ -213,36 +213,57 @@ several tables, a general summary table and tables that provide
 a breakdown of quantitative and categorical variables.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>testdata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>height<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>3</span>, <span class='fl'>2</span>, <span class='fl'>100</span><span class='op'>)</span>,
-                       weight<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>39</span>, <span class='fl'>88</span>, <span class='cn'>NA</span>, <span class='fl'>15</span>, <span class='op'>-</span><span class='fl'>2</span><span class='op'>)</span>,
-                       names<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Bill"</span>,<span class='st'>"Dean"</span>, <span class='st'>"Sam"</span>, <span class='cn'>NA</span>, <span class='st'>"Jane"</span><span class='op'>)</span>,
-                       race<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'b'</span>, <span class='st'>'w'</span>, <span class='st'>'w'</span>, <span class='st'>'o'</span>, <span class='st'>'b'</span><span class='op'>)</span><span class='op'>)</span>
-
-<span class='fu'>contents</span><span class='op'>(</span><span class='va'>testdata</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'>contents</span><span class='op'>(</span><span class='va'>heart</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 
-#&gt; The data frame testdata has 5 observations and 4 variables.
+#&gt; The data frame heart has 303 observations and 14 variables.
 #&gt; 
 #&gt; <span style='color: #0000BB;font-weight: bold;text-decoration: underline;'>Overall</span><span>
-#&gt;  pos varname type      n_unique n_miss pct_miss
-#&gt;  1   height  numeric   5        0      0%      
-#&gt;  2   weight  numeric   5        1      20%     
-#&gt;  3   names   character 5        1      20%     
-#&gt;  4   race    character 3        0      0%      
+#&gt;  pos varname type    n_unique n_miss pct_miss
+#&gt;   1  age     integer  41      0      0%      
+#&gt;   2  sex     factor    2      0      0%      
+#&gt;   3  cp      factor    4      0      0%      
+#&gt;   4  testbps integer  50      0      0%      
+#&gt;   5  chol    integer 152      0      0%      
+#&gt;   6  fbs     integer   2      0      0%      
+#&gt;   7  restecg factor    3      0      0%      
+#&gt;   8  thalach integer  91      0      0%      
+#&gt;   9  exang   integer   2      0      0%      
+#&gt;  10  oldpeak numeric  40      0      0%      
+#&gt;  11  slope   factor    3      0      0%      
+#&gt;  12  ca      numeric   5      4      1%      
+#&gt;  13  thal    factor    4      2      1%      
+#&gt;  14  disease factor    2      0      0%      
 #&gt; 
 #&gt; </span><span style='color: #0000BB;font-weight: bold;text-decoration: underline;'>Numeric Variables</span><span>
-#&gt;        n mean    sd skew min   p25 median   p75 max
-#&gt; height 5 22.8 43.17 1.07   2  3.00      4  5.00 100
-#&gt; weight 4 35.0 39.13 0.38  -2 10.75     27 51.25  88
+#&gt;           n   mean    sd  skew min   p25 median   p75   max
+#&gt; age     303  54.44  9.04 -0.21  29  48.0   56.0  61.0  77.0
+#&gt; testbps 303 131.69 17.60  0.70  94 120.0  130.0 140.0 200.0
+#&gt; chol    303 246.69 51.78  1.12 126 211.0  241.0 275.0 564.0
+#&gt; fbs     303   0.15  0.36  1.97   0   0.0    0.0   0.0   1.0
+#&gt; thalach 303 149.61 22.88 -0.53  71 133.5  153.0 166.0 202.0
+#&gt; exang   303   0.33  0.47  0.74   0   0.0    0.0   1.0   1.0
+#&gt; oldpeak 303   1.04  1.16  1.26   0   0.0    0.8   1.6   6.2
+#&gt; ca      299   0.67  0.94  1.18   0   0.0    0.0   1.0   3.0
 #&gt; 
 #&gt; </span><span style='color: #0000BB;font-weight: bold;text-decoration: underline;'>Categorical Variables</span><span>
-#&gt;  variable level n pct 
-#&gt;  names    Bill  1 0.25
-#&gt;           Dean  1 0.25
-#&gt;           Jane  1 0.25
-#&gt;           Sam   1 0.25
-#&gt;  race     b     2 0.40
-#&gt;           o     1 0.20
-#&gt;           w     2 0.40</div><div class='input'>
+#&gt;  variable level                n   pct 
+#&gt;  sex      female                97 0.32
+#&gt;           male                 206 0.68
+#&gt;  cp       typical angina        23 0.08
+#&gt;           atypical angina       50 0.17
+#&gt;           non-anginal pain      86 0.28
+#&gt;           asymptomatic         144 0.48
+#&gt;  restecg  normal               151 0.50
+#&gt;           ST-T wave abnormalit   4 0.01
+#&gt;           left ventricular hyp 148 0.49
+#&gt;  slope    upsloping            142 0.47
+#&gt;           flat                 140 0.46
+#&gt;           downsloping           21 0.07
+#&gt;  thal     normal               166 0.55
+#&gt;           fixed defect          18 0.06
+#&gt;           reversable defect    117 0.39
+#&gt;  disease  no                   164 0.54
+#&gt;           yes                  139 0.46</div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

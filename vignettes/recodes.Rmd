@@ -104,7 +104,7 @@ For `age`, set values
 * 30 < age <= 50 to "Middle Aged", and   
 * 50 < age <= 90 to "Older". 
 
-We will use the dollar sign (**\$**) to represent age. The symbol (**\|**) means **or**.
+You can use expressions in your `from` fields. When they are `TRUE`, the corresponding `to` values will be applied. We will use the dollar sign (**\$**) to represent the variable (age in this case). The symbols (**\|**, **\&**) mean **OR** and **AND** respectively.
 
 ```{r}
 df <- recodes(data=df, vars="age", 
@@ -123,7 +123,7 @@ df <- recodes(data=df, vars="age",
               to=  c(NA, "Younger", "Middle Aged", "Older", "NA"))
 ```
 
-This works because once the value for an observations meets a criteria (working left to right), it is recoded. It is not changed again by the same `recodes` statement.
+This works because once the age value for an observations meets a criteria that is `TRUE` (working left to right), it is recoded. It isn't changed again by later criteria in the same `recodes` statement.
 
 ```{r, echo=FALSE}
 kbl(df) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
@@ -142,4 +142,5 @@ df <- recodes(data=df, vars="rating", from=1:5, to=5:1)
 kbl(df) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 ```
 
-**And that's it (applause, applause)!**
+
+**And that's it (APPLAUSE, APPLAUSE)!**

@@ -1004,7 +1004,7 @@ NA
 </li>
 <li>50 &lt; age &lt;= 90 to “Older”.</li>
 </ul>
-<p>We will use the dollar sign (<strong>$</strong>) to represent age. The symbol (<strong>|</strong>) means <strong>or</strong>.</p>
+<p>You can use expressions in your <code>from</code> fields. When they are <code>TRUE</code>, the corresponding <code>to</code> values will be applied. We will use the dollar sign (<strong>$</strong>) to represent the variable (age in this case). The symbols (<strong>|</strong>, <strong>&amp;</strong>) mean <strong>OR</strong> and <strong>AND</strong> respectively.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recodes.html">recodes</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">df</span>, vars<span class="op">=</span><span class="st">"age"</span>, 
               from<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"$ &lt;   20 | $ &gt;  90"</span>, 
@@ -1017,7 +1017,7 @@ NA
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recodes.html">recodes</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">df</span>, vars<span class="op">=</span><span class="st">"age"</span>, 
               from<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"$ &lt; 20"</span>, <span class="st">"$ &lt;= 30"</span>, <span class="st">"$ &lt;= 50"</span>, <span class="st">"$ &lt;= 90"</span>, <span class="st">"$ &gt; 90"</span><span class="op">)</span>, 
               to<span class="op">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"Younger"</span>, <span class="st">"Middle Aged"</span>, <span class="st">"Older"</span>, <span class="st">"NA"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>This works because once the value for an observations meets a criteria (working left to right), it is recoded. It is not changed again by the same <code>recodes</code> statement.</p>
+<p>This works because once the age value for an observations meets a criteria that is <code>TRUE</code> (working left to right), it is recoded. It isn’t changed again by later criteria in the same <code>recodes</code> statement.</p>
 <table class="table table table-striped">
 <thead><tr>
 <th style="text-align:left;">
@@ -1355,7 +1355,7 @@ NA
 </tr>
 </tbody>
 </table>
-<p><strong>And that’s it (applause, applause)!</strong></p>
+<p><strong>And that’s it (APPLAUSE, APPLAUSE)!</strong></p>
 </div>
 </div>
   </div>
