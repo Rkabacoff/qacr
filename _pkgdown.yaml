@@ -17,6 +17,7 @@ reference:
       - '`FA`'
       - '`histograms`'
       - '`import`'
+      - '`lift_plot`'
       - '`normalize`'
       - '`PCA`'
       - '`profile_plot`'

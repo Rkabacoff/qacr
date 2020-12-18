@@ -228,9 +228,11 @@ kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position
 ### Classification
 
 ```{r, echo=FALSE}
-d <- data.frame(Function=c("[**roc_plot**](../reference/roc_plot.html)"),
-                Description=c("Produce a Receive Operating Curve (ROC) for
-                              a binary prediction problem."
+d <- data.frame(Function=c("[**lift_plot**](../reference/lift_plot.html)",
+                           "[**roc_plot**](../reference/roc_plot.html)"),
+                Description=c("Generate gain and lift charts.",
+                              "Produce a Receive Operating Curve
+                              (ROC) for a binary prediction problem."
                               ))
 
 kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")

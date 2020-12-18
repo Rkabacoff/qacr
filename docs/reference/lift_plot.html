@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Histograms — histograms • qacr</title>
+<title>Lift and gain charts — lift_plot • qacr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Histograms — histograms" />
-<meta property="og:description" content="Create histograms for all quantitative variables in a data frame." />
+<meta property="og:title" content="Lift and gain charts — lift_plot" />
+<meta property="og:description" content="Create lift and gain charts for binary
+classification problems" />
 
 
 
@@ -156,50 +157,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Histograms</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/histograms.R'><code>R/histograms.R</code></a></small>
-    <div class="hidden name"><code>histograms.Rd</code></div>
+    <h1>Lift and gain charts</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/lift.R'><code>R/lift.R</code></a></small>
+    <div class="hidden name"><code>lift_plot.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create histograms for all quantitative variables in a data frame.</p>
+    <p>Create lift and gain charts for binary
+classification problems</p>
     </div>
 
-    <pre class="usage"><span class='fu'>histograms</span><span class='op'>(</span><span class='va'>data</span>, fill <span class='op'>=</span> <span class='st'>"deepskyblue2"</span>, color <span class='op'>=</span> <span class='st'>"white"</span>, bins <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>lift_plot</span><span class='op'>(</span><span class='va'>actual</span>, <span class='va'>prob</span>, positive <span class='op'>=</span> <span class='st'>"yes"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>data</th>
-      <td><p>data frame</p></td>
+      <th>actual</th>
+      <td><p>actual class.</p></td>
     </tr>
     <tr>
-      <th>fill</th>
-      <td><p>fill color for histogram bars</p></td>
+      <th>prob</th>
+      <td><p>predicted probability of target class.</p></td>
     </tr>
     <tr>
-      <th>color</th>
-      <td><p>border color for histogram bars</p></td>
-    </tr>
-    <tr>
-      <th>bins</th>
-      <td><p>number of bins (bars) for the histograms</p></td>
+      <th>positive</th>
+      <td><p>which class is the target class?</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a ggplot graph</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The <code>histograms</code> function will only plot quantitative variables from
-a data frame. Categorical variables are ignored.</p>
+    <p>a data frame with lift and gain values for each decile.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>histograms</span><span class='op'>(</span><span class='va'>cars74</span><span class='op'>)</span>
-</div><div class='img'><img src='histograms-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>histograms</span><span class='op'>(</span><span class='va'>cars74</span>, bins<span class='op'>=</span><span class='fl'>20</span>, fill<span class='op'>=</span><span class='st'>"darkred"</span><span class='op'>)</span>
-</div><div class='img'><img src='histograms-2.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='co'># logistic regression example</span>
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='va'>heart</span><span class='op'>)</span>
+<span class='va'>heart</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/na.fail.html'>na.omit</a></span><span class='op'>(</span><span class='va'>heart</span><span class='op'>)</span>
+<span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='va'>disease</span> <span class='op'>~</span> <span class='va'>.</span> , <span class='va'>heart</span>, family<span class='op'>=</span><span class='va'>binomial</span><span class='op'>)</span>
+<span class='va'>pred</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>fit</span>, newdata<span class='op'>=</span><span class='va'>heart</span>, type<span class='op'>=</span><span class='st'>"response"</span><span class='op'>)</span>
+<span class='va'>results</span> <span class='op'>&lt;-</span> <span class='fu'>lift_plot</span><span class='op'>(</span><span class='va'>heart</span><span class='op'>$</span><span class='va'>disease</span>, <span class='va'>pred</span>, positive<span class='op'>=</span><span class='st'>"yes"</span><span class='op'>)</span>
+</div><div class='img'><img src='lift_plot-1.png' alt='' width='700' height='433' /></div><div class='img'><img src='lift_plot-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>results</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    decile ncases nresp cumresp pctevents   gain  cumlift
+#&gt; 1      10     29    29      29     21.17  21.17 2.117000
+#&gt; 2      20     29    27      56     19.71  40.88 2.044000
+#&gt; 3      30     29    26      82     18.98  59.86 1.995333
+#&gt; 4      40     30    25     107     18.25  78.11 1.952750
+#&gt; 5      50     30    14     121     10.22  88.33 1.766600
+#&gt; 6      60     30     9     130      6.57  94.90 1.581667
+#&gt; 7      70     30     3     133      2.19  97.09 1.387000
+#&gt; 8      80     30     2     135      1.46  98.55 1.231875
+#&gt; 9      90     30     1     136      0.73  99.28 1.103111
+#&gt; 10    100     30     1     137      0.73 100.01 1.000100</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

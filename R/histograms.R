@@ -10,6 +10,7 @@
 #' a data frame. Categorical variables are ignored.
 #' @examples
 #' histograms(cars74)
+#' histograms(cars74, bins=15, fill="darkred")
 #' @rdname histograms
 #' @import tidyr
 #' @import ggplot2
