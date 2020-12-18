@@ -30,7 +30,7 @@ df <- data.frame(sex=c(1,2,1,2,2,2),
 
 The `recodes()` functions makes it very easy to recode one or more variables in the your data frame. The format is </br></br>
 
-**`newdata <- recodes(data, variables, from values, to values)`**
+**`newdata <- recodes(olddata, variables, from values, to values)`**
 
 ### Original dataset
 
@@ -109,9 +109,9 @@ You can use expressions in your `from` fields. When they are `TRUE`, the corresp
 ```{r}
 df <- recodes(data=df, vars="age", 
               from=c("$ <   20 | $ >  90", 
-                     "$ <=  20 | $ <= 30",
-                     "$ <   30 | $ <= 50",
-                     "$ <   50 | $ <= 90"), 
+                     "$ <=  20 & $ <= 30",
+                     "$ <   30 & $ <= 50",
+                     "$ <   50 & $ <= 90"), 
               to=c(NA, "Younger", "Middle Aged", "Older"))
 ```
 
@@ -143,4 +143,4 @@ kbl(df) %>% kable_styling(bootstrap_options = "striped", full_width = F, positio
 ```
 
 
-**And that's it (APPLAUSE, APPLAUSE)!**
+**<span style="color: red;">And that's it (APPLAUSE, APPLAUSE)!</span>**

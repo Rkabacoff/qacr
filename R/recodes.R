@@ -5,8 +5,37 @@
 #'
 #' @param data a data frame.
 #' @param vars character vector of variable names.
-#' @param from a vector of values or conditions (see examples).
+#' @param from a vector of values or conditions (see Details).
 #' @param to a vector of replacement values.
+#'
+#' @details
+#' \itemize{
+#' \item For each variable in the \code{vars} parameter, values
+#' are checked against the list of values in the \code{from} vector.
+#' If a value matches, it is replaced with the corresponding
+#' entry in the \code{to} vector.
+#' \item Once a given observation's value matches a \code{from} value, it is
+#' recoded. That particular observation will not be recoded again by
+#' that \code{recodes()} statement (i.e., no chaining).
+#' \item One or more values in the \code{from} vector can be an expression,
+#' using the dollar sign ($) to represent the variable being recoded.
+#' If the expression
+#' evaluates to \code{TRUE}, the corresponding \code{to} value is
+#' returned.
+#' \item If the number of values in the \code{to} vector is less than
+#' the \code{from} vector, the values are recycled. This lets you
+#' convert several values to a single outcome value (e.g., \code{NA}).
+#' \item If the \code{to} values are numeric, the resulting recoded variable
+#' will be numeric. If the variable being recoded is a factor and the
+#' \code{to} values are character values, the resulting variable will
+#' remain a factor. If the variable being recoded is a character variable
+#' and the \code{to} values are character values, the resulting
+#' variable will remain a character variable.
+#' }
+#'
+#' @note
+#' See the vignette for a worked example.
+#
 #' @export
 #' @return a data frame
 #' @examples

@@ -127,7 +127,7 @@
     
     
 <p>The <code><a href="../reference/recodes.html">recodes()</a></code> functions makes it very easy to recode one or more variables in the your data frame. The format is </p>
-<p><strong><code>newdata &lt;- recodes(data, variables, from values, to values)</code></strong></p>
+<p><strong><code>newdata &lt;- recodes(olddata, variables, from values, to values)</code></strong></p>
 <div id="original-dataset" class="section level3">
 <h3 class="hasAnchor">
 <a href="#original-dataset" class="anchor"></a>Original dataset</h3>
@@ -1008,9 +1008,9 @@ NA
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recodes.html">recodes</a></span><span class="op">(</span>data<span class="op">=</span><span class="va">df</span>, vars<span class="op">=</span><span class="st">"age"</span>, 
               from<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"$ &lt;   20 | $ &gt;  90"</span>, 
-                     <span class="st">"$ &lt;=  20 | $ &lt;= 30"</span>,
-                     <span class="st">"$ &lt;   30 | $ &lt;= 50"</span>,
-                     <span class="st">"$ &lt;   50 | $ &lt;= 90"</span><span class="op">)</span>, 
+                     <span class="st">"$ &lt;=  20 &amp; $ &lt;= 30"</span>,
+                     <span class="st">"$ &lt;   30 &amp; $ &lt;= 50"</span>,
+                     <span class="st">"$ &lt;   50 &amp; $ &lt;= 90"</span><span class="op">)</span>, 
               to<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="st">"Younger"</span>, <span class="st">"Middle Aged"</span>, <span class="st">"Older"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>We can also write this as</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -1106,7 +1106,7 @@ Other
 18
 </td>
 <td style="text-align:left;">
-Middle Aged
+Older
 </td>
 <td style="text-align:right;">
 5
@@ -1129,7 +1129,7 @@ Other
 NA
 </td>
 <td style="text-align:left;">
-Older
+55
 </td>
 <td style="text-align:right;">
 3
@@ -1152,7 +1152,7 @@ White
 NA
 </td>
 <td style="text-align:left;">
-Younger
+Older
 </td>
 <td style="text-align:right;">
 4
@@ -1278,7 +1278,7 @@ Other
 18
 </td>
 <td style="text-align:left;">
-Middle Aged
+Older
 </td>
 <td style="text-align:right;">
 1
@@ -1301,7 +1301,7 @@ Other
 NA
 </td>
 <td style="text-align:left;">
-Older
+55
 </td>
 <td style="text-align:right;">
 3
@@ -1324,7 +1324,7 @@ White
 NA
 </td>
 <td style="text-align:left;">
-Younger
+Older
 </td>
 <td style="text-align:right;">
 2
@@ -1355,7 +1355,7 @@ NA
 </tr>
 </tbody>
 </table>
-<p><strong>And that’s it (APPLAUSE, APPLAUSE)!</strong></p>
+<p><strong><span style="color: red;">And that’s it (APPLAUSE, APPLAUSE)!</span></strong></p>
 </div>
 </div>
   </div>
