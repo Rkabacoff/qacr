@@ -2,44 +2,28 @@
 #'
 #' @description Plot a receiver operating characteristic curve for a binary predictive model
 #'
-#' @details
-#' Takes a model produced by the train function in the caret package and
-#' the binary level to predict, and generates a ROC plot.
-#' @param model predictive model from the caret train function.
-#' @param positive label for the class to predict.
-#' @param n.cuts number of probability cutpoints to plot.
-#' @param labelsize size of cutpoint labels.
-#' @param labelround number of decimal digits in the cutpoint labels.
+#' @param actual actual class.
+#' @param prob predicted probability for the target class
+#' @param positive label for the target class
+#' @param n.cuts number of probability cut-points to plot
+#' @param labelsize size of cutpoint labels
+#' @param labelround number of decimal digits in the cutpoint labels
 #' @export
-#' @import caret
 #' @import ggplot2
 #' @import plotROC
 #' @return a ggplot2 graph
 #' @examples
-#'
-#' # logistic regression example
-#' library(caret)
-#' data(GermanCredit)
-#' model.lr <- train(Class ~ Age + Amount + Duration,
-#'                   data=GermanCredit,
-#'                   method="glm", family="binomial")
-#' roc_plot(model=model.lr, positive="Bad")
-#'
-roc_plot <- function(model, positive, n.cuts=20, labelsize=3,
-                    labelround=2){
+#' # logistic regression
+#' data(heart)
+#' heart <- na.omit(heart)
+#' fit <- glm(disease ~ . , heart, family=binomial)
+#' prob <- predict(fit, newdata=heart, type="response")
+#' roc_plot(heart$disease, prob, positive="yes")
+roc_plot <- function(actual, prob, positive, n.cuts=20,
+                     labelsize=3, labelround=2){
 
-  if (!inherits(model, "train")){
-    stop("Model must result from caret::train().")
-  }
-
-  df <- model[["trainingData"]]
-
-
-  # actual outcome
-  outcome <- df[[".outcome"]]
-  outcome <- as.character(outcome)
-
-  # check positive value
+  outcome <- as.character(actual)
+  # check positive outcome
   x <- table(outcome)
   if (length(x) != 2) stop("Outcome must have 2 levels.")
   if (missing(positive)) {
@@ -53,9 +37,6 @@ roc_plot <- function(model, positive, n.cuts=20, labelsize=3,
   outcome <- ifelse(outcome == positive, 1, 0)
 
   # predicted probability
-  prob <- stats::predict(model, df, type="prob")
-  prob <- prob[[positive]]
-
   df <- data.frame(d = outcome,
                    m = prob)
 

@@ -32,7 +32,6 @@ Imports:
     crayon,
     rlang,
     psych,
-    caret,
     ggExtra,
     plotROC,
     factoextra,

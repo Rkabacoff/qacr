@@ -4,18 +4,20 @@
 \alias{roc_plot}
 \title{Receiver Operating Characteristic curve}
 \usage{
-roc_plot(model, positive, n.cuts = 20, labelsize = 3, labelround = 2)
+roc_plot(actual, prob, positive, n.cuts = 20, labelsize = 3, labelround = 2)
 }
 \arguments{
-\item{model}{predictive model from the caret train function.}
+\item{actual}{actual class.}
 
-\item{positive}{label for the class to predict.}
+\item{prob}{predicted probability for the target class}
 
-\item{n.cuts}{number of probability cutpoints to plot.}
+\item{positive}{label for the target class}
 
-\item{labelsize}{size of cutpoint labels.}
+\item{n.cuts}{number of probability cut-points to plot}
 
-\item{labelround}{number of decimal digits in the cutpoint labels.}
+\item{labelsize}{size of cutpoint labels}
+
+\item{labelround}{number of decimal digits in the cutpoint labels}
 }
 \value{
 a ggplot2 graph
@@ -23,18 +25,11 @@ a ggplot2 graph
 \description{
 Plot a receiver operating characteristic curve for a binary predictive model
 }
-\details{
-Takes a model produced by the train function in the caret package and
-the binary level to predict, and generates a ROC plot.
-}
 \examples{
-
-# logistic regression example
-library(caret)
-data(GermanCredit)
-model.lr <- train(Class ~ Age + Amount + Duration,
-                  data=GermanCredit,
-                  method="glm", family="binomial")
-roc_plot(model=model.lr, positive="Bad")
-
+# logistic regression
+data(heart)
+heart <- na.omit(heart)
+fit <- glm(disease ~ . , heart, family=binomial)
+prob <- predict(fit, newdata=heart, type="response")
+roc_plot(heart$disease, prob, positive="yes")
 }

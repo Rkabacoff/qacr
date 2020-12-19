@@ -27,5 +27,5 @@ a data frame. Categorical variables are ignored.
 }
 \examples{
 histograms(cars74)
-histograms(cars74, bins=20, fill="darkred")
+histograms(cars74, bins=15, fill="darkred")
 }

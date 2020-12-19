@@ -251,7 +251,8 @@ While **each** dataset can be used for data visualization, here are some pointer
 d <- data.frame(Ideas=c("Mapping",
                       "Regression",
                       "Classification",
-                      "Text Mining"),
+                      "Text Mining",
+                      "Dimension Reduction"),
                 Datasets=c("[Amazon forest fires](../reference/amazon.html),
                            [US border crossings](../reference/border.html), 
                            [CIA World FactBook](../reference/countries.html), 
@@ -278,7 +279,8 @@ d <- data.frame(Ideas=c("Mapping",
                     [Heart disease](../reference/heart.html)",
         
                     "[British movie plots](../reference/movies.html), 
-        [Wine reviews](../reference/wine.html)"))
+        [Wine reviews](../reference/wine.html)",
+        "[Big 5 personality factors](../reference/big5.html)"))
 
 kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 

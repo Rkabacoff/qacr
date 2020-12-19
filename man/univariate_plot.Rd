@@ -54,7 +54,8 @@ are deleted.
 }
 \examples{
 univariate_plot(mtcars, mpg)
-univariate_plot(mtcars, mpg, pointcolor="darkgreen",
-               densitycolor="darkgreen", alpha=.4)
-univariate_plot(mtcars, wt, density=FALSE, bins=20)
+univariate_plot(cardata, city_mpg, fill="lightsteelblue",
+                pointcolor="lightsteelblue", densitycolor="lightpink",
+                alpha=.6)
+univariate_plot(amazon, number, density=FALSE, bins=100, alpha=.02)
 }
