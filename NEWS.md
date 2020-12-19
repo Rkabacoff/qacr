@@ -2,6 +2,7 @@
 
 * Addition of dimension reduction functions including `biPlot`, `FA`, `PCA`, 
 and `screePlot`.
+* Addition of Big5 Personality and Holland Occupation Themes datasets.
 
 # qacr 1.0.0.1
 

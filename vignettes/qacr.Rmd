@@ -280,7 +280,8 @@ d <- data.frame(Ideas=c("Mapping",
         
                     "[British movie plots](../reference/movies.html), 
         [Wine reviews](../reference/wine.html)",
-        "[Big 5 personality factors](../reference/big5.html)"))
+        "[Big 5 personality factors](../reference/big5.html),
+        [Holland Occupational Themes](../reference/holland.html)"))
 
 kbl(d) %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 
