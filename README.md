@@ -25,7 +25,7 @@ remotes::install_github("rkabacoff/qacr")
 
 ### Using the package
 
-The easiest way to get started, is appropriately enough, reading the [**Getting Started**](articles/qacr.html) guide. Next, take a look at the
-[Documentation](reference/index.html). There are also *vignettes* on specific topics.
+The easiest way to get started, is appropriately enough, reading the [**Getting Started**](https://rkabacoff.github.io/qacr/articles/qacr.html) guide. Next, take a look at the
+[Documentation](https://rkabacoff.github.io/qacr/reference/index.html). There are also *vignettes* on specific topics.
 
 **Suggestions are always welcome!**
