@@ -65,16 +65,16 @@ head(mydata)
 
 In this section, the ratings data are re-analyzed using a *maximum likelihood* factor analysis. 
 
-Again, we'll start with a scree plot. This time we'll run 200 simulations. A random number seed is set to assure reproducability.
+Again, we'll start with a scree plot. A random number seed is set to assure reproducibility.
 
 ```{r fig.height=6, fig.width=6, message=FALSE, warning=FALSE, message=FALSE}
 
 # scree plot
 set.seed(1234)
-scree_plot(ratings, method = "ml", n.iter=200)
+scree_plot(ratings, method = "ml")
 ```
 
-The scree plot suggests four factors. In the next step, we'll extract two factors and rotate them using a *promax* rotation.
+The scree plot suggests two factors. In the next step, we'll extract four factors and rotate them using a *promax* rotation.
 
 ```{r fig.width=6, fig.height=6}
 # extract 4 factors
@@ -82,7 +82,7 @@ fit.fa <- FA(ratings, nfactor=4, rotate="promax", fm="ml")
 ```
 
 The printout includes the factor pattern, the factor structure, and the factor intercorrelations.
-The four factors account for 32% of the variance in the original data. Factors 1 and 3 have the hightest correlation (0.37).
+The four factors account for 40% of the variance in the original data. Factors 1 and 3 have the hightest correlation (0.37).
 
 Next, we'll plot the pattern matrix as both a table and a bar chart. 
 
