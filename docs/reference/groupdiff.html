@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Density plots — densities • qacr</title>
+<title>Test of group differences — groupdiff • qacr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Density plots — densities" />
-<meta property="og:description" content="Create desnsity plots for all quantitative variables in a data frame." />
+<meta property="og:title" content="Test of group differences — groupdiff" />
+<meta property="og:description" content="One-way analysis (ANOVA or Kruskal-Wallis Test)
+with post-hoc comparisons and plots" />
 
 
 
@@ -156,52 +157,109 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Density plots</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/densities.R'><code>R/densities.R</code></a></small>
-    <div class="hidden name"><code>densities.Rd</code></div>
+    <h1>Test of group differences</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rkabacoff/qacr/blob/master/R/groupdiff.R'><code>R/groupdiff.R</code></a></small>
+    <div class="hidden name"><code>groupdiff.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create desnsity plots for all quantitative variables in a data frame.</p>
+    <p>One-way analysis (ANOVA or Kruskal-Wallis Test)
+with post-hoc comparisons and plots</p>
     </div>
 
-    <pre class="usage"><span class='fu'>densities</span><span class='op'>(</span><span class='va'>data</span>, fill <span class='op'>=</span> <span class='st'>"deepskyblue2"</span>, adjust <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>groupdiff</span><span class='op'>(</span>
+  <span class='va'>formula</span>,
+  <span class='va'>data</span>,
+  method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"anova"</span>, <span class='st'>"kw"</span><span class='op'>)</span>,
+  digits <span class='op'>=</span> <span class='fl'>2</span>,
+  offset <span class='op'>=</span> <span class='fl'>5</span>,
+  horizontal <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>formula</th>
+      <td><p>formula of the form <code>Y ~ X</code> where <code>Y</code> is the response
+variable, and <code>X</code> is the categorical explanatory variable.</p></td>
+    </tr>
+    <tr>
       <th>data</th>
-      <td><p>data frame</p></td>
+      <td><p>a data frame.</p></td>
     </tr>
     <tr>
-      <th>fill</th>
-      <td><p>fill color for density plots</p></td>
+      <th>method</th>
+      <td><p>character. Either <code>"anova"</code>, or <code>"kw"</code> (see details).</p></td>
     </tr>
     <tr>
-      <th>adjust</th>
-      <td><p>a factor multiplied by the smoothing bandwidth. See details.</p></td>
+      <th>digits</th>
+      <td><p>Number of significant digits to print.</p></td>
+    </tr>
+    <tr>
+      <th>offset</th>
+      <td><p>space at top of graph for post-hoc comparison letters.</p></td>
+    </tr>
+    <tr>
+      <th>horizontal</th>
+      <td><p>logical. It <code>TRUE</code>, boxplots are plotted horizontally.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a ggplot graph</p>
+    <p>a list with 2 components</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The <code>densities</code> function will only plot quantitative variables from
-a data frame. Categorical variables are ignored.</p>
-<p>The <code>adjust</code> parameter mulitplies the smoothing parameter. For example
-<code>adjust = 1/2</code> will make the density plots twice as smooth.
-The <code>adjust = 1/2</code> will make the density plots half as smooth (i.e., twice as spiky).</p>
+    <p>The <code>groupdiff</code> function performs one of two analyses:</p><dl>
+<dt><code>anova</code></dt><dd><p>A one-way analysis of variance, with TukeyHSD
+post-hoc comparisons.</p></dd>
+<dt><code>kw</code></dt><dd><p>A Kruskal Wallis Rank Sum Test, with Conover
+Test post-hoc comparisons.</p></dd>
+
+</dl><p>In each case, a boxplot and summary statistics are provided.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='https://rdrr.io/pkg/PMCMRplus/man/kwAllPairsConoverTest.html'>kwAllPairsConoverTest</a>,
+<a href='https://rdrr.io/pkg/multcompView/man/multcompLetters.html'>multcompLetters</a>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>densities</span><span class='op'>(</span><span class='va'>cars74</span><span class='op'>)</span>
-</div><div class='img'><img src='densities-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'>densities</span><span class='op'>(</span><span class='va'>cars74</span>, adjust<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
-</div><div class='img'><img src='densities-2.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='fu'>densities</span><span class='op'>(</span><span class='va'>cars74</span>, adjust<span class='op'>=</span><span class='fl'>1</span><span class='op'>/</span><span class='fl'>2</span><span class='op'>)</span>
-</div><div class='img'><img src='densities-3.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='co'># parametric analysis</span>
+<span class='fu'>groupdiff</span><span class='op'>(</span><span class='va'>hp</span> <span class='op'>~</span> <span class='va'>gear</span>, <span class='va'>mtcars</span><span class='op'>)</span>
+</div><div class='img'><img src='groupdiff-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; $result
+#&gt; [1] "F(2, 29) = 11.42, p-value = 0.00022"
+#&gt; 
+#&gt; $summarystats
+#&gt;   gear  n   mean     sd
+#&gt; 1    4 12  89.50  25.89
+#&gt; 2    3 15 176.13  47.69
+#&gt; 3    5  5 195.60 102.83
+#&gt; </div><div class='input'>
+<span class='co'># nonparametric analysis</span>
+<span class='fu'>groupdiff</span><span class='op'>(</span><span class='va'>popularity</span> <span class='op'>~</span> <span class='va'>vehicle_style</span>, <span class='va'>cardata</span>, method<span class='op'>=</span><span class='st'>"kw"</span>,
+          offset<span class='op'>=</span><span class='fl'>500</span>, horizontal<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Ties are present. Quantiles were corrected for ties.</span></div><div class='img'><img src='groupdiff-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; $result
+#&gt; [1] "Chi-squared =  666.48 , df = 15 , p-value = &lt;2e-16"
+#&gt; 
+#&gt; $summarystats
+#&gt;          vehicle_style    n median     mad
+#&gt; 1      Convertible SUV   29    481    0.00
+#&gt; 2        2dr Hatchback  506    873  647.90
+#&gt; 3              4dr SUV 2488    870  907.35
+#&gt; 4                Sedan 3048    873  991.86
+#&gt; 5          Convertible  793    873  759.09
+#&gt; 6        4dr Hatchback  702   1385  957.76
+#&gt; 7                Coupe 1211   1439 1218.70
+#&gt; 8                Wagon  592    873  736.85
+#&gt; 9    Passenger Minivan  417   1385  957.76
+#&gt; 10     Crew Cab Pickup  681   1851  690.89
+#&gt; 11 Extended Cab Pickup  623   1851  690.89
+#&gt; 12  Regular Cab Pickup  392   1385  925.14
+#&gt; 13             2dr SUV  138   1385 1239.45
+#&gt; 14           Cargo Van   95   1851 1930.35
+#&gt; 15       Cargo Minivan   71   2009 2164.60
+#&gt; 16       Passenger Van  128   5657    0.00
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -1,3 +1,8 @@
+# qacr 1.0.2.1
+
+* Addition of one analysis of group differences, with post-hoc comparisons
+and plots.
+
 # qacr 1.0.1.1
 
 * Addition of dimension reduction functions including `biPlot`, `FA`, `PCA`, 

@@ -15,6 +15,7 @@ reference:
       - '`densities`'
       - '`df_plot`'
       - '`FA`'
+      - '`groupdiff`'
       - '`histograms`'
       - '`import`'
       - '`lift_plot`'
