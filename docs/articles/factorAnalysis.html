@@ -125,7 +125,7 @@
 
     
     
-<p>Based on the William Revelle’s comprehensive <a href="https://cran.r-project.org/web/packages/psych/index.html">psych</a> package, the <code>qacr</code> package provides wrapper functions for simplified input, intuitive output, and easily interpretable graphs, making these techniques more accessible to data analysts new to these forms of analysis.</p>
+<p>Based on the William Revelle’s comprehensive <a href="https://cran.r-project.org/web/packages/psych/index.html">psych</a> package, <code>qacr</code> provides wrapper functions for simplified input, intuitive output, and easily interpretable graphs, making these techniques more accessible to data analysts new to these forms of analysis.</p>
 <div id="principal-components-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#principal-components-analysis" class="anchor"></a>Principal Components Analysis</h2>
@@ -242,62 +242,60 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Note: parallel analysis suggests 4 factors.</span></code></pre></div>
 <p><img src="factorAnalysis_files/figure-html/unnamed-chunk-6-1.png" width="576"></p>
-<p>The scree plot suggests two factors. In the next step, we’ll extract four factors and rotate them using a <em>promax</em> rotation.</p>
+<p>The parallel analysis suggests a maximum 4 factors, while the bend in the scree plot strongly suggests two factors. In the next step, we’ll extract 2 factors and rotate them using a <em>promax</em> rotation.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># extract 4 factors</span>
-<span class="va">fit.fa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/FA.html">FA</a></span><span class="op">(</span><span class="va">ratings</span>, nfactor<span class="op">=</span><span class="fl">4</span>, rotate<span class="op">=</span><span class="st">"promax"</span>, fm<span class="op">=</span><span class="st">"ml"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="co"># extract 2 oblique factors</span>
+<span class="va">fit.fa</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/FA.html">FA</a></span><span class="op">(</span><span class="va">ratings</span>, nfactor<span class="op">=</span><span class="fl">2</span>, rotate<span class="op">=</span><span class="st">"promax"</span>, fm<span class="op">=</span><span class="st">"ml"</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Maximum Likelihood Factor Analysis</span>
-<span class="co">#&gt; Number of Factors: 4 / Rotation: promax </span>
+<span class="co">#&gt; Number of Factors: 2 / Rotation: promax </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Factor Pattern</span>
-<span class="co">#&gt;                        F1    F2    F3    F4   h2</span>
-<span class="co">#&gt; Price                0.56  0.10 -0.09 -0.09 0.29</span>
-<span class="co">#&gt; Safety              -0.24  0.40 -0.19  0.06 0.21</span>
-<span class="co">#&gt; Exterior_Looks      -0.02  0.03  0.19 -0.43 0.21</span>
-<span class="co">#&gt; Space_comfort       -0.08  0.78  0.16 -0.20 0.71</span>
-<span class="co">#&gt; Technology           0.00  0.35  0.05  0.04 0.13</span>
-<span class="co">#&gt; After_Sales_Service  0.18  0.42  0.02  0.02 0.25</span>
-<span class="co">#&gt; Resale_Value         0.84 -0.22 -0.25 -0.08 0.61</span>
-<span class="co">#&gt; Fuel_Type            0.04  0.59 -0.07 -0.06 0.34</span>
-<span class="co">#&gt; Fuel_Efficiency      0.45  0.11  0.22  0.16 0.42</span>
-<span class="co">#&gt; Color                0.00 -0.07  0.27  0.90 0.90</span>
-<span class="co">#&gt; Maintenance          0.58  0.06 -0.01  0.20 0.45</span>
-<span class="co">#&gt; Test_drive           0.04  0.05  0.42 -0.06 0.21</span>
-<span class="co">#&gt; Product_reviews      0.24  0.08  0.41  0.00 0.33</span>
-<span class="co">#&gt; Testimonials        -0.39 -0.09  0.76  0.06 0.49</span>
+<span class="co">#&gt;                        F1    F2   h2</span>
+<span class="co">#&gt; Price                0.45  0.09 0.21</span>
+<span class="co">#&gt; Safety              -0.24  0.28 0.13</span>
+<span class="co">#&gt; Exterior_Looks      -0.17  0.20 0.06</span>
+<span class="co">#&gt; Space_comfort       -0.04  0.87 0.76</span>
+<span class="co">#&gt; Technology           0.09  0.33 0.12</span>
+<span class="co">#&gt; After_Sales_Service  0.27  0.39 0.24</span>
+<span class="co">#&gt; Resale_Value         0.59 -0.25 0.39</span>
+<span class="co">#&gt; Fuel_Type            0.04  0.53 0.29</span>
+<span class="co">#&gt; Fuel_Efficiency      0.64  0.15 0.44</span>
+<span class="co">#&gt; Color                0.46 -0.12 0.22</span>
+<span class="co">#&gt; Maintenance          0.65  0.02 0.42</span>
+<span class="co">#&gt; Test_drive           0.20  0.22 0.10</span>
+<span class="co">#&gt; Product_reviews      0.41  0.24 0.24</span>
+<span class="co">#&gt; Testimonials        -0.04  0.19 0.04</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Factor Structure</span>
-<span class="co">#&gt;                        F1    F2    F3    F4</span>
-<span class="co">#&gt; Price                0.52  0.16  0.14  0.06</span>
-<span class="co">#&gt; Safety              -0.23  0.31 -0.17  0.00</span>
-<span class="co">#&gt; Exterior_Looks      -0.05  0.06  0.17 -0.42</span>
-<span class="co">#&gt; Space_comfort        0.05  0.80  0.33 -0.19</span>
-<span class="co">#&gt; Technology           0.09  0.36  0.15  0.05</span>
-<span class="co">#&gt; After_Sales_Service  0.27  0.46  0.21  0.08</span>
-<span class="co">#&gt; Resale_Value         0.70 -0.15  0.00  0.13</span>
-<span class="co">#&gt; Fuel_Type            0.09  0.57  0.10 -0.03</span>
-<span class="co">#&gt; Fuel_Efficiency      0.58  0.24  0.42  0.28</span>
-<span class="co">#&gt; Color                0.32  0.03  0.30  0.91</span>
-<span class="co">#&gt; Maintenance          0.64  0.15  0.22  0.35</span>
-<span class="co">#&gt; Test_drive           0.19  0.17  0.45 -0.03</span>
-<span class="co">#&gt; Product_reviews      0.40  0.23  0.52  0.08</span>
-<span class="co">#&gt; Testimonials        -0.11  0.06  0.60 -0.01</span>
+<span class="co">#&gt;                        F1    F2</span>
+<span class="co">#&gt; Price                0.45  0.12</span>
+<span class="co">#&gt; Safety              -0.22  0.26</span>
+<span class="co">#&gt; Exterior_Looks      -0.16  0.18</span>
+<span class="co">#&gt; Space_comfort        0.02  0.87</span>
+<span class="co">#&gt; Technology           0.11  0.33</span>
+<span class="co">#&gt; After_Sales_Service  0.30  0.41</span>
+<span class="co">#&gt; Resale_Value         0.57 -0.22</span>
+<span class="co">#&gt; Fuel_Type            0.07  0.53</span>
+<span class="co">#&gt; Fuel_Efficiency      0.65  0.19</span>
+<span class="co">#&gt; Color                0.45 -0.09</span>
+<span class="co">#&gt; Maintenance          0.65  0.06</span>
+<span class="co">#&gt; Test_drive           0.22  0.24</span>
+<span class="co">#&gt; Product_reviews      0.43  0.27</span>
+<span class="co">#&gt; Testimonials        -0.03  0.19</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;                         F1   F2   F3   F4</span>
-<span class="co">#&gt; SS loadings           1.76 1.51 1.13 1.14</span>
-<span class="co">#&gt; Proportion Var        0.13 0.11 0.08 0.08</span>
-<span class="co">#&gt; Cumulative Var        0.13 0.23 0.32 0.40</span>
-<span class="co">#&gt; Proportion Explained  0.32 0.27 0.20 0.21</span>
-<span class="co">#&gt; Cumulative Proportion 0.32 0.59 0.79 1.00</span>
+<span class="co">#&gt;                         F1   F2</span>
+<span class="co">#&gt; SS loadings           1.98 1.68</span>
+<span class="co">#&gt; Proportion Var        0.14 0.12</span>
+<span class="co">#&gt; Cumulative Var        0.14 0.26</span>
+<span class="co">#&gt; Proportion Explained  0.54 0.46</span>
+<span class="co">#&gt; Cumulative Proportion 0.54 1.00</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Factor Intercorrelations</span>
-<span class="co">#&gt;      F1   F2   F3   F4</span>
-<span class="co">#&gt; F1 1.00 0.16 0.37 0.26</span>
-<span class="co">#&gt; F2 0.16 1.00 0.27 0.03</span>
-<span class="co">#&gt; F3 0.37 0.27 1.00 0.04</span>
-<span class="co">#&gt; F4 0.26 0.03 0.04 1.00</span></code></pre></div>
-<p>The printout includes the factor pattern, the factor structure, and the factor intercorrelations. The four factors account for 40% of the variance in the original data. Factors 1 and 3 have the hightest correlation (0.37).</p>
+<span class="co">#&gt;      F1   F2</span>
+<span class="co">#&gt; F1 1.00 0.07</span>
+<span class="co">#&gt; F2 0.07 1.00</span></code></pre></div>
+<p>The printout includes the factor pattern, the factor structure, and the factor intercorrelations. The four factors account for 26% of the variance in the original data. Factors 1 and 2 have a low correlation (0.07), suggesting that an orthogonal (e.g., varimax) rotation may give a simpler solution.</p>
 <p>Next, we’ll plot the pattern matrix as both a table and a bar chart.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># plot factor pattern as table</span>
@@ -327,13 +325,13 @@
 <span class="co">#&gt; 4            5         5               4     4           4          2</span>
 <span class="co">#&gt; 5            5         3               4     5           5          5</span>
 <span class="co">#&gt; 6            3         4               3     2           3          2</span>
-<span class="co">#&gt;   Product_reviews Testimonials         F1         F2         F3         F4</span>
-<span class="co">#&gt; 1               4            3  0.2506910 -0.4699041 -0.7872106 -1.6945115</span>
-<span class="co">#&gt; 2               2            2 -1.5335845 -0.9639319 -2.4591528  0.8789180</span>
-<span class="co">#&gt; 3               4            3  1.1462512  0.2886700 -0.1155376  0.4665338</span>
-<span class="co">#&gt; 4               5            3  0.5241452 -0.8581296 -0.6791612  0.4143127</span>
-<span class="co">#&gt; 5               5            2  1.3108167  0.1322874 -0.1696281  1.3488528</span>
-<span class="co">#&gt; 6               2            3 -1.2159854 -1.1217324 -1.7582189 -1.4766228</span></code></pre></div>
+<span class="co">#&gt;   Product_reviews Testimonials         F1          F2</span>
+<span class="co">#&gt; 1               4            3 -0.2191629 -0.27112360</span>
+<span class="co">#&gt; 2               2            2 -1.4450747 -1.44074857</span>
+<span class="co">#&gt; 3               4            3  1.2040675  0.03516678</span>
+<span class="co">#&gt; 4               5            3  0.3792889 -1.12791694</span>
+<span class="co">#&gt; 5               5            2  1.1548109 -0.18276132</span>
+<span class="co">#&gt; 6               2            3 -1.4025048 -1.14472586</span></code></pre></div>
 </div>
   </div>
 

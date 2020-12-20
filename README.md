@@ -5,53 +5,27 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of **qacr** is to provide convenient statistical results for data science students and practitioners.
+**R** is a wonderful language and platform for data science. Unfortunately, many simple tasks in data preparation, data exploration, machine learning, and data visualization can be more difficult than necessary.  
 
-Why **qacr**? This package is created and maintained by advanced undergradutes in the [Quantitative Analysis Center](http://qac.wesleyan.edu) (QAC) at Wesleyan University. It just seemed appropriate.
+The goal of the **qacr** package is to provide **convenient statistical functions** for the common data science task we perform every day. Additionally, there are over **two dozen data sets** that can be used for
+teaching and self-study.
 
-## Installation
+Why **qacr**? This package is created and maintained by faculty and advanced undergradutes in the [Quantitative Analysis Center](http://qac.wesleyan.edu) (QAC) at Wesleyan University. It just seemed appropriate.
+
+### Installation
 
 You can install this package with the following code:
 
 ``` r
-if(!require(devtools)){
-   install.packages("devtools")
+if(!require(remotes)){
+   install.packages("remotes")
 }
-devtools::install_github("rkabacoff/qacr")
+remotes::install_github("rkabacoff/qacr")
 ```
 
-## Examples
+### Using the package
 
-Here are some basic examples demonstrating a few of these functions. Each function has options allowing for customized output.
+The easiest way to get started, is appropriately enough, reading the [**Getting Started**](articles/qacr.html) guide. Next, take a look at the
+[Documentation](reference/index.html). There are also *vignettes* on specific topics.
 
-``` r
-library(qacr)
-
-# summarize a data frame
-contents(cars74)
-
-# obtain descriptive statistics on a quantitative variable 
-# for each level of a grouping variable
-qstats(cars74, mpg, cyl)
-
-# tabulate a categorical variable
-tab(cars74, cyl)
-
-# cross-tabulate two categorical variables
-crosstab(cars74, cyl, gear)
-
-# plot the distributions of quantitative and categorical variables
-histograms(cars74)
-densities(cars74)
-barcharts(cars74)
-
-# scatter plot and regression line
-scatter(cars74, hp, mpg)
-
-# plot a correlation matrix among quantitative variables
-corplot(cars74)
-
-# visualize a data frame
-dfPlot(coffee)
-```
-
+**Suggestions are always welcome!**

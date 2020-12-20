@@ -16,7 +16,7 @@ library(qacr)
 library(GPArotation)
 ```
 
-Based on the William Revelle's comprehensive [psych](https://cran.r-project.org/web/packages/psych/index.html) package, the `qacr` package provides wrapper functions for simplified input, intuitive output, and easily interpretable graphs, making these techniques more accessible to data analysts new to these forms of analysis.
+Based on the William Revelle's comprehensive [psych](https://cran.r-project.org/web/packages/psych/index.html) package,  `qacr` provides wrapper functions for simplified input, intuitive output, and easily interpretable graphs, making these techniques more accessible to data analysts new to these forms of analysis.
 
 ## Principal Components Analysis
 
@@ -74,15 +74,15 @@ set.seed(1234)
 scree_plot(ratings, method = "ml")
 ```
 
-The scree plot suggests two factors. In the next step, we'll extract four factors and rotate them using a *promax* rotation.
+The parallel analysis suggests a maximum 4 factors, while the bend in the scree plot strongly suggests two factors. In the next step, we'll extract 2 factors and rotate them using a *promax* rotation.
 
 ```{r fig.width=6, fig.height=6}
-# extract 4 factors
-fit.fa <- FA(ratings, nfactor=4, rotate="promax", fm="ml")
+# extract 2 oblique factors
+fit.fa <- FA(ratings, nfactor=2, rotate="promax", fm="ml")
 ```
 
 The printout includes the factor pattern, the factor structure, and the factor intercorrelations.
-The four factors account for 40% of the variance in the original data. Factors 1 and 3 have the hightest correlation (0.37).
+The four factors account for 26% of the variance in the original data. Factors 1 and 2 have a low correlation (0.07), suggesting that an orthogonal (e.g., varimax) rotation may give a simpler solution.
 
 Next, we'll plot the pattern matrix as both a table and a bar chart. 
 

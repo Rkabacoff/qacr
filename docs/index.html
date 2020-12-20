@@ -122,51 +122,24 @@
 <a href="#qacr" class="anchor"></a>qacr</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>The goal of <strong>qacr</strong> is to provide convenient statistical results for data science students and practitioners.</p>
-<p>Why <strong>qacr</strong>? This package is created and maintained by advanced undergradutes in the <a href="http://qac.wesleyan.edu">Quantitative Analysis Center</a> (QAC) at Wesleyan University. It just seemed appropriate.</p>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<p><strong>R</strong> is a wonderful language and platform for data science. Unfortunately, many simple tasks in data preparation, data exploration, machine learning, and data visualization can be more difficult than necessary.</p>
+<p>The goal of the <strong>qacr</strong> package is to provide <strong>convenient statistical functions</strong> for the common data science task we perform every day. Additionally, there are over <strong>two dozen data sets</strong> that can be used for teaching and self-study.</p>
+<p>Why <strong>qacr</strong>? This package is created and maintained by faculty and advanced undergradutes in the <a href="http://qac.wesleyan.edu">Quantitative Analysis Center</a> (QAC) at Wesleyan University. It just seemed appropriate.</p>
+<div id="installation" class="section level3">
+<h3 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h3>
 <p>You can install this package with the following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-   <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
+   <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span>
 <span class="op">}</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"rkabacoff/qacr"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"rkabacoff/qacr"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
-<p>Here are some basic examples demonstrating a few of these functions. Each function has options allowing for customized output.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rkabacoff/qacr">qacr</a></span><span class="op">)</span>
-
-<span class="co"># summarize a data frame</span>
-<span class="fu"><a href="reference/contents.html">contents</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
-
-<span class="co"># obtain descriptive statistics on a quantitative variable </span>
-<span class="co"># for each level of a grouping variable</span>
-<span class="fu"><a href="reference/qstats.html">qstats</a></span><span class="op">(</span><span class="va">cars74</span>, <span class="va">mpg</span>, <span class="va">cyl</span><span class="op">)</span>
-
-<span class="co"># tabulate a categorical variable</span>
-<span class="fu"><a href="reference/tab.html">tab</a></span><span class="op">(</span><span class="va">cars74</span>, <span class="va">cyl</span><span class="op">)</span>
-
-<span class="co"># cross-tabulate two categorical variables</span>
-<span class="fu"><a href="reference/crosstab.html">crosstab</a></span><span class="op">(</span><span class="va">cars74</span>, <span class="va">cyl</span>, <span class="va">gear</span><span class="op">)</span>
-
-<span class="co"># plot the distributions of quantitative and categorical variables</span>
-<span class="fu"><a href="reference/histograms.html">histograms</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
-<span class="fu"><a href="reference/densities.html">densities</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
-<span class="fu"><a href="reference/barcharts.html">barcharts</a></span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
-
-<span class="co"># scatter plot and regression line</span>
-<span class="fu"><a href="reference/scatter.html">scatter</a></span><span class="op">(</span><span class="va">cars74</span>, <span class="va">hp</span>, <span class="va">mpg</span><span class="op">)</span>
-
-<span class="co"># plot a correlation matrix among quantitative variables</span>
-<span class="fu">corplot</span><span class="op">(</span><span class="va">cars74</span><span class="op">)</span>
-
-<span class="co"># visualize a data frame</span>
-<span class="fu">dfPlot</span><span class="op">(</span><span class="va">coffee</span><span class="op">)</span></code></pre></div>
+<div id="using-the-package" class="section level3">
+<h3 class="hasAnchor">
+<a href="#using-the-package" class="anchor"></a>Using the package</h3>
+<p>The easiest way to get started, is appropriately enough, reading the <a href="articles/qacr.html"><strong>Getting Started</strong></a> guide. Next, take a look at the <a href="reference/index.html">Documentation</a>. There are also <em>vignettes</em> on specific topics.</p>
+<p><strong>Suggestions are always welcome!</strong></p>
 </div>
 </div>
 
