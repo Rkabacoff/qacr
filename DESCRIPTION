@@ -37,5 +37,7 @@ Imports:
     factoextra,
     GPArotation,
     kableExtra,
+    multcompView,
+    PMCMRplus,
     e1071
 URL: https://github.com/rkabacoff/qacr

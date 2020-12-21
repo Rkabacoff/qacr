@@ -9,13 +9,14 @@ groupdiff(
   data,
   method = c("anova", "kw"),
   digits = 2,
-  offset = 5,
-  horizontal = FALSE
+  horizontal = FALSE,
+  posthoc = TRUE
 )
 }
 \arguments{
-\item{formula}{formula of the form \code{Y ~ X} where \code{Y} is the response
-variable, and \code{X} is the categorical explanatory variable.}
+\item{formula}{use the form \code{Y ~ X} where \code{Y} is the response
+variable, and \code{X} is the categorical explanatory variable. \code{X}
+will be coerced to be a factor.}
 
 \item{data}{a data frame.}
 
@@ -23,12 +24,18 @@ variable, and \code{X} is the categorical explanatory variable.}
 
 \item{digits}{Number of significant digits to print.}
 
-\item{offset}{space at top of graph for post-hoc comparison letters.}
+\item{horizontal}{logical. If \code{TRUE}, boxplots are plotted horizontally.}
 
-\item{horizontal}{logical. It \code{TRUE}, boxplots are plotted horizontally.}
+\item{posthoc}{logical. If \code{TRUE}, perform pairwise post-hoc comparisons
+(TukeyHSD for ANOVA and Conover Test for Kuskal Wallis)}
 }
 \value{
-a list with 2 components
+a list with 3 components:
+\describe{
+\item{\code{result}}{omnibus test}
+\item{\code{summarystats}}{summary statistics}
+\item{\code{plot}}{ggplot2 graph}
+}
 }
 \description{
 One-way analysis (ANOVA or Kruskal-Wallis Test)
@@ -42,15 +49,21 @@ post-hoc comparisons.}
 \item{\code{kw}}{A Kruskal Wallis Rank Sum Test, with Conover
 Test post-hoc comparisons.}
 }
-In each case, a boxplot and summary statistics are provided.
+In each case, summary statistics and a grouped boxplots are
+provided. In the parametric case, the statistics are n, mean, and
+standard deviation. In the nonparametric case the statistics are
+n, median, and median absolute deviation. If \code{posthoc = TRUE},
+the default, pairwise comparisons of superimposed on the boxplots.
+Groups that share a letter are not significantly different (p < .05),
+controlling for multiple comparisons.
 }
 \examples{
 # parametric analysis
 groupdiff(hp ~ gear, mtcars)
 
 # nonparametric analysis
-groupdiff(popularity ~ vehicle_style, cardata, method="kw",
-          offset=500, horizontal=TRUE)
+groupdiff(popularity ~ vehicle_style, cardata,
+          method="kw", horizontal=TRUE)
 }
 \seealso{
 \link[PMCMRplus]{kwAllPairsConoverTest},

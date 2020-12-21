@@ -172,8 +172,8 @@ with post-hoc comparisons and plots</p>
   <span class='va'>data</span>,
   method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"anova"</span>, <span class='st'>"kw"</span><span class='op'>)</span>,
   digits <span class='op'>=</span> <span class='fl'>2</span>,
-  offset <span class='op'>=</span> <span class='fl'>5</span>,
-  horizontal <span class='op'>=</span> <span class='cn'>FALSE</span>
+  horizontal <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  posthoc <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -181,8 +181,9 @@ with post-hoc comparisons and plots</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>formula</th>
-      <td><p>formula of the form <code>Y ~ X</code> where <code>Y</code> is the response
-variable, and <code>X</code> is the categorical explanatory variable.</p></td>
+      <td><p>use the form <code>Y ~ X</code> where <code>Y</code> is the response
+variable, and <code>X</code> is the categorical explanatory variable. <code>X</code>
+will be coerced to be a factor.</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -197,18 +198,25 @@ variable, and <code>X</code> is the categorical explanatory variable.</p></td>
       <td><p>Number of significant digits to print.</p></td>
     </tr>
     <tr>
-      <th>offset</th>
-      <td><p>space at top of graph for post-hoc comparison letters.</p></td>
+      <th>horizontal</th>
+      <td><p>logical. If <code>TRUE</code>, boxplots are plotted horizontally.</p></td>
     </tr>
     <tr>
-      <th>horizontal</th>
-      <td><p>logical. It <code>TRUE</code>, boxplots are plotted horizontally.</p></td>
+      <th>posthoc</th>
+      <td><p>logical. If <code>TRUE</code>, perform pairwise post-hoc comparisons
+(TukeyHSD for ANOVA and Conover Test for Kuskal Wallis)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list with 2 components</p>
+    <p>a list with 3 components:</p><dl>
+<dt><code>result</code></dt><dd><p>omnibus test</p></dd>
+<dt><code>summarystats</code></dt><dd><p>summary statistics</p></dd>
+<dt><code>plot</code></dt><dd><p>ggplot2 graph</p></dd>
+
+</dl>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <code>groupdiff</code> function performs one of two analyses:</p><dl>
@@ -217,7 +225,13 @@ post-hoc comparisons.</p></dd>
 <dt><code>kw</code></dt><dd><p>A Kruskal Wallis Rank Sum Test, with Conover
 Test post-hoc comparisons.</p></dd>
 
-</dl><p>In each case, a boxplot and summary statistics are provided.</p>
+</dl><p>In each case, summary statistics and a grouped boxplots are
+provided. In the parametric case, the statistics are n, mean, and
+standard deviation. In the nonparametric case the statistics are
+n, median, and median absolute deviation. If <code>posthoc = TRUE</code>,
+the default, pairwise comparisons of superimposed on the boxplots.
+Groups that share a letter are not significantly different (p &lt; .05),
+controlling for multiple comparisons.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://rdrr.io/pkg/PMCMRplus/man/kwAllPairsConoverTest.html'>kwAllPairsConoverTest</a>,
@@ -226,7 +240,7 @@ Test post-hoc comparisons.</p></dd>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># parametric analysis</span>
 <span class='fu'>groupdiff</span><span class='op'>(</span><span class='va'>hp</span> <span class='op'>~</span> <span class='va'>gear</span>, <span class='va'>mtcars</span><span class='op'>)</span>
-</div><div class='img'><img src='groupdiff-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; $result
+</div><div class='output co'>#&gt; $result
 #&gt; [1] "F(2, 29) = 11.42, p-value = 0.00022"
 #&gt; 
 #&gt; $summarystats
@@ -234,11 +248,12 @@ Test post-hoc comparisons.</p></dd>
 #&gt; 1    4 12  89.50  25.89
 #&gt; 2    3 15 176.13  47.69
 #&gt; 3    5  5 195.60 102.83
-#&gt; </div><div class='input'>
+#&gt; 
+#&gt; $plot</div><div class='img'><img src='groupdiff-1.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; </div><div class='input'>
 <span class='co'># nonparametric analysis</span>
-<span class='fu'>groupdiff</span><span class='op'>(</span><span class='va'>popularity</span> <span class='op'>~</span> <span class='va'>vehicle_style</span>, <span class='va'>cardata</span>, method<span class='op'>=</span><span class='st'>"kw"</span>,
-          offset<span class='op'>=</span><span class='fl'>500</span>, horizontal<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Ties are present. Quantiles were corrected for ties.</span></div><div class='img'><img src='groupdiff-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; $result
+<span class='fu'>groupdiff</span><span class='op'>(</span><span class='va'>popularity</span> <span class='op'>~</span> <span class='va'>vehicle_style</span>, <span class='va'>cardata</span>,
+          method<span class='op'>=</span><span class='st'>"kw"</span>, horizontal<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Ties are present. Quantiles were corrected for ties.</span></div><div class='output co'>#&gt; $result
 #&gt; [1] "Chi-squared =  666.48 , df = 15 , p-value = &lt;2e-16"
 #&gt; 
 #&gt; $summarystats
@@ -259,7 +274,8 @@ Test post-hoc comparisons.</p></dd>
 #&gt; 14           Cargo Van   95   1851 1930.35
 #&gt; 15       Cargo Minivan   71   2009 2164.60
 #&gt; 16       Passenger Van  128   5657    0.00
-#&gt; </div></pre>
+#&gt; 
+#&gt; $plot</div><div class='img'><img src='groupdiff-2.png' alt='' width='700' height='433' /></div><div class='output co'>#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
