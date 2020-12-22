@@ -24,7 +24,7 @@ The \code{densities} function will only plot quantitative variables from
 a data frame. Categorical variables are ignored.
 
 The \code{adjust} parameter mulitplies the smoothing parameter. For example
-\code{adjust = 1/2} will make the density plots twice as smooth.
+\code{adjust = 2} will make the density plots twice as smooth.
 The \code{adjust = 1/2} will make the density plots half as smooth (i.e., twice as spiky).
 }
 \examples{
