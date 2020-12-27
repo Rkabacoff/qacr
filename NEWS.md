@@ -1,3 +1,7 @@
+# qacr 1.0.3.1
+
+* Addition of rcolors, lso, and clear functions.
+
 # qacr 1.0.2.1
 
 * Addition of one analysis of group differences, with post-hoc comparisons

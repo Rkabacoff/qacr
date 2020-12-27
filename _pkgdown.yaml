@@ -35,6 +35,7 @@ reference:
     desc: ~
     contents:
       - '`clear`'
+      - '`lso`'
       - '`phelp`'
       - '`print.contents`'
       - '`print.crosstab`'
