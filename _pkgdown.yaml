@@ -34,6 +34,7 @@ reference:
   - title: Utilities
     desc: ~
     contents:
+      - '`clear`'
       - '`phelp`'
       - '`print.contents`'
       - '`print.crosstab`'
@@ -41,6 +42,7 @@ reference:
       - '`print.tab`'
       - '`plot.crosstab`'
       - '`plot.tab`'
+      - '`rcolors`'
       - '`score`'
       - '`skewness`'
   - title: Datasets
