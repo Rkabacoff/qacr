@@ -13,6 +13,9 @@
 #' @seealso \link{colors}
 #' @return NULL
 #'
+#' @importFrom grDevices col2rgb colors rgb
+#' @importFrom graphics par rect text
+#'
 #' @references
 #' This function is adapted from code published by
 #' \href{https://github.com/kbroman/broman}{Karl W. Broman}.
@@ -32,8 +35,14 @@ rcolors <- function(color=NULL, cex=.6){
 
   n <- length(Colors)
   col <- character(n)
+  col2hex <- function(cname){
+    colMat <- col2rgb(cname)
+    rgb(red = colMat[1, ]/255,
+        green = colMat[2, ]/255,
+        blue = colMat[3, ]/255)
+  }
   for(i in seq_along(Colors)){
-    col[i] <- gplots::col2hex(Colors[i])
+    col[i] <- col2hex(Colors[i])
   }
 
   columns<-7

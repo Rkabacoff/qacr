@@ -18,6 +18,7 @@
 #' @import ggplot2
 #' @importFrom multcompView multcompLetters
 #' @importFrom PMCMRplus kwAllPairsConoverTest
+#' @importFrom stats TukeyHSD aov dist hclust kruskal.test mad median sd
 #' @return a list with 3 components:
 #' \describe{
 #' \item{\code{result}}{omnibus test}
@@ -59,6 +60,8 @@ groupdiff <- function(formula, data,
   y <- as.character(formula[[2]])
 
   data <- na.omit(data[c(x, y)])
+
+  Letters <- NULL
 
   # calculate offset
   if (posthoc){

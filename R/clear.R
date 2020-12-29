@@ -2,6 +2,7 @@
 #' @description
 #' Clear/reset an RStudio session
 #' @export
+#' @importFrom grDevices dev.list
 #' @details
 #' The \code{clear()} function:
 #' \enumerate{

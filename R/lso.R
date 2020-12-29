@@ -15,6 +15,7 @@
 #' @param head logical. Should output be limited to \code{n} lines?
 #' @param n if \code{head=TRUE}, number of rows should be displayed?
 #' @export
+#' @importFrom utils object.size
 #' @return a data.frame with four columns (Type, Size, Rows, Columns) and object names as row names.
 #' @author
 #' Based on based on postings by Petr Pikal and David Hinds to the r-help list in 2004 and

@@ -25,10 +25,10 @@ plot.tab <- function(x, fill="deepskyblue2", size=3.5, ...) {
   vname <- attr(x, "vname")
   if (length(x)==4){
     p <- ggplot(x, aes(x=reorder(.data[["level"]], .data[["ord"]]),
-                        y=percent)) +
+                        y=.data[["percent"]])) +
       geom_bar(stat="identity", fill=fill) +
       labs(x=vname, y="percent") + coord_flip() +
-      geom_text(aes(label = paste0(round(percent), "%")),
+      geom_text(aes(label = paste0(round(.data[["percent"]]), "%")),
                 hjust=1, size=size, color="grey30")
   }
   if (length(x) == 6){
@@ -36,7 +36,8 @@ plot.tab <- function(x, fill="deepskyblue2", size=3.5, ...) {
                 aes(x=reorder(.data[["level"]], .data[["ord"]]),
                     y=.data[["cum_percent"]])) +
       geom_bar(fill="grey", alpha=.6, stat="identity") +
-      geom_bar(aes(x=reorder(.data[["level"]], .data[["ord"]]), y=percent),
+      geom_bar(aes(x=reorder(.data[["level"]], .data[["ord"]]),
+                   y=.data[["percent"]]),
                fill=fill, stat="identity") +
       labs(x=vname, y="cumulative percent") + coord_flip() +
       geom_text(aes(label = paste0(round(.data[["cum_percent"]]), "%")),

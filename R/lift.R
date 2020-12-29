@@ -23,6 +23,10 @@
 #' print(results)
 lift_plot <- function(actual, prob, positive="yes"){
 
+  # bind global variables for CRAN
+  Letters <- prob_positive <- decile <- nresp <- NULL
+  pctevents <- gain <- x <- y <- cumlift <- NULL
+
   df <- data.frame(prob_positive = prob, actual=actual)
   df <- df %>% mutate(decile = 11 - ntile(prob_positive, 10))
 

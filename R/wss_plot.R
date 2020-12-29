@@ -41,7 +41,8 @@ wss_plot <- function(data, nc=15, standardize=TRUE, seed=1234){
     wss[i] <- sum(kmeans(data, centers=i)$withinss)
   }
   results <- data.frame(cluster=1:nc, wss=wss)
-  ggplot(results, aes(x=cluster,y=wss)) +
+  ggplot(results, aes(x=.data[["cluster"]],
+                      y=.data[["wss"]])) +
     geom_point(color="steelblue", size=2) +
     geom_line(color="grey") +
     theme_bw() +
