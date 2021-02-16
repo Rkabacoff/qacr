@@ -12,8 +12,9 @@
 #' @param method character. Either \code{"anova"}, or \code{"kw"} (see details).
 #' @param digits Number of significant digits to print.
 #' @param horizontal logical. If \code{TRUE}, boxplots are plotted horizontally.
-#' @param posthoc logical. If \code{TRUE}, perform pairwise post-hoc comparisons
-#' (TukeyHSD for ANOVA and Conover Test for Kuskal Wallis)
+#' @param posthoc logical. If \code{TRUE}, the default, perform pairwise post-hoc comparisons
+#' (TukeyHSD for ANOVA and Conover Test for Kuskal Wallis). This test
+#' will only be performed if there are 3 or more levels for X.
 #' @import dplyr
 #' @import ggplot2
 #' @importFrom multcompView multcompLetters
@@ -38,7 +39,7 @@
 #' provided. In the parametric case, the statistics are n, mean, and
 #' standard deviation. In the nonparametric case the statistics are
 #' n, median, and median absolute deviation. If \code{posthoc = TRUE},
-#' the default, pairwise comparisons of superimposed on the boxplots.
+#' pairwise comparisons of superimposed on the boxplots.
 #' Groups that share a letter are not significantly different (p < .05),
 #' controlling for multiple comparisons.
 #' @seealso \link[PMCMRplus]{kwAllPairsConoverTest},
@@ -63,17 +64,22 @@ groupdiff <- function(formula, data,
 
   Letters <- NULL
 
+  data[x] <- factor(data[[x]])
+
+  if (posthoc & length(levels(data[[x]])) < 3){
+    message("Note: Post-hoc comparisons require 3 or more groups.\n")
+    posthoc <- FALSE
+  }
+
+  data[x] <- reorder(data[[x]], data[[y]], mean, na.rm=TRUE)
+  levels(data[[x]]) <- gsub("-", " ", levels(data[[x]]))
+
   # calculate offset
   if (posthoc){
     offset <- (max(data[[y]]) - min(data[[y]]))/10
   } else {
     offset <- 0
   }
-
-
-  data[x] <- factor(data[[x]])
-  data[x] <- reorder(data[[x]], data[[y]], mean, na.rm=TRUE)
-  levels(data[[x]]) <- gsub("-", " ", levels(data[[x]]))
 
 
   method <- match.arg(method)
@@ -98,7 +104,7 @@ groupdiff <- function(formula, data,
                 .groups = 'drop') %>%
       as.data.frame()
 
-    # posthoc comparisons
+    # posthoc comparisons (for more than 2 levels)
     if (posthoc){
       tHSD <- TukeyHSD(a, ordered = FALSE, conf.level = 0.95)
       Tukey.levels <- tHSD[[1]][,4]

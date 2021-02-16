@@ -203,8 +203,9 @@ will be coerced to be a factor.</p></td>
     </tr>
     <tr>
       <th>posthoc</th>
-      <td><p>logical. If <code>TRUE</code>, perform pairwise post-hoc comparisons
-(TukeyHSD for ANOVA and Conover Test for Kuskal Wallis)</p></td>
+      <td><p>logical. If <code>TRUE</code>, the default, perform pairwise post-hoc comparisons
+(TukeyHSD for ANOVA and Conover Test for Kuskal Wallis). This test
+will only be performed if there are 3 or more levels for X.</p></td>
     </tr>
     </table>
 
@@ -229,7 +230,7 @@ Test post-hoc comparisons.</p></dd>
 provided. In the parametric case, the statistics are n, mean, and
 standard deviation. In the nonparametric case the statistics are
 n, median, and median absolute deviation. If <code>posthoc = TRUE</code>,
-the default, pairwise comparisons of superimposed on the boxplots.
+pairwise comparisons of superimposed on the boxplots.
 Groups that share a letter are not significantly different (p &lt; .05),
 controlling for multiple comparisons.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>

@@ -26,8 +26,9 @@ will be coerced to be a factor.}
 
 \item{horizontal}{logical. If \code{TRUE}, boxplots are plotted horizontally.}
 
-\item{posthoc}{logical. If \code{TRUE}, perform pairwise post-hoc comparisons
-(TukeyHSD for ANOVA and Conover Test for Kuskal Wallis)}
+\item{posthoc}{logical. If \code{TRUE}, the default, perform pairwise post-hoc comparisons
+(TukeyHSD for ANOVA and Conover Test for Kuskal Wallis). This test
+will only be performed if there are 3 or more levels for X.}
 }
 \value{
 a list with 3 components:
@@ -53,7 +54,7 @@ In each case, summary statistics and a grouped boxplots are
 provided. In the parametric case, the statistics are n, mean, and
 standard deviation. In the nonparametric case the statistics are
 n, median, and median absolute deviation. If \code{posthoc = TRUE},
-the default, pairwise comparisons of superimposed on the boxplots.
+pairwise comparisons of superimposed on the boxplots.
 Groups that share a letter are not significantly different (p < .05),
 controlling for multiple comparisons.
 }
