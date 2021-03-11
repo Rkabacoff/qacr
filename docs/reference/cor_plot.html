@@ -165,7 +165,14 @@
     <p>Create a correlation matrix for all quantitative variables in a data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cor_plot</span><span class='op'>(</span><span class='va'>data</span>, sort <span class='op'>=</span> <span class='cn'>FALSE</span>, lab_size <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>cor_plot</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"pearson"</span>, <span class='st'>"kendall"</span>, <span class='st'>"spearman"</span><span class='op'>)</span>,
+  sort <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  axis_text_size <span class='op'>=</span> <span class='fl'>12</span>,
+  number_text_size <span class='op'>=</span> <span class='fl'>3</span>,
+  legend <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,13 +182,28 @@
       <td><p>data frame</p></td>
     </tr>
     <tr>
+      <th>method</th>
+      <td><p>a character string indicating which correlation
+coefficient is to be computed. One of "pearson" (default), "kendall",
+or "spearman".</p></td>
+    </tr>
+    <tr>
       <th>sort</th>
       <td><p>logical. If <code>TRUE</code>, reorder variables to place variables
 with similar correlation patterns together.</p></td>
     </tr>
     <tr>
-      <th>lab_size</th>
-      <td><p>size for correlation coefficient labels (default=4).</p></td>
+      <th>axis_text_size</th>
+      <td><p>size for axis labels (default=12).</p></td>
+    </tr>
+    <tr>
+      <th>number_text_size</th>
+      <td><p>size for correlation coefficient labels (default=3).</p></td>
+    </tr>
+    <tr>
+      <th>legend</th>
+      <td><p>logical, if TRUE the legend is displayed.
+(default=FALSE)</p></td>
     </tr>
     </table>
 
@@ -191,10 +213,9 @@ with similar correlation patterns together.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <code>cor_plot</code> function will only select quantitative variables from
-a data frame. Categorical variables are ignored.</p>
-<p>The correlation matrix is presented as a lower triangle matrix.
-Correlations are Pearson Product Moment correlation coefficients.</p>
-<p>Missing values are deleted in listwise fashion.</p>
+a data frame. Categorical variables are ignored.
+The correlation matrix is presented as a lower triangle matrix.
+Missing values are deleted in listwise fashion.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
     <p>This function is a wrapper for the <code><a href='https://rdrr.io/pkg/ggcorrplot/man/ggcorrplot.html'>ggcorrplot</a></code> function.</p>
@@ -202,7 +223,9 @@ Correlations are Pearson Product Moment correlation coefficients.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>cor_plot</span><span class='op'>(</span><span class='va'>cars74</span><span class='op'>)</span>
 </div><div class='img'><img src='cor_plot-1.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>cor_plot</span><span class='op'>(</span><span class='va'>cars74</span>, sort<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='img'><img src='cor_plot-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>cor_plot</span><span class='op'>(</span><span class='va'>coffee</span>, lab_size<span class='op'>=</span><span class='fl'>2</span>, sort<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='img'><img src='cor_plot-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'>cor_plot</span><span class='op'>(</span><span class='va'>coffee</span>, axis_text_size<span class='op'>=</span><span class='fl'>8</span>,
+         number_text_size<span class='op'>=</span><span class='fl'>2</span>, sort<span class='op'>=</span><span class='cn'>TRUE</span>,
+         legend<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
 </div><div class='img'><img src='cor_plot-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

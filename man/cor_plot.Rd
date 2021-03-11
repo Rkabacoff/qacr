@@ -4,15 +4,31 @@
 \alias{cor_plot}
 \title{Correlation matrix plot}
 \usage{
-cor_plot(data, sort = FALSE, lab_size = 4)
+cor_plot(
+  data,
+  method = c("pearson", "kendall", "spearman"),
+  sort = FALSE,
+  axis_text_size = 12,
+  number_text_size = 3,
+  legend = FALSE
+)
 }
 \arguments{
 \item{data}{data frame}
 
+\item{method}{a character string indicating which correlation
+coefficient is to be computed. One of "pearson" (default), "kendall",
+or "spearman".}
+
 \item{sort}{logical. If \code{TRUE}, reorder variables to place variables
 with similar correlation patterns together.}
 
-\item{lab_size}{size for correlation coefficient labels (default=4).}
+\item{axis_text_size}{size for axis labels (default=12).}
+
+\item{number_text_size}{size for correlation coefficient labels (default=3).}
+
+\item{legend}{logical, if TRUE the legend is displayed.
+(default=FALSE)}
 }
 \value{
 a ggplot graph
@@ -23,10 +39,7 @@ Create a correlation matrix for all quantitative variables in a data frame.
 \details{
 The \code{cor_plot} function will only select quantitative variables from
 a data frame. Categorical variables are ignored.
-
 The correlation matrix is presented as a lower triangle matrix.
-Correlations are Pearson Product Moment correlation coefficients.
-
 Missing values are deleted in listwise fashion.
 }
 \note{
@@ -35,5 +48,7 @@ This function is a wrapper for the \code{\link[ggcorrplot:ggcorrplot]{ggcorrplot
 \examples{
 cor_plot(cars74)
 cor_plot(cars74, sort=TRUE)
-cor_plot(coffee, lab_size=2, sort=TRUE)
+cor_plot(coffee, axis_text_size=8,
+         number_text_size=2, sort=TRUE,
+         legend=TRUE)
 }
